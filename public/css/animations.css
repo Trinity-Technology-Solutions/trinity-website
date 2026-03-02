@@ -1,0 +1,82 @@
+/* Trinity Technology Solutions - AOS Integration */
+
+/* Prevent horizontal overflow and scrollbars */
+body, html {
+  overflow-x: hidden !important;
+  max-width: 100vw !important;
+}
+
+/* Ensure all containers stay within viewport */
+* {
+  box-sizing: border-box;
+}
+
+.container-large,
+.container-medium,
+.container-small {
+  max-width: 100% !important;
+  overflow-x: hidden;
+}
+
+/* AOS animation adjustments for mobile */
+@media (max-width: 768px) {
+  [data-aos] {
+    transform: none !important;
+  }
+  
+  [data-aos="slide-right"] {
+    transform: translateX(0) !important;
+  }
+}
+
+/* Prevent layout shifts during animations */
+[data-aos] {
+  pointer-events: none;
+}
+
+[data-aos].aos-animate {
+  pointer-events: auto;
+}
+
+/* Card Hover Enhancements */
+.service-card-new,
+.business-card-new,
+.testimonial-card-new {
+  transition: all 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+}
+
+/* Responsive Adjustments */
+@media (max-width: 768px) {
+  .animate-on-scroll,
+  .slide-left,
+  .slide-right,
+  .slide-up,
+  .zoom-in,
+  .stagger-item {
+    transform: translateY(20px);
+  }
+  
+  .slide-left {
+    transform: translateX(-30px);
+  }
+  
+  .slide-right {
+    transform: translateX(30px);
+  }
+}
+
+/* Reduced Motion Support */
+@media (prefers-reduced-motion: reduce) {
+  .animate-on-scroll,
+  .fade-in,
+  .slide-left,
+  .slide-right,
+  .slide-up,
+  .zoom-in,
+  .stagger-item,
+  .hero-fade-in {
+    transition: none;
+    opacity: 1;
+    transform: none;
+  }
+}

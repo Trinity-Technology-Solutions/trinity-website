@@ -1,0 +1,30 @@
+User-agent: *
+Allow: /
+
+# Sitemap
+Sitemap: https://trinitetech.com/sitemap.xml
+
+# Block Japanese spam pages and content
+Disallow: /*完動品*
+Disallow: /*極美品*
+Disallow: /*ダウンベスト*
+Disallow: /*パタゴニア*
+Disallow: /*Nikon*SB-5000*
+Disallow: /*Patagonia*XS*
+Disallow: /*日本語*
+Disallow: /*japanese*
+Disallow: /*jp*
+Disallow: /*?lang=ja*
+Disallow: /*&lang=ja*
+
+# Block common Japanese e-commerce terms
+Disallow: /*商品*
+Disallow: /*価格*
+Disallow: /*販売*
+Disallow: /*購入*
+
+# Disallow crawling of admin and private directories
+Disallow: /admin/
+Disallow: /private/
+Disallow: /.git/
+Disallow: /node_modules/

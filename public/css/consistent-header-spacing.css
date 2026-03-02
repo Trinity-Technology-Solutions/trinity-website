@@ -1,0 +1,205 @@
+/* Consistent Header Spacing for All Pages */
+
+/* Fixed header height - all pages use the same responsive header */
+.new-responsive-header {
+  height: 80px !important;
+  position: fixed !important;
+  top: 0 !important;
+  left: 0 !important;
+  right: 0 !important;
+  z-index: 1000 !important;
+}
+
+/* Consistent spacing for main content after header */
+.main-wrapper {
+  padding-top: 0 !important;
+  margin-top: 0 !important;
+}
+
+/* Consistent hero section spacing for all pages */
+.main-wrapper > section:first-child,
+section[style*="background: linear-gradient"],
+section.hero-fade-in,
+.section_hero {
+  padding-top: 120px !important; /* 80px header + 40px gap */
+  padding-bottom: 80px !important;
+  margin-top: 0 !important;
+}
+
+/* Special handling for index page video hero */
+.section_hero {
+  min-height: calc(100vh - 80px) !important;
+  padding-top: 60px !important;
+}
+
+/* Ensure consistent spacing for hero content */
+.hero_content,
+.hero_grid {
+  padding-top: 0 !important;
+  margin-top: 0 !important;
+}
+
+/* Mobile responsive adjustments */
+@media (max-width: 768px) {
+  .new-responsive-header {
+    height: 60px !important;
+  }
+  
+  .main-wrapper {
+    padding-top: 60px !important;
+  }
+  
+  .main-wrapper > section:first-child,
+  section[style*="background: linear-gradient"],
+  section.hero-fade-in,
+  .section_hero {
+    padding-top: 60px !important;
+    padding-bottom: 60px !important;
+  }
+  
+  .section_hero {
+    min-height: calc(100vh - 60px) !important;
+    padding-top: 60px !important;
+  }
+}
+
+@media (max-width: 480px) {
+  .new-responsive-header {
+    height: 50px !important;
+  }
+  
+  .main-wrapper {
+    padding-top: 50px !important;
+  }
+  
+  .main-wrapper > section:first-child,
+  section[style*="background: linear-gradient"],
+  section.hero-fade-in,
+  .section_hero {
+    padding-top: 60px !important;
+    padding-bottom: 50px !important;
+  }
+  
+  .section_hero {
+    min-height: calc(100vh - 50px) !important;
+    padding-top: 60px !important;
+  }
+}
+
+/* Ensure all subsequent sections have consistent spacing */
+section:not(:first-child) {
+  margin-top: 0 !important;
+}
+
+/* Fix scroll offset for anchor links */
+#contact-form,
+#consultation,
+#footer,
+#services {
+  scroll-margin-top: 100px !important;
+}
+
+/* Additional padding for contact sections */
+#contact-form {
+  padding-top: 40px !important;
+}
+
+#consultation {
+  padding-top: 40px !important;
+}
+
+/* Ensure services section is properly spaced */
+#services {
+  padding-top: 40px !important;
+}
+
+@media (max-width: 768px) {
+  #contact-form,
+  #consultation,
+  #footer,
+  #services {
+    scroll-margin-top: 80px !important;
+  }
+  
+  #contact-form,
+  #consultation,
+  #services {
+    padding-top: 30px !important;
+  }
+}
+
+@media (max-width: 480px) {
+  #contact-form,
+  #consultation,
+  #footer,
+  #services {
+    scroll-margin-top: 70px !important;
+  }
+  
+  #contact-form,
+  #consultation,
+  #services {
+    padding-top: 20px !important;
+  }
+}
+
+/* Fix any conflicting inline styles */
+[style*="padding: 120px 0"],
+[style*="padding: 100px 0"],
+[style*="padding: 100px 0 60px 0"] {
+  padding-top: 60px !important; /* Reduced since main-wrapper already has padding */
+  padding-bottom: 80px !important;
+}
+
+@media (max-width: 768px) {
+  [style*="padding: 120px 0"],
+  [style*="padding: 100px 0"],
+  [style*="padding: 100px 0 60px 0"] {
+    padding-top: 60px !important;
+    padding-bottom: 60px !important;
+  }
+}
+
+@media (max-width: 480px) {
+  [style*="padding: 120px 0"],
+  [style*="padding: 100px 0"],
+  [style*="padding: 100px 0 60px 0"] {
+    padding-top: 60px !important;
+    padding-bottom: 50px !important;
+  }
+}
+
+/* Global scroll behavior and padding */
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  scroll-padding-top: 100px;
+}
+
+/* Ensure all sections are properly spaced */
+section {
+  position: relative;
+  z-index: 1;
+}
+
+/* Prevent any section from going behind header */
+.main-wrapper section {
+  min-height: auto;
+  position: relative;
+}
+
+
+
+@media (max-width: 768px) {
+  body {
+    scroll-padding-top: 80px;
+  }
+}
+
+@media (max-width: 480px) {
+  body {
+    scroll-padding-top: 70px;
+  }
+}

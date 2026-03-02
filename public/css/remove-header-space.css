@@ -1,0 +1,23 @@
+/* Remove header padding/spacing from pages without headers */
+body {
+  padding-top: 0 !important;
+  margin-top: 0 !important;
+}
+
+.u-nav-spacer {
+  display: none !important;
+  height: 0 !important;
+}
+
+.section_hero,
+.section-with-curve {
+  margin-top: 0 !important;
+  padding-top: 120px !important;
+}
+
+/* Ensure no white space at top */
+.page-wrapper,
+.main-wrapper {
+  margin-top: 0 !important;
+  padding-top: 0 !important;
+}

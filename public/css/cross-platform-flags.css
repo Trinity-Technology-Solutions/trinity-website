@@ -1,0 +1,101 @@
+/* Cross-Platform Flag Icons CSS */
+/* This ensures flag icons display consistently across Ubuntu, Windows, and macOS */
+
+.location-flag {
+  display: flex !important;
+  justify-content: center !important;
+  align-items: center !important;
+  margin-bottom: 0.5rem !important;
+  height: 2rem !important;
+  width: 100% !important;
+}
+
+.flag-svg {
+  border-radius: 4px !important;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.2) !important;
+  border: 1px solid rgba(0, 0, 0, 0.1) !important;
+  display: block !important;
+  max-width: 32px !important;
+  max-height: 24px !important;
+}
+
+/* Fallback for systems that don't support SVG properly */
+.flag-fallback {
+  width: 32px;
+  height: 24px;
+  background: #f0f0f0;
+  border-radius: 4px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 12px;
+  font-weight: bold;
+  color: #666;
+  border: 1px solid #ddd;
+}
+
+/* Country-specific fallback colors */
+.flag-fallback.india {
+  background: linear-gradient(to bottom, #FF9933 33%, #FFFFFF 33%, #FFFFFF 66%, #138808 66%);
+  color: #000080;
+}
+
+.flag-fallback.netherlands {
+  background: linear-gradient(to bottom, #AE1C28 33%, #FFFFFF 33%, #FFFFFF 66%, #21468B 66%);
+  color: #FFFFFF;
+}
+
+.flag-fallback.oman {
+  background: linear-gradient(to bottom, #FFFFFF 33%, #ED2939 33%, #ED2939 66%, #00A651 66%);
+  color: #000000;
+}
+
+.flag-fallback.usa {
+  background: linear-gradient(to bottom, #B22234 50%, #FFFFFF 50%);
+  color: #3C3B6E;
+}
+
+/* Mobile responsive adjustments */
+@media (max-width: 768px) {
+  .location-flag {
+    height: 1.5rem !important;
+  }
+  
+  .flag-svg {
+    max-width: 24px !important;
+    max-height: 18px !important;
+  }
+  
+  .flag-fallback {
+    width: 24px;
+    height: 18px;
+    font-size: 10px;
+  }
+}
+
+/* High contrast mode support */
+@media (prefers-contrast: high) {
+  .flag-svg {
+    border: 2px solid #000 !important;
+  }
+  
+  .flag-fallback {
+    border: 2px solid #000;
+  }
+}
+
+/* Reduced motion support */
+@media (prefers-reduced-motion: reduce) {
+  .location-card {
+    transition: none !important;
+  }
+}
+
+/* Print styles */
+@media print {
+  .flag-svg,
+  .flag-fallback {
+    -webkit-print-color-adjust: exact;
+    color-adjust: exact;
+  }
+}

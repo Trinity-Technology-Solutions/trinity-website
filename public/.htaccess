@@ -1,0 +1,45 @@
+# Force UTF-8 encoding
+AddDefaultCharset UTF-8
+
+# Set language headers
+Header set Content-Language "en"
+
+# Block Japanese content requests
+RewriteEngine On
+RewriteCond %{QUERY_STRING} (^|&)lang=ja(&|$) [NC]
+RewriteRule ^(.*)$ /$1? [R=301,L]
+
+# Block Japanese user agents and referrers
+RewriteCond %{HTTP_USER_AGENT} (japanese|nihongo|日本語) [NC]
+RewriteRule ^(.*)$ - [F,L]
+
+# Redirect Japanese URLs to English
+RewriteCond %{REQUEST_URI} (完動品|極美品|ダウンベスト|パタゴニア|日本語) [NC]
+RewriteRule ^(.*)$ /? [R=301,L]
+
+# Security headers
+Header always set X-Content-Type-Options nosniff
+Header always set X-Frame-Options DENY
+Header always set X-XSS-Protection "1; mode=block"
+
+# XML files content type
+<Files "sitemap.xml">
+    Header set Content-Type "application/xml; charset=utf-8"
+</Files>
+
+<Files "*.xml">
+    Header set Content-Type "application/xml; charset=utf-8"
+</Files>
+
+# Cache control
+<IfModule mod_expires.c>
+    ExpiresActive On
+    ExpiresByType text/css "access plus 1 year"
+    ExpiresByType application/javascript "access plus 1 year"
+    ExpiresByType image/png "access plus 1 year"
+    ExpiresByType image/jpg "access plus 1 year"
+    ExpiresByType image/jpeg "access plus 1 year"
+    ExpiresByType image/gif "access plus 1 year"
+    ExpiresByType image/svg+xml "access plus 1 year"
+    ExpiresByType application/xml "access plus 1 day"
+</IfModule>

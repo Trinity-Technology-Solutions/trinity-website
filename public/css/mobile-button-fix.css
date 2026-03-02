@@ -1,0 +1,29 @@
+/* Mobile Button Position Fix */
+@media (max-width: 768px) {
+  /* Move Connect with Us button up */
+  #w-node-c869799b-6932-d519-9c89-71bb5ca20435-5ca20426 {
+    margin-bottom: 30px !important;
+    position: relative !important;
+    top: -40px !important;
+  }
+  
+  /* Move main content sections slightly up */
+  .partners_comp,
+  .who-we-are-section,
+  .databricks-section {
+    transform: translateY(-15px) !important;
+  }
+}
+
+@media (max-width: 480px) {
+  #w-node-c869799b-6932-d519-9c89-71bb5ca20435-5ca20426 {
+    margin-bottom: 20px !important;
+    top: -50px !important;
+  }
+  
+  .partners_comp,
+  .who-we-are-section,
+  .databricks-section {
+    transform: translateY(-20px) !important;
+  }
+}

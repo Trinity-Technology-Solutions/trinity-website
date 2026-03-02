@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="google-site-verification" content="SQOh55Ri1bMC2hsTB05o2ZZs-T_CW_oiyBDRId16aKg" />`n    <link rel="icon" type="image/x-icon" href="assets/images/favicon.ico" />
+    <link rel="icon" type="image/png" href="https://cdn.prod.website-files.com/68c8ed013c167a28e6d84332/68c8eeafa4b5417495dddb90_Trinity%20Logo%20PNG%20(3).png" />
+    
+    <link rel="stylesheet" href="css/trinity-styles.css">
+    <link rel="stylesheet" href="css/mobile-complete-fix.css">
+    <link rel="stylesheet" href="css/consistent-header-spacing.css">
+    <link rel="stylesheet" href="../curvy-wave.css" />
+  </head>
+<body>
+    <header class="new-responsive-header">
+        <div class="new-header-container">
+            <div class="new-logo">
+                <a href="index.html">
+                    <img src="https://cdn.prod.website-files.com/68c8ed013c167a28e6d84332/68c8eeafa4b5417495dddb90_Trinity%20Logo%20PNG%20(3).png" alt="Trinity Technology Solutions">
+                </a>
+            </div>
+            <nav class="new-nav" id="nav-menu">
+                <a href="index.html">Home</a>
+                <a href="about-us.html">About</a>
+                <a href="services.html">Services</a>
+                <a href="contact.html">Contact</a>
+                <a href="career.html">Career</a>
+                <a href="jobs.html" class="active">Jobs</a>
+                <a href="contact.html" class="new-get-started">Get Started</a>
+            </nav>
+            <div class="new-hamburger" id="hamburger">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+        </div>
+    </header>
+
+    <main style="padding-top: 80px;">
+        <section class="section-with-curve" style="background: white; padding: 60px 0;">
+            <div class="container-large" style="max-width: 1200px; margin: 0 auto; padding: 0 2rem;">
+                <div style="text-align: center; margin-bottom: 3rem;">
+                    <h1 style="font-size: 2.5rem; color: #22396b; margin-bottom: 1rem;">Current Job Openings</h1>
+                    <p style="font-size: 1.2rem; color: #666; max-width: 600px; margin: 0 auto;">
+                        Explore exciting career opportunities with Trinity Technology Solutions and join our team of innovative professionals.
+                    </p>
+                </div>
+                
+                <div style="background: white; border-radius: 12px; box-shadow: 0 4px 20px rgba(0,0,0,0.1); overflow: hidden;">
+                    <iframe 
+                        src="https://jobsapi.ceipal.com/APISource/v3/index.html?api_key=YjRoeE5zeXJuNUV2eHRLdUVTY1JUdz09&cp_id=Z3RkUkt2OXZJVld2MjFpOVRSTXoxZz09"
+                        width="100%" 
+                        height="800" 
+                        frameborder="0" 
+                        scrolling="auto"
+                        allowtransparency="true"
+                        style="border: 0; width: 100%; height: 800px;"
+                        title="Trinity Jobs">
+                    </iframe>
+                </div>
+                
+                <div style="text-align: center; margin-top: 3rem; padding: 2rem; background: #f8f9fa; border-radius: 12px;">
+                    <h3 style="color: #22396b; margin-bottom: 1rem;">Don't see the right position?</h3>
+                    <p style="color: #666; margin-bottom: 1.5rem;">
+                        We're always looking for talented individuals. Send us your resume and we'll keep you in mind for future opportunities.
+                    </p>
+                    <a href="contact.html" style="background: #22396b; color: white; padding: 12px 24px; border-radius: 6px; text-decoration: none; display: inline-block;">
+                        Contact Us
+                    </a>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <script>
+        document.getElementById('hamburger').addEventListener('click', function() {
+            const navMenu = document.getElementById('nav-menu');
+            const hamburger = document.getElementById('hamburger');
+            
+            navMenu.classList.toggle('active');
+            hamburger.classList.toggle('active');
+            
+            if (navMenu.classList.contains('active')) {
+                document.body.style.overflow = 'hidden';
+            } else {
+                document.body.style.overflow = 'auto';
+            }
+        });
+        
+        document.querySelectorAll('.new-nav a').forEach(link => {
+            link.addEventListener('click', function() {
+                document.getElementById('nav-menu').classList.remove('active');
+                document.getElementById('hamburger').classList.remove('active');
+                document.body.style.overflow = 'auto';
+            });
+        });
+    </script>
+</body>
+</html>
+
+

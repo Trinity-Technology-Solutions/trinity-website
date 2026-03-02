@@ -1,0 +1,202 @@
+/* Mobile Responsive Fixes */
+@media (max-width: 768px) {
+  /* Header */
+  .new-responsive-header {
+    padding: 0.5rem 0 !important;
+  }
+  
+  .new-header-container {
+    padding: 0 1rem !important;
+  }
+  
+  .new-logo img {
+    height: 40px !important;
+  }
+  
+  .new-hamburger {
+    display: block !important;
+    cursor: pointer;
+  }
+  
+  .new-nav {
+    display: none !important;
+    position: absolute;
+    top: 100%;
+    left: 0;
+    width: 100%;
+    background: white;
+    flex-direction: column;
+    padding: 1rem;
+    box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+  }
+  
+  .new-nav.active {
+    display: flex !important;
+  }
+  
+  /* Hero Section */
+  .section_hero {
+    min-height: 70vh !important;
+    padding-top: 80px !important;
+  }
+  
+  .hero_content {
+    padding: 1rem !important;
+    text-align: center !important;
+  }
+  
+  .hero_content h1 {
+    font-size: 1.8rem !important;
+    line-height: 1.3 !important;
+  }
+  
+  .hero_content p {
+    font-size: 1rem !important;
+  }
+  
+  .button {
+    padding: 0.75rem 1.5rem !important;
+    font-size: 1rem !important;
+  }
+  
+  /* Partner Pills */
+  .partner-pill {
+    font-size: 12px !important;
+    padding: 6px 12px !important;
+  }
+  
+  /* Partners Section */
+  .logos-scroll-container {
+    overflow-x: auto !important;
+  }
+  
+  .partner-logo {
+    height: 30px !important;
+    max-width: 60px !important;
+  }
+  
+  /* About Section */
+  .who-we-are-section .container-large > div {
+    grid-template-columns: 1fr !important;
+    gap: 2rem !important;
+    text-align: center !important;
+  }
+  
+  .who-we-are-section h2 {
+    font-size: 1.5rem !important;
+  }
+  
+  /* Databricks Section */
+  .databricks-section .container-large > div {
+    grid-template-columns: 1fr !important;
+    gap: 2rem !important;
+    text-align: center !important;
+  }
+  
+  .databricks-section h2 {
+    font-size: 1.6rem !important;
+  }
+  
+  /* Tech Stack */
+  .tech-stack-section > div > div > div:nth-child(3),
+  .tech-stack-section > div > div > div:nth-child(4) {
+    grid-template-columns: repeat(2, 1fr) !important;
+    gap: 1rem !important;
+  }
+  
+  /* Services Grid */
+  .services-grid-new {
+    grid-template-columns: 1fr !important;
+    gap: 1rem !important;
+  }
+  
+  .service-card-new {
+    height: auto !important;
+    padding: 1rem !important;
+  }
+  
+  /* Counters */
+  .counter-grid {
+    grid-template-columns: repeat(2, 1fr) !important;
+    gap: 1.5rem !important;
+  }
+  
+  /* Sectors */
+  .four_column_grid {
+    grid-template-columns: repeat(2, 1fr) !important;
+    gap: 1rem !important;
+  }
+  
+  /* Business Cards */
+  .businesses-grid-new {
+    grid-template-columns: 1fr !important;
+    gap: 1.5rem !important;
+  }
+  
+  /* Global Map */
+  .world-map {
+    height: 250px !important;
+  }
+  
+  .location-cards {
+    grid-template-columns: repeat(2, 1fr) !important;
+    gap: 0.75rem !important;
+  }
+  
+  /* FAQ */
+  .faq-question {
+    font-size: 1.1rem !important;
+  }
+  
+  /* Footer */
+  footer > div:nth-child(2) > div {
+    grid-template-columns: 1fr !important;
+    gap: 1.5rem !important;
+  }
+  
+  /* General Container Fixes */
+  .container-large,
+  .container-medium,
+  .container-small {
+    max-width: 95% !important;
+    padding: 0 1rem !important;
+  }
+  
+  /* Text Sizes */
+  .title-small {
+    font-size: 1rem !important;
+  }
+  
+  .title-row p {
+    font-size: 1.3rem !important;
+  }
+  
+  /* Spacing */
+  .padding-section-large,
+  .padding-section-large-xx {
+    padding: 3rem 0 !important;
+  }
+}
+
+@media (max-width: 480px) {
+  .hero_content h1 {
+    font-size: 1.5rem !important;
+  }
+  
+  .counter-grid {
+    grid-template-columns: 1fr !important;
+  }
+  
+  .four_column_grid {
+    grid-template-columns: 1fr !important;
+  }
+  
+  .location-cards {
+    grid-template-columns: 1fr !important;
+  }
+  
+  .tech-stack-section > div > div > div:nth-child(3),
+  .tech-stack-section > div > div > div:nth-child(4) {
+    grid-template-columns: 1fr !important;
+  }
+}
