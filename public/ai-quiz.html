@@ -1,0 +1,261 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AI Solutions Quiz - Trinity Technology Solutions</title>
+    <link rel="icon" type="image/png" href="https://cdn.prod.website-files.com/68c8ed013c167a28e6d84332/68c8eeafa4b5417495dddb90_Trinity%20Logo%20PNG%20(3).png" />
+    <link rel="stylesheet" href="css/trinity-styles.css">
+    <link rel="stylesheet" href="css/mobile-complete-fix.css">
+    <link rel="stylesheet" href="css/consistent-header-spacing.css">
+    <style>
+        .quiz-container {
+            max-width: 800px;
+            margin: 100px auto 50px;
+            padding: 40px;
+            background: white;
+            border-radius: 12px;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.1);
+        }
+        .quiz-header {
+            text-align: center;
+            margin-bottom: 30px;
+        }
+        .quiz-header h1 {
+            color: #22396b;
+            font-size: 2rem;
+            margin-bottom: 10px;
+        }
+        .question {
+            margin-bottom: 30px;
+            padding: 20px;
+            background: #f8f9fa;
+            border-radius: 8px;
+        }
+        .question h3 {
+            color: #22396b;
+            margin-bottom: 15px;
+            font-size: 1.1rem;
+        }
+        .options {
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+        }
+        .option {
+            padding: 12px 20px;
+            background: white;
+            border: 2px solid #ddd;
+            border-radius: 6px;
+            cursor: pointer;
+            transition: all 0.3s;
+        }
+        .option:hover {
+            border-color: #22396b;
+            background: #f0f4ff;
+        }
+        .option.selected {
+            border-color: #22396b;
+            background: #22396b;
+            color: white;
+        }
+        .submit-btn {
+            display: block;
+            width: 100%;
+            padding: 15px;
+            background: #22396b;
+            color: white;
+            border: none;
+            border-radius: 6px;
+            font-size: 1.1rem;
+            cursor: pointer;
+            margin-top: 30px;
+        }
+        .submit-btn:hover {
+            background: #1a2d54;
+        }
+        .submit-btn:disabled {
+            background: #ccc;
+            cursor: not-allowed;
+        }
+        .result {
+            display: none;
+            text-align: center;
+            padding: 30px;
+            background: #f8f9fa;
+            border-radius: 8px;
+            margin-top: 20px;
+        }
+        .result h2 {
+            color: #22396b;
+            margin-bottom: 15px;
+        }
+        .result.show {
+            display: block;
+        }
+    </style>
+</head>
+<body>
+    <header class="new-responsive-header">
+        <div class="new-header-container">
+            <div class="new-logo">
+                <a href="index.html">
+                    <img src="https://cdn.prod.website-files.com/68c8ed013c167a28e6d84332/68c8eeafa4b5417495dddb90_Trinity%20Logo%20PNG%20(3).png" alt="Trinity Technology Solutions">
+                </a>
+            </div>
+            <nav class="new-nav" id="nav-menu">
+                <a href="index.html">Home</a>
+                <a href="about-us.html">About</a>
+                <a href="services.html">Services</a>
+                <a href="contact.html">Contact</a>
+                <a href="career.html">Career</a>
+                <a href="jobs.html">Jobs</a>
+                <a href="contact.html" class="new-get-started">Get Started</a>
+            </nav>
+            <div class="new-hamburger" id="hamburger">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+        </div>
+    </header>
+
+    <div class="quiz-container">
+        <div class="quiz-header">
+            <h1>AI Solutions Quiz</h1>
+            <p>Test your knowledge about Artificial Intelligence</p>
+        </div>
+
+        <form id="quizForm">
+            <div class="question">
+                <h3>1. What is the primary purpose of Machine Learning?</h3>
+                <div class="options">
+                    <label class="option"><input type="radio" name="q1" value="A"> A) Manual data entry</label>
+                    <label class="option"><input type="radio" name="q1" value="B"> B) Enable systems to learn from data and improve automatically</label>
+                    <label class="option"><input type="radio" name="q1" value="C"> C) Design websites</label>
+                </div>
+            </div>
+
+            <div class="question">
+                <h3>2. Which of the following is a supervised learning algorithm?</h3>
+                <div class="options">
+                    <label class="option"><input type="radio" name="q2" value="A"> A) Linear Regression</label>
+                    <label class="option"><input type="radio" name="q2" value="B"> B) K-Means Clustering</label>
+                    <label class="option"><input type="radio" name="q2" value="C"> C) PCA</label>
+                </div>
+            </div>
+
+            <div class="question">
+                <h3>3. What type of data is required for training AI models?</h3>
+                <div class="options">
+                    <label class="option"><input type="radio" name="q3" value="A"> A) Structured or unstructured data</label>
+                    <label class="option"><input type="radio" name="q3" value="B"> B) Only images</label>
+                    <label class="option"><input type="radio" name="q3" value="C"> C) Only PDFs</label>
+                </div>
+            </div>
+
+            <div class="question">
+                <h3>4. What is Natural Language Processing (NLP) used for?</h3>
+                <div class="options">
+                    <label class="option"><input type="radio" name="q4" value="A"> A) Image editing</label>
+                    <label class="option"><input type="radio" name="q4" value="B"> B) Understanding and processing human language</label>
+                    <label class="option"><input type="radio" name="q4" value="C"> C) Database backup</label>
+                </div>
+            </div>
+
+            <div class="question">
+                <h3>5. Which metric is commonly used for classification models?</h3>
+                <div class="options">
+                    <label class="option"><input type="radio" name="q5" value="A"> A) Accuracy</label>
+                    <label class="option"><input type="radio" name="q5" value="B"> B) RAM size</label>
+                    <label class="option"><input type="radio" name="q5" value="C"> C) Server uptime</label>
+                </div>
+            </div>
+
+            <div class="question">
+                <h3>6. What is overfitting in AI?</h3>
+                <div class="options">
+                    <label class="option"><input type="radio" name="q6" value="A"> A) Model performs well on training but poorly on new data</label>
+                    <label class="option"><input type="radio" name="q6" value="B"> B) Model runs slowly</label>
+                    <label class="option"><input type="radio" name="q6" value="C"> C) Model has too little data</label>
+                </div>
+            </div>
+
+            <div class="question">
+                <h3>7. Which tool is commonly used for AI development?</h3>
+                <div class="options">
+                    <label class="option"><input type="radio" name="q7" value="A"> A) TensorFlow</label>
+                    <label class="option"><input type="radio" name="q7" value="B"> B) Photoshop</label>
+                    <label class="option"><input type="radio" name="q7" value="C"> C) MS Word</label>
+                </div>
+            </div>
+
+            <div class="question">
+                <h3>8. What is the role of data preprocessing?</h3>
+                <div class="options">
+                    <label class="option"><input type="radio" name="q8" value="A"> A) Clean and prepare data for modeling</label>
+                    <label class="option"><input type="radio" name="q8" value="B"> B) Delete data permanently</label>
+                    <label class="option"><input type="radio" name="q8" value="C"> C) Create logos</label>
+                </div>
+            </div>
+
+            <div class="question">
+                <h3>9. AI-powered chatbots are mainly based on:</h3>
+                <div class="options">
+                    <label class="option"><input type="radio" name="q9" value="A"> A) NLP</label>
+                    <label class="option"><input type="radio" name="q9" value="B"> B) FTP</label>
+                    <label class="option"><input type="radio" name="q9" value="C"> C) BIOS</label>
+                </div>
+            </div>
+
+            <div class="question">
+                <h3>10. Which industry benefits most from AI automation?</h3>
+                <div class="options">
+                    <label class="option"><input type="radio" name="q10" value="A"> A) Healthcare</label>
+                    <label class="option"><input type="radio" name="q10" value="B"> B) Finance</label>
+                    <label class="option"><input type="radio" name="q10" value="C"> C) All industries</label>
+                </div>
+            </div>
+
+            <button type="submit" class="submit-btn">Submit Quiz</button>
+        </form>
+
+        <div class="result" id="result"></div>
+    </div>
+
+    <script>
+        const answers = {q1:'B',q2:'A',q3:'A',q4:'B',q5:'A',q6:'A',q7:'A',q8:'A',q9:'A',q10:'C'};
+        
+        document.querySelectorAll('.option').forEach(opt => {
+            opt.addEventListener('click', function() {
+                const radio = this.querySelector('input');
+                this.parentElement.querySelectorAll('.option').forEach(o => o.classList.remove('selected'));
+                this.classList.add('selected');
+                radio.checked = true;
+            });
+        });
+
+        document.getElementById('quizForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+            let score = 0;
+            for(let q in answers) {
+                const selected = document.querySelector(`input[name="${q}"]:checked`);
+                if(selected && selected.value === answers[q]) score++;
+            }
+            document.getElementById('result').innerHTML = `
+                <h2>Quiz Complete!</h2>
+                <p style="font-size:2rem;color:#22396b;margin:20px 0;">Your Score: ${score}/10</p>
+                <p>${score >= 7 ? 'Excellent work!' : score >= 5 ? 'Good effort!' : 'Keep learning!'}</p>
+                <a href="jobs.html" style="display:inline-block;margin-top:20px;padding:12px 24px;background:#22396b;color:white;text-decoration:none;border-radius:6px;">Back to Jobs</a>
+            `;
+            document.getElementById('result').classList.add('show');
+            this.style.display = 'none';
+        });
+
+        document.getElementById('hamburger').addEventListener('click', function() {
+            document.getElementById('nav-menu').classList.toggle('active');
+            this.classList.toggle('active');
+        });
+    </script>
+</body>
+</html>

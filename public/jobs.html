@@ -9,6 +9,7 @@
     <link rel="stylesheet" href="css/trinity-styles.css">
     <link rel="stylesheet" href="css/mobile-complete-fix.css">
     <link rel="stylesheet" href="css/consistent-header-spacing.css">
+    <link rel="stylesheet" href="css/job-application-form.css">
     <link rel="stylesheet" href="../curvy-wave.css" />
   </head>
 <body>
@@ -48,23 +49,26 @@
                 
                 <div style="background: white; border-radius: 12px; box-shadow: 0 4px 20px rgba(0,0,0,0.1); overflow: hidden;">
                     <iframe 
+                        id="jobsIframe"
                         src="https://jobsapi.ceipal.com/APISource/v3/index.html?api_key=YjRoeE5zeXJuNUV2eHRLdUVTY1JUdz09&cp_id=Z3RkUkt2OXZJVld2MjFpOVRSTXoxZz09"
                         width="100%" 
-                        height="800" 
                         frameborder="0" 
-                        scrolling="auto"
+                        scrolling="no"
                         allowtransparency="true"
-                        style="border: 0; width: 100%; height: 800px;"
+                        style="border: 0; width: 100%; height: 900px; display: block;"
                         title="Trinity Jobs">
                     </iframe>
                 </div>
                 
                 <div style="text-align: center; margin-top: 3rem; padding: 2rem; background: #f8f9fa; border-radius: 12px;">
-                    <h3 style="color: #22396b; margin-bottom: 1rem;">Don't see the right position?</h3>
+                    <h3 style="color: #22396b; margin-bottom: 1rem;">Interested in AI Solutions?</h3>
                     <p style="color: #666; margin-bottom: 1.5rem;">
-                        We're always looking for talented individuals. Send us your resume and we'll keep you in mind for future opportunities.
+                        Take our AI Solutions quiz to test your knowledge and explore opportunities in artificial intelligence.
                     </p>
-                    <a href="contact.html" style="background: #22396b; color: white; padding: 12px 24px; border-radius: 6px; text-decoration: none; display: inline-block;">
+                    <a href="ai-quiz.html" style="background: #22396b; color: white; padding: 12px 24px; border-radius: 6px; text-decoration: none; display: inline-block; margin-right: 10px;">
+                        Continue to AI Quiz
+                    </a>
+                    <a href="contact.html" style="background: #6c757d; color: white; padding: 12px 24px; border-radius: 6px; text-decoration: none; display: inline-block;">
                         Contact Us
                     </a>
                 </div>
@@ -76,15 +80,9 @@
         document.getElementById('hamburger').addEventListener('click', function() {
             const navMenu = document.getElementById('nav-menu');
             const hamburger = document.getElementById('hamburger');
-            
             navMenu.classList.toggle('active');
             hamburger.classList.toggle('active');
-            
-            if (navMenu.classList.contains('active')) {
-                document.body.style.overflow = 'hidden';
-            } else {
-                document.body.style.overflow = 'auto';
-            }
+            document.body.style.overflow = navMenu.classList.contains('active') ? 'hidden' : 'auto';
         });
         
         document.querySelectorAll('.new-nav a').forEach(link => {
@@ -93,6 +91,13 @@
                 document.getElementById('hamburger').classList.remove('active');
                 document.body.style.overflow = 'auto';
             });
+        });
+
+        // Auto-adjust iframe height
+        window.addEventListener('message', function(e) {
+            if (e.data && typeof e.data.height === 'number') {
+                document.getElementById('jobsIframe').style.height = e.data.height + 'px';
+            }
         });
     </script>
 </body>
