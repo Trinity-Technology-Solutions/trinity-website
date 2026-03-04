@@ -245,28 +245,98 @@ class LeadPopup {
     btn.textContent = 'Sending...';
     btn.disabled = true;
 
-    let msg = `Service: ${this.formData.service.toUpperCase()}\n\nContact:\nName: ${this.formData.name}\nEmail: ${this.formData.email}\nPhone: ${this.formData.phone}\nAddress: ${this.formData.address}\n\nDetails:\n`;
-    Object.keys(this.formData).forEach(k => {
-      if (!['service','name','email','phone','address'].includes(k)) msg += `${k}: ${this.formData[k]}\n`;
-    });
-
     try {
-      await emailjs.send("service_m8it7mm", "template_i2yx6lo", {
-        from_name: this.formData.name,
-        from_email: this.formData.email,
-        message: msg,
-        title: `${this.formData.service.toUpperCase()} Lead`
-      }, "pqGNmyI4nmJpnTacM");
-    } catch(e) {}
+      const serviceNames = {
+        ai: 'AI Solutions',
+        erp: 'ERP Planning',
+        staffing: 'Staffing Solutions',
+        web: 'Web Development'
+      };
+
+      const questions = {
+        ai: [
+          'What business problem are you looking to solve using AI?',
+          'What type of AI solution are you interested in?',
+          'What kind of data do you currently have?',
+          'What level of AI product are you expecting?',
+          'Do you require integration with existing systems?',
+          'What is your expected deployment environment?'
+        ],
+        erp: [
+          'Which departments need ERP implementation?',
+          'Are you currently using any ERP system?',
+          'What level of ERP solution do you need?',
+          'Do you require customization based on your workflow?',
+          'Do you need integration with third-party tools?',
+          'What is your preferred deployment model?'
+        ],
+        staffing: [
+          'What type of roles are you hiring for?',
+          'What experience level are you looking for?',
+          'What is the expected hiring timeline?',
+          'What is your hiring model?',
+          'What key skills or technologies are mandatory?',
+          'Do you require additional services?'
+        ],
+        web: [
+          'What type of website/application do you need?',
+          'What is the main objective of the website?',
+          'Do you require any specific features?',
+          'What design level are you expecting?',
+          'Do you already have hosting & domain?',
+          'What level of scalability do you expect?'
+        ]
+      };
+
+      const service = this.formData.service;
+      const qs = questions[service];
+      let questionsText = '';
+      
+      qs.forEach((q, i) => {
+        const answer = this.formData[`q${i + 1}`] || 'Not answered';
+        questionsText += `Q${i + 1}: ${q}\nAnswer: ${answer}\n\n`;
+      });
+
+      await emailjs.send("service_pa43dns", "template_sr6fu8g", {
+        service: serviceNames[service],
+        name: this.formData.name,
+        email: this.formData.email,
+        phone: this.formData.phone,
+        message: `Service: ${serviceNames[service]}`,
+        questions: questionsText
+      });
+      console.log('Email sent successfully!');
+    } catch(e) {
+      console.error('EmailJS Error:', e);
+      alert('There was an error sending your information. Please try again.');
+      btn.textContent = 'Submit';
+      btn.disabled = false;
+      return;
+    }
 
     this.nextStep();
     setTimeout(() => this.close(), 3000);
+  }
+
+  generatePDFContent() {
+    return '';
+  }
+
+  htmlToPdf() {
+    return Promise.resolve(new Blob());
+  }
+
+  blobToBase64() {
+    return Promise.resolve('');
   }
 }
 
 let leadPopup;
 if (typeof window !== 'undefined') {
   window.addEventListener('load', () => {
+    if (typeof emailjs !== 'undefined') {
+      emailjs.init("jc8MwEV88GcpV6a7p");
+    }
     leadPopup = new LeadPopup();
   });
 }
