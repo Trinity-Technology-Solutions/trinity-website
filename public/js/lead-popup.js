@@ -18,14 +18,17 @@ class LeadPopup {
         <div class="lead-popup">
           <button class="popup-close" onclick="leadPopup.close()">&times;</button>
           
-          <div class="popup-header">
-            <h2>Welcome to Trinity Technology Solutions</h2>
-            <p>Transform your business with data analytics, AI, and innovative technology solutions</p>
+          <div class="popup-logo">
+            <svg width="60" height="60" viewBox="0 0 100 100" fill="none">
+              <rect width="100" height="100" rx="20" fill="#6b7fff"/>
+              <path d="M30 45L45 60L70 35" stroke="white" stroke-width="8" stroke-linecap="round" stroke-linejoin="round"/>
+            </svg>
           </div>
 
           <div class="popup-content">
             <div id="serviceSelection">
-              <h3 style="text-align: center; margin-bottom: 1rem; color: #1f2937;">Select a Service</h3>
+              <h2 class="popup-title">Get Started with Trinity</h2>
+              <p class="popup-subtitle">Join us for innovative technology solutions</p>
               <div class="services-grid-popup">
                 <button class="service-btn" onclick="leadPopup.selectService('ai')">
                   <svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="#22396b" stroke-width="2">
