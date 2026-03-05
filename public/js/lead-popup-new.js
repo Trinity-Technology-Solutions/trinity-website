@@ -229,8 +229,8 @@ class LeadPopup {
     const qs = questions[this.formData.service];
     let html = '';
     qs.forEach((q, i) => {
-      html += `<div class="form-field"><label>${i + 1}. ${q.q} <span style="color:#dc2626;">*</span></label><select name="q${i + 1}" required><option value="">Select...</option>`;
-      q.options.forEach(opt => html += `<option value="${opt}">${opt}</option>`);
+      html += `<div class="form-field"><label>${i + 1}. ${q.q} <span style="color:#dc2626;">*</span></label><select name="q${i + 1}" required style="color: #1f2937; font-weight: 500;"><option value="" style="color: #9ca3af;">Select...</option>`;
+      q.options.forEach(opt => html += `<option value="${opt}" style="color: #1f2937; font-weight: 500;">${opt}</option>`);
       html += `</select></div>`;
     });
     document.getElementById('serviceQuestions').innerHTML = html;
@@ -337,6 +337,5 @@ if (typeof window !== 'undefined') {
     if (typeof emailjs !== 'undefined') {
       emailjs.init("jc8MwEV88GcpV6a7p");
     }
-    leadPopup = new LeadPopup();
   });
 }
