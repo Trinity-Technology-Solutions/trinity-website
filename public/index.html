@@ -2270,8 +2270,8 @@ a,
                   data-w-id="c869799b-6932-d519-9c89-71bb5ca2042b"
                   class="hero_content hero-fade-in"
                 >
-                  <div>
-                    <a href="https://www.databricks.com/company/partners" target="_blank" rel="noopener" class="partner-pill">
+                  <div style="text-align: left;">
+                    <a href="https://www.databricks.com/company/partners" target="_blank" rel="noopener" class="partner-pill" style="justify-content: flex-start; margin: 0 0 1.5rem 0; display: inline-flex;">
                       <div class="partner-icon">
                         <svg width="24" height="24" viewBox="0 0 24 24" fill="none">
                           <path d="M12 2L2 7L12 12L22 7L12 2Z" stroke="#ff6b35" stroke-width="2" stroke-linejoin="round"/>
@@ -2286,15 +2286,15 @@ a,
                         </svg>
                       </div>
                     </a>
-                    <div class="padding-bottom padding-xsmall"></div>
-                    <h1 class="text-color-white heading-style-h2" data-aos="fade-up">
+                    <h1 class="text-color-white heading-style-h2" data-aos="fade-up" style="font-size: 3.5rem; line-height: 1.2; margin-bottom: 1.5rem;">
                       Empowering Businesses<br>with Data Analytics and<br>AI Across the Globe
                     </h1>
-                    <p class="body_one">
+                    <p class="body_one" style="font-size: 1.25rem; line-height: 1.6; margin-bottom: 2rem;">
                       Harnessing the power of data analytics to transform businesses in USA, India, Oman, and Netherlands.
                     </p>
-                    <div>
-                      <a href="contact.html" class="button is-medium w-button">Connect with Us</a>
+                    <div style="display: flex; gap: 1rem; flex-wrap: wrap; justify-content: flex-start; margin-top: 1.5rem;">
+                      <a href="services.html" class="button is-medium w-button" style="background: #4d65ff; color: white; padding: 0.875rem 2rem; border-radius: 8px; text-decoration: none; font-weight: 600; display: inline-block;">Our Services</a>
+                      <button class="button is-medium w-button" onclick="openConsultationModal()" style="background: #4d65ff; color: white; padding: 0.875rem 2rem; border-radius: 8px; border: none; font-weight: 600; cursor: pointer;">Start Free Consultation</button>
                     </div>
                   </div>
 
@@ -2313,24 +2313,24 @@ a,
             <div class="container-large">
               <div class="logos-scroll-container">
                 <div class="logos-scroll">
-                  <img src="assets/images/dbt-icon-2yxlz1fvy25mvn5scgnlw.webp" alt="DBT" class="partner-logo">
-                  <img src="assets/images/java-coffee-cup-logo.png" alt="Java" class="partner-logo">
+                  <img src="assets/images/SAP-Logo.svg.png" alt="SAP" class="partner-logo">
+                  <img src="assets/images/fivetran-logo.png" alt="Fivetran" class="partner-logo">
                   <img src="assets/images/Microsoft-Azure-Emblem.png" alt="Microsoft Azure" class="partner-logo">
                   <img src="assets/images/Odoo_logo_rgb.svg.png" alt="Odoo" class="partner-logo">
                   <img src="assets/images/Oracle-Logo-History-4-864x540.png" alt="Oracle" class="partner-logo">
-                  <img src="assets/images/SAP-Logo.svg.png" alt="SAP" class="partner-logo">
-                  <img src="assets/images/images.png" alt="Fivetran" class="partner-logo">
-                  <img src="assets/images/images (1).png" alt="Partner" class="partner-logo">
-                  <img src="assets/images/images (2).png" alt="Partner" class="partner-logo">
                   <img src="assets/images/dbt-icon-2yxlz1fvy25mvn5scgnlw.webp" alt="DBT" class="partner-logo">
                   <img src="assets/images/java-coffee-cup-logo.png" alt="Java" class="partner-logo">
+                  <img src="assets/images/databricks-logo.png" alt="Databricks" class="partner-logo">
+                  <img src="assets/images/nextjs-logo.png" alt="Next.js" class="partner-logo">
+                  <img src="assets/images/SAP-Logo.svg.png" alt="SAP" class="partner-logo">
+                  <img src="assets/images/fivetran-logo.png" alt="Fivetran" class="partner-logo">
                   <img src="assets/images/Microsoft-Azure-Emblem.png" alt="Microsoft Azure" class="partner-logo">
                   <img src="assets/images/Odoo_logo_rgb.svg.png" alt="Odoo" class="partner-logo">
                   <img src="assets/images/Oracle-Logo-History-4-864x540.png" alt="Oracle" class="partner-logo">
-                  <img src="assets/images/SAP-Logo.svg.png" alt="SAP" class="partner-logo">
-                  <img src="assets/images/images.png" alt="Fivetran" class="partner-logo">
-                  <img src="assets/images/images (1).png" alt="Partner" class="partner-logo">
-                  <img src="assets/images/images (2).png" alt="Partner" class="partner-logo">
+                  <img src="assets/images/dbt-icon-2yxlz1fvy25mvn5scgnlw.webp" alt="DBT" class="partner-logo">
+                  <img src="assets/images/java-coffee-cup-logo.png" alt="Java" class="partner-logo">
+                  <img src="assets/images/databricks-logo.png" alt="Databricks" class="partner-logo">
+                  <img src="assets/images/nextjs-logo.png" alt="Next.js" class="partner-logo">
                 </div>
               </div>
             </div>
@@ -3880,6 +3880,14 @@ a,
       function closeContactModal() {
         document.getElementById('contactModal').style.display = 'none';
         document.body.style.overflow = 'auto';
+      }
+      
+      function openConsultationModal() {
+        if (typeof emailjs !== 'undefined') {
+          emailjs.init("jc8MwEV88GcpV6a7p");
+        }
+        leadPopup = new LeadPopup();
+        leadPopup.show();
       }
       
       // Initialize EmailJS

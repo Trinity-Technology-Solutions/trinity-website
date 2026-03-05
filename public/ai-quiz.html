@@ -8,14 +8,18 @@
     <link rel="stylesheet" href="css/trinity-styles.css">
     <link rel="stylesheet" href="css/mobile-complete-fix.css">
     <link rel="stylesheet" href="css/consistent-header-spacing.css">
+    <link rel="stylesheet" href="css/service-modal.css">
     <style>
         .quiz-container {
             max-width: 800px;
             margin: 100px auto 50px;
             padding: 40px;
-            background: white;
-            border-radius: 12px;
-            box-shadow: 0 4px 20px rgba(0,0,0,0.1);
+            background: rgba(255, 255, 255, 0.3);
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
+            border-radius: 28px;
+            box-shadow: 0 8px 32px rgba(31, 38, 135, 0.15);
+            border: 1.5px solid rgba(255, 255, 255, 0.5);
         }
         .quiz-header {
             text-align: center;
@@ -29,8 +33,11 @@
         .question {
             margin-bottom: 30px;
             padding: 20px;
-            background: #f8f9fa;
-            border-radius: 8px;
+            background: rgba(255, 255, 255, 0.3);
+            backdrop-filter: blur(10px);
+            -webkit-backdrop-filter: blur(10px);
+            border-radius: 18px;
+            border: 1px solid rgba(255, 255, 255, 0.4);
         }
         .question h3 {
             color: #22396b;
@@ -44,35 +51,42 @@
         }
         .option {
             padding: 12px 20px;
-            background: white;
-            border: 2px solid #ddd;
-            border-radius: 6px;
+            background: rgba(255, 255, 255, 0.4);
+            border: 2px solid rgba(255, 255, 255, 0.5);
+            border-radius: 12px;
             cursor: pointer;
             transition: all 0.3s;
+            backdrop-filter: blur(10px);
+            -webkit-backdrop-filter: blur(10px);
         }
         .option:hover {
             border-color: #22396b;
-            background: #f0f4ff;
+            background: rgba(77, 101, 255, 0.15);
+            backdrop-filter: blur(15px);
         }
         .option.selected {
             border-color: #22396b;
-            background: #22396b;
-            color: white;
+            background: rgba(34, 57, 107, 0.3);
+            color: #22396b;
+            backdrop-filter: blur(15px);
         }
         .submit-btn {
             display: block;
             width: 100%;
             padding: 15px;
-            background: #22396b;
+            background: linear-gradient(135deg, #4d65ff 0%, #3d3dff 100%);
             color: white;
             border: none;
-            border-radius: 6px;
+            border-radius: 12px;
             font-size: 1.1rem;
             cursor: pointer;
             margin-top: 30px;
+            box-shadow: 0 8px 20px rgba(77, 101, 255, 0.3);
+            transition: all 0.3s;
         }
         .submit-btn:hover {
-            background: #1a2d54;
+            transform: translateY(-2px);
+            box-shadow: 0 12px 30px rgba(77, 101, 255, 0.4);
         }
         .submit-btn:disabled {
             background: #ccc;
@@ -82,8 +96,11 @@
             display: none;
             text-align: center;
             padding: 30px;
-            background: #f8f9fa;
-            border-radius: 8px;
+            background: rgba(255, 255, 255, 0.3);
+            backdrop-filter: blur(10px);
+            -webkit-backdrop-filter: blur(10px);
+            border-radius: 18px;
+            border: 1px solid rgba(255, 255, 255, 0.4);
             margin-top: 20px;
         }
         .result h2 {
