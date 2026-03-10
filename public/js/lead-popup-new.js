@@ -2,14 +2,13 @@
 class LeadPopup {
   constructor() {
     this.currentStep = 1;
-    this.totalSteps = 3;
+    this.totalSteps = 5;
     this.formData = {};
     this.init();
   }
 
   init() {
     this.createPopup();
-    setTimeout(() => this.show(), 1000);
   }
 
   createPopup() {
@@ -22,41 +21,59 @@ class LeadPopup {
               <span class="step-dot active"></span>
               <span class="step-dot"></span>
               <span class="step-dot"></span>
+              <span class="step-dot"></span>
             </div>
 
             <!-- Step 1: Service Selection -->
             <div class="step-content active" data-step="1">
               <h2 class="step-title">What can we help you with?</h2>
               <p class="step-subtitle">Select the service you're interested in</p>
-              <div class="service-grid">
-                <div class="service-option" onclick="leadPopup.selectService('ai')">
-                  <svg class="service-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                    <path d="M9.663 17H7.5C6.837 17 6.201 16.737 5.732 16.268C5.263 15.799 5 15.163 5 14.5C5 13.837 5.263 13.201 5.732 12.732C6.201 12.263 6.837 12 7.5 12C7.5 10.674 8.027 9.402 8.964 8.464C9.902 7.527 11.174 7 12.5 7C13.826 7 15.098 7.527 16.036 8.464C16.973 9.402 17.5 10.674 17.5 12H16.5C17.163 12 17.799 12.263 18.268 12.732C18.737 13.201 19 13.837 19 14.5C19 15.163 18.737 15.799 18.268 16.268C17.799 16.737 17.163 17 16.5 17H14.337"/>
-                  </svg>
-                  <h3 class="service-name">AI Solutions</h3>
+              <div class="service-cards-grid">
+                <div class="service-card-item">
+                  <div class="service-card-image">
+                    <img src="/assets/images/AI-Solutions.jpg" alt="AI Solutions" style="width: 100%; height: 100%; object-fit: cover;">
+                  </div>
+                  <div class="service-card-content">
+                    <h3 class="service-card-title">AI Solutions</h3>
+                    <p class="service-card-desc">Transform your business with intelligent automation and predictive analytics.</p>
+                    <button class="view-more-btn" onclick="window.open('/services/AI-solution.html', '_blank')">View More</button>
+                  </div>
                 </div>
-                <div class="service-option" onclick="leadPopup.selectService('erp')">
-                  <svg class="service-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                    <rect x="3" y="3" width="18" height="18" rx="2"/>
-                    <path d="M8 7h8M8 11h8M8 15h4"/>
-                  </svg>
-                  <h3 class="service-name">ERP Planning</h3>
+                <div class="service-card-item">
+                  <div class="service-card-image">
+                    <img src="/assets/images/ERP Planning.jpg" alt="ERP Planning" style="width: 100%; height: 100%; object-fit: cover;">
+                  </div>
+                  <div class="service-card-content">
+                    <h3 class="service-card-title">ERP Planning</h3>
+                    <p class="service-card-desc">Streamline operations with comprehensive enterprise resource planning.</p>
+                    <button class="view-more-btn" onclick="window.open('/services/ERP-planning.html', '_blank')">View More</button>
+                  </div>
                 </div>
-                <div class="service-option" onclick="leadPopup.selectService('staffing')">
-                  <svg class="service-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                    <path d="M16 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/>
-                    <circle cx="8.5" cy="7" r="4"/>
-                    <path d="M17 11l2 2 4-4"/>
-                  </svg>
-                  <h3 class="service-name">Staffing Solutions</h3>
+              </div>
+              <div class="service-cards-grid">
+                <div class="service-card-item">
+                  <div class="service-card-image">
+                    <img src="/assets/images/Staffing Solution.jpg" alt="Staffing Solutions" style="width: 100%; height: 100%; object-fit: cover;">
+                  </div>
+                  <div class="service-card-content">
+                    <h3 class="service-card-title">Staffing Solutions</h3>
+                    <p class="service-card-desc">Find top talent and build your team with expert recruitment services.</p>
+                    <button class="view-more-btn" onclick="window.open('/services/staffing-solutions.html', '_blank')">View More</button>
+                  </div>
                 </div>
-                <div class="service-option" onclick="leadPopup.selectService('web')">
-                  <svg class="service-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                    <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/>
-                    <path d="M14 2v6h6M16 13H8M16 17H8"/>
-                  </svg>
-                  <h3 class="service-name">Web Development</h3>
+                <div class="service-card-item">
+                  <div class="service-card-image">
+                    <img src="/assets/images/Web Development Solutions.jpg" alt="Web Development" style="width: 100%; height: 100%; object-fit: cover;">
+                  </div>
+                  <div class="service-card-content">
+                    <h3 class="service-card-title">Web Development</h3>
+                    <p class="service-card-desc">Build modern, responsive web applications that drive business growth.</p>
+                    <button class="view-more-btn" onclick="window.open('/services/web-development.html', '_blank')">View More</button>
+                  </div>
                 </div>
+              </div>
+              <div class="btn-group">
+                <button type="button" class="btn btn-primary" onclick="leadPopup.nextStep()">Continue</button>
               </div>
             </div>
 
@@ -86,8 +103,58 @@ class LeadPopup {
               </div>
             </div>
 
-            <!-- Step 3: Service Details -->
+            <!-- Step 3: Service Selection -->
             <div class="step-content" data-step="3">
+              <h2 class="step-title">What can we help you with?</h2>
+              <p class="step-subtitle">Select the service you're interested in</p>
+              <div class="service-cards-grid">
+                <div class="service-card-item" onclick="leadPopup.selectServiceCategory('ai')">
+                  <div class="service-card-image">
+                    <img src="/assets/images/AI-Solutions.jpg" alt="AI Solutions" style="width: 100%; height: 100%; object-fit: cover;">
+                  </div>
+                  <div class="service-card-content">
+                    <h3 class="service-card-title">AI Solutions</h3>
+                    <p class="service-card-desc">Transform your business with intelligent automation and predictive analytics.</p>
+                  </div>
+                </div>
+                <div class="service-card-item" onclick="leadPopup.selectServiceCategory('erp')">
+                  <div class="service-card-image">
+                    <img src="/assets/images/ERP Planning.jpg" alt="ERP Planning" style="width: 100%; height: 100%; object-fit: cover;">
+                  </div>
+                  <div class="service-card-content">
+                    <h3 class="service-card-title">ERP Planning</h3>
+                    <p class="service-card-desc">Streamline operations with comprehensive enterprise resource planning.</p>
+                  </div>
+                </div>
+              </div>
+              <div class="service-cards-grid">
+                <div class="service-card-item" onclick="leadPopup.selectServiceCategory('staffing')">
+                  <div class="service-card-image">
+                    <img src="/assets/images/Staffing Solution.jpg" alt="Staffing Solutions" style="width: 100%; height: 100%; object-fit: cover;">
+                  </div>
+                  <div class="service-card-content">
+                    <h3 class="service-card-title">Staffing Solutions</h3>
+                    <p class="service-card-desc">Find top talent and build your team with expert recruitment services.</p>
+                  </div>
+                </div>
+                <div class="service-card-item" onclick="leadPopup.selectServiceCategory('web')">
+                  <div class="service-card-image">
+                    <img src="/assets/images/Web Development Solutions.jpg" alt="Web Development" style="width: 100%; height: 100%; object-fit: cover;">
+                  </div>
+                  <div class="service-card-content">
+                    <h3 class="service-card-title">Web Development</h3>
+                    <p class="service-card-desc">Build modern, responsive web applications that drive business growth.</p>
+                  </div>
+                </div>
+              </div>
+              <div class="btn-group">
+                <button type="button" class="btn btn-secondary" onclick="leadPopup.prevStep()">Back</button>
+                <button type="button" class="btn btn-primary" onclick="leadPopup.nextStep()">Continue</button>
+              </div>
+            </div>
+
+            <!-- Step 4: Service Details -->
+            <div class="step-content" data-step="4">
               <h2 class="step-title">AI Solutions Quiz</h2>
               <p class="step-subtitle">Test your knowledge about AI and Machine Learning</p>
               <form id="detailsForm">
@@ -100,7 +167,7 @@ class LeadPopup {
             </div>
 
             <!-- Success -->
-            <div class="step-content" data-step="4">
+            <div class="step-content" data-step="5">
               <div class="success-screen">
                 <div class="success-icon">
                   <svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="3">
@@ -130,22 +197,17 @@ class LeadPopup {
     sessionStorage.setItem('trinityPopup', '1');
   }
 
-  selectService(service) {
+  selectServiceCategory(service) {
     this.formData.service = service;
-    document.querySelectorAll('.service-option').forEach(el => el.classList.remove('selected'));
-    event.target.closest('.service-option').classList.add('selected');
-    setTimeout(() => this.nextStep(), 300);
+    this.nextStep();
   }
 
   nextStep() {
-    console.log('nextStep called, currentStep:', this.currentStep);
     if (this.currentStep === 2) {
       const name = document.getElementById('userName')?.value.trim();
       const email = document.getElementById('userEmail')?.value.trim();
       const phone = document.getElementById('userPhone')?.value.trim();
       const address = document.getElementById('userAddress')?.value.trim();
-      
-      console.log('Form values:', {name, email, phone, address});
       
       if (!name || !email || !phone || !address) {
         alert('Please fill all fields');
@@ -156,17 +218,18 @@ class LeadPopup {
       this.formData.email = email;
       this.formData.phone = phone;
       this.formData.address = address;
-      console.log('Loading questions for service:', this.formData.service);
+    }
+    
+    if (this.currentStep === 3) {
       this.loadServiceQuestions();
     }
     
     const currentStepEl = document.querySelector(`[data-step="${this.currentStep}"]`);
     if (currentStepEl) currentStepEl.classList.remove('active');
     this.currentStep++;
-    console.log('Moving to step:', this.currentStep);
     const nextStepEl = document.querySelector(`[data-step="${this.currentStep}"]`);
     if (nextStepEl) nextStepEl.classList.add('active');
-    if (this.currentStep <= 3) {
+    if (this.currentStep <= 4) {
       const dots = document.querySelectorAll('.step-dot');
       if (dots[this.currentStep - 1]) dots[this.currentStep - 1].classList.add('active');
     }
@@ -174,7 +237,9 @@ class LeadPopup {
 
   prevStep() {
     document.querySelector(`[data-step="${this.currentStep}"]`).classList.remove('active');
-    document.querySelectorAll('.step-dot')[this.currentStep - 1].classList.remove('active');
+    if (this.currentStep <= 4) {
+      document.querySelectorAll('.step-dot')[this.currentStep - 1].classList.remove('active');
+    }
     this.currentStep--;
     document.querySelector(`[data-step="${this.currentStep}"]`).classList.add('active');
   }
@@ -188,8 +253,8 @@ class LeadPopup {
     };
 
     const service = this.formData.service;
-    document.querySelector('[data-step="3"] .step-title').textContent = serviceTitles[service].title;
-    document.querySelector('[data-step="3"] .step-subtitle').textContent = serviceTitles[service].subtitle;
+    document.querySelector('[data-step="4"] .step-title').textContent = serviceTitles[service].title;
+    document.querySelector('[data-step="4"] .step-subtitle').textContent = serviceTitles[service].subtitle;
 
     const questions = {
       ai: [
@@ -305,7 +370,6 @@ class LeadPopup {
         message: `Service: ${serviceNames[service]}`,
         questions: questionsText
       });
-      console.log('Email sent successfully!');
     } catch(e) {
       console.error('EmailJS Error:', e);
       alert('There was an error sending your information. Please try again.');
@@ -314,20 +378,10 @@ class LeadPopup {
       return;
     }
 
-    this.nextStep();
+    document.querySelector('[data-step="4"]').classList.remove('active');
+    document.querySelector('[data-step="5"]').classList.add('active');
+    this.currentStep = 5;
     setTimeout(() => this.close(), 3000);
-  }
-
-  generatePDFContent() {
-    return '';
-  }
-
-  htmlToPdf() {
-    return Promise.resolve(new Blob());
-  }
-
-  blobToBase64() {
-    return Promise.resolve('');
   }
 }
 

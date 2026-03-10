@@ -5,10 +5,21 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>ERP Planning | Trinity Technology Solutions</title>
   <link rel="icon" type="image/x-icon" href="../assets/images/favicon.ico" />
+  
+  <!-- Google Analytics -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-1F0Z7P35WV"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'G-1F0Z7P35WV');
+  </script>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="../css/trinity-styles.css">
   <link rel="stylesheet" href="../css/header-styles.css">
   <link rel="stylesheet" href="../css/inter-font.css">
+  <link rel="stylesheet" href="../css/lead-popup.css">
+  <link rel="stylesheet" href="../css/service-popup.css">
   <style>
     * { font-family: 'Inter', sans-serif !important; } body { padding-top: 80px; margin: 0; }
     .hero-section { background: linear-gradient(rgba(0,0,0,0.6), rgba(0,0,0,0.6)), url('https://images.unsplash.com/photo-1553877522-43269d4ea984?ixlib=rb-4.0.3&auto=format&fit=crop&w=2070&q=80') center/cover; color: white; padding: 6rem 2rem; text-align: center; }
@@ -48,10 +59,12 @@
       </div>
     </div>
   </header>
+  <script src="../js/lead-popup-new.js"></script>
+  <script src="../js/service-lead-popup.js"></script>
   <script>
-    document.getElementById('hamburger').addEventListener('click', function() {
-      document.getElementById('nav-menu').classList.toggle('active');
-      this.classList.toggle('active');
+    window.addEventListener('load', () => {
+      servicePopup = new ServiceLeadPopup('erp');
+      setTimeout(() => servicePopup.show(), 5000);
     });
   </script>
 

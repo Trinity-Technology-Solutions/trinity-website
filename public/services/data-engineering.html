@@ -5,10 +5,20 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Data Engineering | Trinity Technology Solutions</title>
   <link rel="icon" type="image/x-icon" href="../assets/images/favicon.ico" />
+  
+  <!-- Google Analytics -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-1F0Z7P35WV"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'G-1F0Z7P35WV');
+  </script>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="../css/trinity-styles.css">
   <link rel="stylesheet" href="../css/header-styles.css">
   <link rel="stylesheet" href="../css/inter-font.css">
+  <link rel="stylesheet" href="../css/lead-popup.css">
   <style>
     * { font-family: 'Inter', sans-serif !important; }
     body { padding-top: 80px; margin: 0; }
@@ -49,10 +59,14 @@
       </div>
     </div>
   </header>
+  <script src="../js/lead-popup-new.js"></script>
+  <script src="../js/service-lead-popup.js"></script>
   <script>
-    document.getElementById('hamburger').addEventListener('click', function() {
-      document.getElementById('nav-menu').classList.toggle('active');
-      this.classList.toggle('active');
+    window.addEventListener('load', () => {
+      servicePopup = new ServiceLeadPopup('de');
+      document.querySelectorAll('.view-more-btn').forEach(btn => {
+        btn.onclick = (e) => { e.preventDefault(); servicePopup.show(); };
+      });
     });
   </script>
 
