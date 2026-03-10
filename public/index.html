@@ -62,11 +62,21 @@
     <meta name="robots" content="index, follow, max-snippet:-1, max-image-preview:large, max-video-preview:-1" />
     <meta name="googlebot" content="index, follow, max-snippet:-1, max-image-preview:large, max-video-preview:-1" />
 
+    <!-- Google Analytics -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-1F0Z7P35WV"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+      gtag('config', 'G-1F0Z7P35WV');
+    </script>
+
     
     
     <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" />
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
     <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+    <link rel="stylesheet" href="css/lead-popup-cards.css" />
     <link rel="stylesheet" href="css/trinity-styles.css" />
     <link rel="stylesheet" href="css/animations.css" />
     <link rel="stylesheet" href="css/mobile-fix.css" />
@@ -154,7 +164,6 @@
     <script src="js/navigation-fix.js"></script>
     <script src="js/animations.js"></script>
     <script src="js/cross-platform-flags.js"></script>
-    <script src="js/word-counter.js"></script>
 
     <div class="page-wrapper">
       <div class="global-styles w-embed">
@@ -2294,7 +2303,6 @@ a,
                       Harnessing the power of data analytics to transform businesses in USA, India, Oman, and Netherlands.
                     </p>
                     <div style="display: flex; gap: 1rem; flex-wrap: wrap; justify-content: flex-start; margin-top: 1.5rem;">
-                      <a href="services.html" class="button is-medium w-button" style="background: #4d65ff; color: white; padding: 0.875rem 2rem; border-radius: 8px; text-decoration: none; font-weight: 600; display: inline-block;">Our Services</a>
                       <button class="button is-medium w-button" onclick="openConsultationModal()" style="background: #4d65ff; color: white; padding: 0.875rem 2rem; border-radius: 8px; border: none; font-weight: 600; cursor: pointer;">Start Free Consultation</button>
                     </div>
                   </div>
