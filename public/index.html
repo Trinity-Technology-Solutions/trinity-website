@@ -76,7 +76,7 @@
     <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" />
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
     <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
-    <link rel="stylesheet" href="css/lead-popup-cards.css" />
+    <link rel="stylesheet" href="css/lead-popup-cards.css?v=2" />
     <link rel="stylesheet" href="css/trinity-styles.css" />
     <link rel="stylesheet" href="css/animations.css" />
     <link rel="stylesheet" href="css/mobile-fix.css" />
@@ -86,8 +86,9 @@
     <link rel="stylesheet" href="css/mobile-responsive-fix.css" />
     <link rel="stylesheet" href="css/curvy-wave.css" />
     <link rel="stylesheet" href="css/mobile-button-fix.css" />
+    <link rel="stylesheet" href="css/lead-popup.css?v=24" />
     <link rel="stylesheet" href="css/header-styles.css" />
-    <link rel="stylesheet" href="css/lead-popup.css" />
+    <link rel="stylesheet" href="css/lead-popup.css?v=24" />
 
     <!-- Structured Data -->
     <script type="application/ld+json">
@@ -2589,7 +2590,7 @@ a,
                         <path d="M8 15H12" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
                       </svg>
                     </div>
-                    <h3 class="service-title-new">ERP Planning</h3>
+                    <h3 class="service-title-new">Intelligent ERP Solutions</h3>
                   </a>
                   <a href="services/staffing-solutions.html" class="service-card-new" data-aos="zoom-in" data-aos-delay="900">
                     <div class="service-icon-new">
@@ -3892,15 +3893,13 @@ a,
       }
       
       function openConsultationModal() {
-        if (typeof emailjs !== 'undefined') {
-          emailjs.init("jc8MwEV88GcpV6a7p");
+        if (leadPopup) {
+          leadPopup.show();
         }
-        leadPopup = new LeadPopup();
-        leadPopup.show();
       }
       
       // Initialize EmailJS
-      emailjs.init("pqGNmyI4nmJpnTacM");
+      emailjs.init("jc8MwEV88GcpV6a7p");
       
       function submitContactForm(event) {
         event.preventDefault();

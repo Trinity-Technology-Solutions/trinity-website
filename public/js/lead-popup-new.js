@@ -2,8 +2,9 @@
 class LeadPopup {
   constructor() {
     this.currentStep = 1;
-    this.totalSteps = 5;
+    this.totalSteps = 4;
     this.formData = {};
+    this.selectedService = null;
     this.init();
   }
 
@@ -14,7 +15,7 @@ class LeadPopup {
   createPopup() {
     const html = `
       <div class="lead-overlay" id="leadOverlay">
-        <div class="lead-modal">
+        <div class="lead-modal" id="leadModal">
           <button class="modal-close" onclick="leadPopup.close()">&times;</button>
           <div class="modal-body">
             <div class="step-indicator">
@@ -29,51 +30,51 @@ class LeadPopup {
               <h2 class="step-title">What can we help you with?</h2>
               <p class="step-subtitle">Select the service you're interested in</p>
               <div class="service-cards-grid">
-                <div class="service-card-item">
+                <div class="service-card-item" data-service="ai">
                   <div class="service-card-image">
-                    <img src="/assets/images/AI-Solutions.jpg" alt="AI Solutions" style="width: 100%; height: 100%; object-fit: cover;">
+                    <img src="assets/images/AI Solutions.jpg" alt="AI Solutions" style="width: 100%; height: 100%; object-fit: cover;">
                   </div>
                   <div class="service-card-content">
                     <h3 class="service-card-title">AI Solutions</h3>
                     <p class="service-card-desc">Transform your business with intelligent automation and predictive analytics.</p>
-                    <button class="view-more-btn" onclick="window.open('/services/AI-solution.html', '_blank')">View More</button>
+                    <button class="view-more-btn" onclick="event.stopPropagation(); window.open('services/AI-solution.html', '_blank')">View More</button>
                   </div>
                 </div>
-                <div class="service-card-item">
+                <div class="service-card-item" data-service="erp">
                   <div class="service-card-image">
-                    <img src="/assets/images/ERP Planning.jpg" alt="ERP Planning" style="width: 100%; height: 100%; object-fit: cover;">
+                    <img src="assets/images/ERP Planning.jpg" alt="Intelligent ERP Solutions" style="width: 100%; height: 100%; object-fit: cover;">
                   </div>
                   <div class="service-card-content">
-                    <h3 class="service-card-title">ERP Planning</h3>
+                    <h3 class="service-card-title">Intelligent ERP Solutions</h3>
                     <p class="service-card-desc">Streamline operations with comprehensive enterprise resource planning.</p>
-                    <button class="view-more-btn" onclick="window.open('/services/ERP-planning.html', '_blank')">View More</button>
+                    <button class="view-more-btn" onclick="event.stopPropagation(); window.open('services/ERP-planning.html', '_blank')">View More</button>
                   </div>
                 </div>
               </div>
               <div class="service-cards-grid">
-                <div class="service-card-item">
+                <div class="service-card-item" data-service="staffing">
                   <div class="service-card-image">
-                    <img src="/assets/images/Staffing Solution.jpg" alt="Staffing Solutions" style="width: 100%; height: 100%; object-fit: cover;">
+                    <img src="assets/images/Staffing Solution.jpg" alt="Staffing Solutions" style="width: 100%; height: 100%; object-fit: cover;">
                   </div>
                   <div class="service-card-content">
                     <h3 class="service-card-title">Staffing Solutions</h3>
                     <p class="service-card-desc">Find top talent and build your team with expert recruitment services.</p>
-                    <button class="view-more-btn" onclick="window.open('/services/staffing-solutions.html', '_blank')">View More</button>
+                    <button class="view-more-btn" onclick="event.stopPropagation(); window.open('services/staffing-solutions.html', '_blank')">View More</button>
                   </div>
                 </div>
-                <div class="service-card-item">
+                <div class="service-card-item" data-service="web">
                   <div class="service-card-image">
-                    <img src="/assets/images/Web Development Solutions.jpg" alt="Web Development" style="width: 100%; height: 100%; object-fit: cover;">
+                    <img src="assets/images/Web Development Solutions.jpg" alt="Web Development" style="width: 100%; height: 100%; object-fit: cover;">
                   </div>
                   <div class="service-card-content">
                     <h3 class="service-card-title">Web Development</h3>
                     <p class="service-card-desc">Build modern, responsive web applications that drive business growth.</p>
-                    <button class="view-more-btn" onclick="window.open('/services/web-development.html', '_blank')">View More</button>
+                    <button class="view-more-btn" onclick="event.stopPropagation(); window.open('services/web-development.html', '_blank')">View More</button>
                   </div>
                 </div>
               </div>
               <div class="btn-group">
-                <button type="button" class="btn btn-primary" onclick="leadPopup.nextStep()">Continue</button>
+                <button type="button" class="btn btn-primary" onclick="leadPopup.nextStep()" id="continueBtn" style="opacity: 1; cursor: pointer; width: 100%;">Continue</button>
               </div>
             </div>
 
@@ -103,60 +104,10 @@ class LeadPopup {
               </div>
             </div>
 
-            <!-- Step 3: Service Selection -->
+            <!-- Step 3: Service Details -->
             <div class="step-content" data-step="3">
-              <h2 class="step-title">What can we help you with?</h2>
-              <p class="step-subtitle">Select the service you're interested in</p>
-              <div class="service-cards-grid">
-                <div class="service-card-item" onclick="leadPopup.selectServiceCategory('ai')">
-                  <div class="service-card-image">
-                    <img src="/assets/images/AI-Solutions.jpg" alt="AI Solutions" style="width: 100%; height: 100%; object-fit: cover;">
-                  </div>
-                  <div class="service-card-content">
-                    <h3 class="service-card-title">AI Solutions</h3>
-                    <p class="service-card-desc">Transform your business with intelligent automation and predictive analytics.</p>
-                  </div>
-                </div>
-                <div class="service-card-item" onclick="leadPopup.selectServiceCategory('erp')">
-                  <div class="service-card-image">
-                    <img src="/assets/images/ERP Planning.jpg" alt="ERP Planning" style="width: 100%; height: 100%; object-fit: cover;">
-                  </div>
-                  <div class="service-card-content">
-                    <h3 class="service-card-title">ERP Planning</h3>
-                    <p class="service-card-desc">Streamline operations with comprehensive enterprise resource planning.</p>
-                  </div>
-                </div>
-              </div>
-              <div class="service-cards-grid">
-                <div class="service-card-item" onclick="leadPopup.selectServiceCategory('staffing')">
-                  <div class="service-card-image">
-                    <img src="/assets/images/Staffing Solution.jpg" alt="Staffing Solutions" style="width: 100%; height: 100%; object-fit: cover;">
-                  </div>
-                  <div class="service-card-content">
-                    <h3 class="service-card-title">Staffing Solutions</h3>
-                    <p class="service-card-desc">Find top talent and build your team with expert recruitment services.</p>
-                  </div>
-                </div>
-                <div class="service-card-item" onclick="leadPopup.selectServiceCategory('web')">
-                  <div class="service-card-image">
-                    <img src="/assets/images/Web Development Solutions.jpg" alt="Web Development" style="width: 100%; height: 100%; object-fit: cover;">
-                  </div>
-                  <div class="service-card-content">
-                    <h3 class="service-card-title">Web Development</h3>
-                    <p class="service-card-desc">Build modern, responsive web applications that drive business growth.</p>
-                  </div>
-                </div>
-              </div>
-              <div class="btn-group">
-                <button type="button" class="btn btn-secondary" onclick="leadPopup.prevStep()">Back</button>
-                <button type="button" class="btn btn-primary" onclick="leadPopup.nextStep()">Continue</button>
-              </div>
-            </div>
-
-            <!-- Step 4: Service Details -->
-            <div class="step-content" data-step="4">
-              <h2 class="step-title">AI Solutions Quiz</h2>
-              <p class="step-subtitle">Test your knowledge about AI and Machine Learning</p>
+              <h2 class="step-title" id="serviceTitle">Service Questions</h2>
+              <p class="step-subtitle" id="serviceSubtitle">Help us understand your needs</p>
               <form id="detailsForm">
                 <div id="serviceQuestions"></div>
                 <div class="btn-group">
@@ -166,8 +117,8 @@ class LeadPopup {
               </form>
             </div>
 
-            <!-- Success -->
-            <div class="step-content" data-step="5">
+            <!-- Step 4: Success -->
+            <div class="step-content" data-step="4">
               <div class="success-screen">
                 <div class="success-icon">
                   <svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="3">
@@ -184,11 +135,48 @@ class LeadPopup {
     `;
     document.body.insertAdjacentHTML('beforeend', html);
     document.getElementById('detailsForm').addEventListener('submit', (e) => this.submit(e));
+    this.bindServiceCardEvents();
+  }
+
+  bindServiceCardEvents() {
+    const serviceCards = document.querySelectorAll('.service-card-item');
+    serviceCards.forEach(card => {
+      card.addEventListener('click', (e) => {
+        if (e.target.classList.contains('view-more-btn') || e.target.closest('.view-more-btn')) {
+          e.stopPropagation();
+          return;
+        }
+        const service = card.getAttribute('data-service');
+        this.selectServiceCategory(service);
+      });
+    });
   }
 
   show() {
-    document.getElementById('leadOverlay').classList.add('active');
-    document.body.style.overflow = 'hidden';
+    const overlay = document.getElementById('leadOverlay');
+    if (overlay) {
+      overlay.classList.add('active');
+      document.body.style.overflow = 'hidden';
+      
+      // Reset to first step
+      this.currentStep = 1;
+      this.selectedService = null;
+      this.formData = {};
+      
+      // Reset UI
+      document.querySelectorAll('.step-content').forEach(step => {
+        step.classList.remove('active');
+      });
+      document.querySelector('[data-step="1"]').classList.add('active');
+      
+      document.querySelectorAll('.step-dot').forEach((dot, index) => {
+        if (index === 0) {
+          dot.classList.add('active');
+        } else {
+          dot.classList.remove('active');
+        }
+      });
+    }
   }
 
   close() {
@@ -198,11 +186,38 @@ class LeadPopup {
   }
 
   selectServiceCategory(service) {
+    this.selectedService = service;
     this.formData.service = service;
-    this.nextStep();
+    
+    // Enable continue button
+    const continueBtn = document.getElementById('continueBtn');
+    if (continueBtn) {
+      continueBtn.disabled = false;
+      continueBtn.style.opacity = '1';
+      continueBtn.style.cursor = 'pointer';
+      continueBtn.classList.remove('disabled');
+    }
+    
+    // Remove previous selections
+    document.querySelectorAll('.service-card-item').forEach(card => {
+      card.classList.remove('selected');
+    });
+    
+    // Highlight selected service
+    const selectedCard = document.querySelector(`[data-service="${service}"]`);
+    if (selectedCard) {
+      selectedCard.classList.add('selected');
+    }
   }
 
   nextStep() {
+    if (this.currentStep === 1) {
+      if (!this.selectedService) {
+        this.showMessage('Please select a service to continue', 'error');
+        return;
+      }
+    }
+    
     if (this.currentStep === 2) {
       const name = document.getElementById('userName')?.value.trim();
       const email = document.getElementById('userEmail')?.value.trim();
@@ -210,7 +225,7 @@ class LeadPopup {
       const address = document.getElementById('userAddress')?.value.trim();
       
       if (!name || !email || !phone || !address) {
-        alert('Please fill all fields');
+        this.showMessage('Please fill all fields', 'error');
         return;
       }
       
@@ -218,30 +233,60 @@ class LeadPopup {
       this.formData.email = email;
       this.formData.phone = phone;
       this.formData.address = address;
+      
+      // Load questions for step 3
+      if (this.selectedService) {
+        this.loadServiceQuestions();
+      } else {
+        this.loadGeneralQuestions();
+      }
     }
     
-    if (this.currentStep === 3) {
-      this.loadServiceQuestions();
-    }
-    
+    // Transition to next step
     const currentStepEl = document.querySelector(`[data-step="${this.currentStep}"]`);
-    if (currentStepEl) currentStepEl.classList.remove('active');
-    this.currentStep++;
-    const nextStepEl = document.querySelector(`[data-step="${this.currentStep}"]`);
-    if (nextStepEl) nextStepEl.classList.add('active');
-    if (this.currentStep <= 4) {
-      const dots = document.querySelectorAll('.step-dot');
-      if (dots[this.currentStep - 1]) dots[this.currentStep - 1].classList.add('active');
+    if (currentStepEl) {
+      currentStepEl.style.transform = 'translateX(-30px)';
+      currentStepEl.style.opacity = '0';
+      
+      setTimeout(() => {
+        currentStepEl.classList.remove('active');
+        this.currentStep++;
+        const nextStepEl = document.querySelector(`[data-step="${this.currentStep}"]`);
+        if (nextStepEl) {
+          nextStepEl.classList.add('active');
+          nextStepEl.style.transform = 'translateX(0)';
+          nextStepEl.style.opacity = '1';
+        }
+        document.getElementById('leadModal').setAttribute('data-step', this.currentStep);
+        if (this.currentStep <= 4) {
+          const dots = document.querySelectorAll('.step-dot');
+          if (dots[this.currentStep - 1]) dots[this.currentStep - 1].classList.add('active');
+        }
+      }, 200);
     }
   }
 
   prevStep() {
-    document.querySelector(`[data-step="${this.currentStep}"]`).classList.remove('active');
-    if (this.currentStep <= 4) {
-      document.querySelectorAll('.step-dot')[this.currentStep - 1].classList.remove('active');
+    const currentStepEl = document.querySelector(`[data-step="${this.currentStep}"]`);
+    if (currentStepEl) {
+      currentStepEl.style.transform = 'translateX(30px)';
+      currentStepEl.style.opacity = '0';
+      
+      setTimeout(() => {
+        currentStepEl.classList.remove('active');
+        if (this.currentStep <= 4) {
+          document.querySelectorAll('.step-dot')[this.currentStep - 1].classList.remove('active');
+        }
+        this.currentStep--;
+        const prevStepEl = document.querySelector(`[data-step="${this.currentStep}"]`);
+        if (prevStepEl) {
+          prevStepEl.classList.add('active');
+          prevStepEl.style.transform = 'translateX(0)';
+          prevStepEl.style.opacity = '1';
+        }
+        document.getElementById('leadModal').setAttribute('data-step', this.currentStep);
+      }, 200);
     }
-    this.currentStep--;
-    document.querySelector(`[data-step="${this.currentStep}"]`).classList.add('active');
   }
 
   loadServiceQuestions() {
@@ -252,48 +297,69 @@ class LeadPopup {
       web: { title: 'Web Development', subtitle: 'Help us understand your website/application needs' }
     };
 
-    const service = this.formData.service;
-    document.querySelector('[data-step="4"] .step-title').textContent = serviceTitles[service].title;
-    document.querySelector('[data-step="4"] .step-subtitle').textContent = serviceTitles[service].subtitle;
+    const service = this.selectedService;
+    document.getElementById('serviceTitle').textContent = serviceTitles[service].title;
+    document.getElementById('serviceSubtitle').textContent = serviceTitles[service].subtitle;
 
     const questions = {
       ai: [
-        { q: 'What business problem are you looking to solve using AI?', options: ['Automation', 'Prediction', 'Personalization', 'Analytics', 'Fraud detection'] },
-        { q: 'What type of AI solution are you interested in?', options: ['Machine Learning Model', 'Deep Learning', 'NLP (Chatbot / Text Analysis)', 'Computer Vision', 'Recommendation System'] },
-        { q: 'What kind of data do you currently have?', options: ['Structured (Excel, Database)', 'Unstructured (Images, PDFs, Audio)', 'No existing dataset'] },
-        { q: 'What level of AI product are you expecting?', options: ['Proof of Concept', 'MVP', 'Fully Deployed Production System', 'Enterprise-Grade Scalable AI Platform'] },
-        { q: 'Do you require integration with existing systems?', options: ['CRM', 'ERP', 'Cloud', 'APIs', 'Mobile App', 'No integration needed'] },
-        { q: 'What is your expected deployment environment?', options: ['Cloud (AWS, Azure, GCP)', 'On-Premise', 'Hybrid'] }
+        { q: 'What is your business/company name?', type: 'text', placeholder: 'Enter your company name' },
+        { q: 'What industry is your business in?', type: 'select', options: ['Retail', 'E-commerce', 'Education', 'Healthcare', 'Real Estate', 'Other'] },
+        { q: 'What do you want to use AI for?', type: 'select', options: ['Customer Support Automation', 'Marketing Automation', 'Lead Generation', 'Sales Automation', 'Data Analysis', 'Custom AI Solutions'] },
+        { q: 'Are you currently using any automation or software tools?', type: 'select', options: ['No', 'CRM', 'Chatbots', 'Marketing tools', 'Custom software'] },
+        { q: 'Would you like a FREE AI Solutions Consultation?', type: 'select', options: ['Yes', 'No'] }
       ],
       erp: [
-        { q: 'Which departments need ERP implementation?', options: ['HR', 'Finance', 'Inventory', 'Sales', 'Manufacturing', 'All Departments'] },
-        { q: 'Are you currently using any ERP system?', options: ['Yes (Upgrade/Migration)', 'No (New Implementation)'] },
-        { q: 'What level of ERP solution do you need?', options: ['Basic Module Setup', 'Custom ERP', 'Full Enterprise ERP'] },
-        { q: 'Do you require customization based on your workflow?', options: ['Minimal', 'Moderate', 'Fully Custom'] },
-        { q: 'Do you need integration with third-party tools?', options: ['Banking', 'GST', 'CRM', 'E-commerce', 'No integration needed'] },
-        { q: 'What is your preferred deployment model?', options: ['Cloud-Based ERP', 'On-Premise ERP', 'Hybrid'] }
+        { q: 'What is your business/company name?', type: 'text', placeholder: 'Enter your company name' },
+        { q: 'What industry is your business in?', type: 'select', options: ['Retail', 'Manufacturing', 'Distribution', 'Education', 'Healthcare', 'Real Estate', 'Other'] },
+        { q: 'Which business processes do you want to manage with ERP?', type: 'select', options: ['Inventory Management', 'Sales & Billing', 'Accounting & Finance', 'HR & Payroll', 'Purchase Management', 'Customer Management (CRM)', 'Complete ERP Solution'] },
+        { q: 'Are you currently using any software for managing your business?', type: 'select', options: ['Manual Work', 'Excel / Spreadsheets', 'Accounting software', 'ERP system', 'Other software'] },
+        { q: 'Would you like a FREE ERP Planning Consultation?', type: 'select', options: ['Yes', 'No'] }
       ],
       staffing: [
-        { q: 'What type of roles are you hiring for?', options: ['IT', 'Non-IT', 'Contract', 'Permanent', 'Remote'] },
-        { q: 'What experience level are you looking for?', options: ['Entry-Level', 'Mid-Level', 'Senior-Level', 'Leadership / C-Suite'] },
-        { q: 'What is the expected hiring timeline?', options: ['Immediate', '1–3 Months', 'Ongoing Hiring'] },
-        { q: 'What is your hiring model?', options: ['Permanent Staffing', 'Contract Staffing', 'Contract-to-Hire', 'Bulk Hiring'] },
-        { q: 'What key skills or technologies are mandatory?', options: ['Python', 'React', 'SAP', 'Testing', 'Java', 'Other'] },
-        { q: 'Do you require additional services?', options: ['Background Verification', 'Payroll Management', 'HR Compliance Support', 'None'] }
+        { q: 'What is your business/company name?', type: 'text', placeholder: 'Enter your company name' },
+        { q: 'What industry is your business in?', type: 'select', options: ['IT / Technology', 'Manufacturing', 'Retail', 'Healthcare', 'Education', 'Finance', 'Other'] },
+        { q: 'What type of staffing support do you need?', type: 'select', options: ['Permanent Hiring', 'Contract Staffing', 'Temporary Staffing', 'Internship / Fresher Hiring', 'Project-based Hiring'] },
+        { q: 'Which roles are you looking to hire for?', type: 'select', options: ['Technical roles', 'Sales & Marketing', 'Administrative / Operations', 'Customer Support', 'Other'] },
+        { q: 'Would you like a FREE Staffing Solutions Consultation?', type: 'select', options: ['Yes', 'No'] }
       ],
       web: [
-        { q: 'What type of website/application do you need?', options: ['Business Website', 'E-commerce Platform', 'Web Application', 'Portfolio Website', 'SaaS Platform'] },
-        { q: 'What is the main objective of the website?', options: ['Branding', 'Lead Generation', 'Online Sales', 'Internal Management'] },
-        { q: 'Do you require any specific features?', options: ['Login system', 'Payment gateway', 'Admin dashboard', 'Chatbot', 'API integration'] },
-        { q: 'What design level are you expecting?', options: ['Template-Based', 'Custom UI/UX', 'Premium Enterprise-Level Design'] },
-        { q: 'Do you already have hosting & domain?', options: ['Yes', 'No (Need complete setup support)'] },
-        { q: 'What level of scalability do you expect?', options: ['Small Business', 'Growing Startup', 'High Traffic / Enterprise'] }
+        { q: 'What is your business/company name?', type: 'text', placeholder: 'Enter your company name' },
+        { q: 'What industry is your business in?', type: 'select', options: ['Retail', 'E-commerce', 'Education', 'Healthcare', 'Real Estate', 'IT / Services', 'Other'] },
+        { q: 'What type of website are you looking for?', type: 'select', options: ['Business website', 'E-commerce website', 'Portfolio website', 'Landing page', 'Custom web application'] },
+        { q: 'Do you need additional services for your website?', type: 'select', options: ['SEO optimization', 'Website maintenance', 'Content creation', 'Digital marketing', 'No'] },
+        { q: 'Would you like a FREE Web Development Consultation?', type: 'select', options: ['Yes', 'No'] }
       ]
     };
 
-    const qs = questions[this.formData.service];
+    const qs = questions[this.selectedService];
     let html = '';
     qs.forEach((q, i) => {
+      if (q.type === 'text') {
+        html += `<div class="form-field"><label>${q.q} <span style="color:#dc2626;">*</span></label><input type="text" name="q${i + 1}" placeholder="${q.placeholder || ''}" required style="color: #1f2937; font-weight: 500;"></div>`;
+      } else if (q.type === 'select') {
+        html += `<div class="form-field"><label>${q.q} <span style="color:#dc2626;">*</span></label><select name="q${i + 1}" required style="color: #1f2937; font-weight: 500;"><option value="" style="color: #9ca3af;">Select...</option>`;
+        q.options.forEach(opt => html += `<option value="${opt}" style="color: #1f2937; font-weight: 500;">${opt}</option>`);
+        html += `</select></div>`;
+      }
+    });
+    document.getElementById('serviceQuestions').innerHTML = html;
+  }
+
+  loadGeneralQuestions() {
+    document.getElementById('serviceTitle').textContent = 'Tell us about your project';
+    document.getElementById('serviceSubtitle').textContent = 'Help us understand your business needs';
+
+    const generalQuestions = [
+      { q: 'What type of service are you most interested in?', options: ['AI Solutions', 'Intelligent ERP Solutions', 'Staffing Solutions', 'Web Development', 'General Consultation'] },
+      { q: 'What is your company size?', options: ['Startup (1-10 employees)', 'Small Business (11-50 employees)', 'Medium Business (51-200 employees)', 'Large Enterprise (200+ employees)'] },
+      { q: 'What is your project timeline?', options: ['Immediate (Within 1 month)', 'Short-term (1-3 months)', 'Medium-term (3-6 months)', 'Long-term (6+ months)'] },
+      { q: 'What is your estimated budget range?', options: ['Under $10,000', '$10,000 - $50,000', '$50,000 - $100,000', '$100,000+', 'Not sure yet'] },
+      { q: 'How did you hear about Trinity Technology Solutions?', options: ['Google Search', 'LinkedIn', 'Referral', 'Website', 'Other'] }
+    ];
+
+    let html = '';
+    generalQuestions.forEach((q, i) => {
       html += `<div class="form-field"><label>${i + 1}. ${q.q} <span style="color:#dc2626;">*</span></label><select name="q${i + 1}" required style="color: #1f2937; font-weight: 500;"><option value="" style="color: #9ca3af;">Select...</option>`;
       q.options.forEach(opt => html += `<option value="${opt}" style="color: #1f2937; font-weight: 500;">${opt}</option>`);
       html += `</select></div>`;
@@ -311,85 +377,99 @@ class LeadPopup {
     btn.disabled = true;
 
     try {
-      const serviceNames = {
+      let serviceName = this.selectedService ? {
         ai: 'AI Solutions',
-        erp: 'ERP Planning',
+        erp: 'ERP Planning', 
         staffing: 'Staffing Solutions',
         web: 'Web Development'
-      };
+      }[this.selectedService] : 'General Inquiry';
 
-      const questions = {
-        ai: [
-          'What business problem are you looking to solve using AI?',
-          'What type of AI solution are you interested in?',
-          'What kind of data do you currently have?',
-          'What level of AI product are you expecting?',
-          'Do you require integration with existing systems?',
-          'What is your expected deployment environment?'
-        ],
-        erp: [
-          'Which departments need ERP implementation?',
-          'Are you currently using any ERP system?',
-          'What level of ERP solution do you need?',
-          'Do you require customization based on your workflow?',
-          'Do you need integration with third-party tools?',
-          'What is your preferred deployment model?'
-        ],
-        staffing: [
-          'What type of roles are you hiring for?',
-          'What experience level are you looking for?',
-          'What is the expected hiring timeline?',
-          'What is your hiring model?',
-          'What key skills or technologies are mandatory?',
-          'Do you require additional services?'
-        ],
-        web: [
-          'What type of website/application do you need?',
-          'What is the main objective of the website?',
-          'Do you require any specific features?',
-          'What design level are you expecting?',
-          'Do you already have hosting & domain?',
-          'What level of scalability do you expect?'
-        ]
-      };
-
-      const service = this.formData.service;
-      const qs = questions[service];
       let questionsText = '';
-      
-      qs.forEach((q, i) => {
-        const answer = this.formData[`q${i + 1}`] || 'Not answered';
-        questionsText += `Q${i + 1}: ${q}\nAnswer: ${answer}\n\n`;
-      });
+      if (this.selectedService) {
+        const questions = {
+          ai: ['What is your business/company name?', 'What industry is your business in?', 'What do you want to use AI for?', 'Are you currently using any automation or software tools?', 'Would you like a FREE AI Solutions Consultation?'],
+          erp: ['What is your business/company name?', 'What industry is your business in?', 'Which business processes do you want to manage with ERP?', 'Are you currently using any software for managing your business?', 'Would you like a FREE ERP Planning Consultation?'],
+          staffing: ['What is your business/company name?', 'What industry is your business in?', 'What type of staffing support do you need?', 'Which roles are you looking to hire for?', 'Would you like a FREE Staffing Solutions Consultation?'],
+          web: ['What is your business/company name?', 'What industry is your business in?', 'What type of website are you looking for?', 'Do you need additional services for your website?', 'Would you like a FREE Web Development Consultation?']
+        }[this.selectedService];
+        
+        questions.forEach((q, i) => {
+          const answer = this.formData[`q${i + 1}`] || 'Not answered';
+          questionsText += `Q${i + 1}: ${q}\nAnswer: ${answer}\n\n`;
+        });
+      } else {
+        const generalQuestions = ['What type of service are you most interested in?', 'What is your company size?', 'What is your project timeline?', 'What is your estimated budget range?', 'How did you hear about Trinity Technology Solutions?'];
+        generalQuestions.forEach((q, i) => {
+          const answer = this.formData[`q${i + 1}`] || 'Not answered';
+          questionsText += `Q${i + 1}: ${q}\nAnswer: ${answer}\n\n`;
+        });
+      }
 
       await emailjs.send("service_pa43dns", "template_sr6fu8g", {
-        service: serviceNames[service],
+        service: serviceName,
         name: this.formData.name,
         email: this.formData.email,
         phone: this.formData.phone,
-        message: `Service: ${serviceNames[service]}`,
+        message: `Service: ${serviceName}`,
         questions: questionsText
       });
     } catch(e) {
       console.error('EmailJS Error:', e);
-      alert('There was an error sending your information. Please try again.');
-      btn.textContent = 'Submit';
-      btn.disabled = false;
-      return;
     }
 
-    document.querySelector('[data-step="4"]').classList.remove('active');
-    document.querySelector('[data-step="5"]').classList.add('active');
-    this.currentStep = 5;
-    setTimeout(() => this.close(), 3000);
+    const currentStepEl = document.querySelector('[data-step="3"]');
+    if (currentStepEl) {
+      currentStepEl.style.transform = 'translateX(-30px)';
+      currentStepEl.style.opacity = '0';
+      
+      setTimeout(() => {
+        currentStepEl.classList.remove('active');
+        const successStepEl = document.querySelector('[data-step="4"]');
+        if (successStepEl) {
+          successStepEl.classList.add('active');
+          successStepEl.style.transform = 'translateX(0)';
+          successStepEl.style.opacity = '1';
+        }
+        this.currentStep = 4;
+        setTimeout(() => this.close(), 3000);
+      }, 200);
+    }
   }
 }
 
 let leadPopup;
-if (typeof window !== 'undefined') {
-  window.addEventListener('load', () => {
-    if (typeof emailjs !== 'undefined') {
-      emailjs.init("jc8MwEV88GcpV6a7p");
+document.addEventListener('DOMContentLoaded', () => {
+  if (typeof emailjs !== 'undefined') {
+    emailjs.init("jc8MwEV88GcpV6a7p");
+  }
+  leadPopup = new LeadPopup();
+  // Auto-show after 2s if not seen this session
+  if (!sessionStorage.getItem('trinityPopup')) {
+    setTimeout(() => leadPopup.show(), 2000);
+  }
+});
+
+// Add showMessage method to LeadPopup class
+LeadPopup.prototype.showMessage = function(text, type = 'info') {
+  // Remove existing message
+  const existingMessage = document.querySelector('.popup-message');
+  if (existingMessage) {
+    existingMessage.remove();
+  }
+
+  // Create message element
+  const messageEl = document.createElement('div');
+  messageEl.className = `popup-message popup-message-${type}`;
+  messageEl.textContent = text;
+  
+  // Insert at top of modal body
+  const modalBody = document.querySelector('.modal-body');
+  modalBody.insertBefore(messageEl, modalBody.firstChild);
+  
+  // Auto remove after 3 seconds
+  setTimeout(() => {
+    if (messageEl.parentNode) {
+      messageEl.remove();
     }
-  });
-}
+  }, 3000);
+};
