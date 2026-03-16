@@ -63,6 +63,7 @@
     <link rel="stylesheet" href="css/consistent-header-spacing.css" />
     <link rel="stylesheet" href="css/header-styles.css" />
     <link rel="stylesheet" href="css/inter-font.css" />
+    <link rel="stylesheet" href="css/lead-popup.css" />
     <link rel="stylesheet" href="css/lead-popup-cards.css" />
     <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
     <!-- Google Analytics -->
@@ -227,6 +228,42 @@
         }
       }
     </style>
+    <!-- Service page popup theme overrides — loaded last to win cascade -->
+    <style>
+      #svcLeadOverlay .lead-modal {
+        background: linear-gradient(135deg, #4a6fa5 0%, #6b8fc7 50%, #e8eef8 100%) !important;
+        overflow: hidden !important;
+      }
+      #svcLeadOverlay .modal-body {
+        overflow: hidden !important;
+      }
+      #svcLeadOverlay .service-card-image { height: 110px !important; }
+      #svcLeadOverlay .step-indicator { margin-bottom: 0.4rem !important; }
+      #svcLeadOverlay .step-subtitle { margin-bottom: 0.5rem !important; }
+      #svcLeadOverlay .service-cards-grid { gap: 0.5rem !important; margin-bottom: 0.5rem !important; }
+      #svcLeadOverlay .btn-group { margin-top: 0.5rem !important; }
+      #svcLeadOverlay .btn-primary {
+        background: linear-gradient(135deg, #2d4d8a 0%, #3a5f9e 100%) !important;
+        box-shadow: 0 4px 12px rgba(34,57,107,0.4) !important;
+      }
+      #svcLeadOverlay .btn-primary:hover { background: #2a4880 !important; }
+      #svcLeadOverlay .btn-secondary {
+        background: white !important;
+        color: #2d4d8a !important;
+        border-color: #2d4d8a !important;
+      }
+      #svcLeadOverlay .view-more-btn { background: #2d4d8a !important; }
+      #svcLeadOverlay .view-more-btn:hover { background: #2a4880 !important; }
+      #svcLeadOverlay .step-dot.active { background: #22396b !important; }
+      #svcLeadOverlay .service-card-item:hover { border-color: #22396b !important; }
+      #svcLeadOverlay .service-card-item.selected { border-color: #22396b !important; }
+      #svcLeadOverlay .service-card-item.selected::after { background: #22396b !important; }
+      #svcLeadOverlay .form-field input:focus { border-color: #22396b !important; box-shadow: 0 0 0 3px rgba(34,57,107,0.15) !important; }
+      #svcLeadOverlay .lp-select.open .lp-select-trigger { border-color: #22396b !important; }
+      #svcLeadOverlay .lp-select-options { border-color: #22396b !important; }
+      #svcLeadOverlay .lp-select-option:hover { color: #22396b !important; background: #eef1f8 !important; }
+      #svcLeadOverlay .lp-select-option.selected { background: #22396b !important; color: white !important; }
+    </style>
   </head>
   <body>
     <header class="new-responsive-header">
@@ -381,17 +418,21 @@
         </style>
       </div>
       <main class="main-wrapper">
-        <section class="hero-fade-in section-with-curve hero-services" data-aos="fade-up">
-          <div class="padding-global">
+        <section class="hero-fade-in section-with-curve hero-services" data-aos="fade-up" style="background: linear-gradient(rgba(0,0,0,0.7), rgba(0,0,0,0.7)), url('https://images.unsplash.com/photo-1451187580459-43490279c0fa?w=1920&h=1080&fit=crop') center/cover; min-height: 100vh; display: flex; align-items: center; color: white;">
+          <div class="padding-global" style="width: 100%;">
             <div class="container-large">
-              <div class="title-small">SERVICES</div>
-              <h1 data-aos="fade-up">Cutting-Edge Solutions for Modern Enterprises</h1>
-              <p>
-                Explore our comprehensive range of services designed to transform your business through innovative technology solutions and expert consulting.
-              </p>
-              <div style="display: flex; gap: 1.5rem; flex-wrap: wrap; justify-content: center; margin-top: 2rem;">
-                <a href="contact.html" class="button is-alternate w-button" style="display: inline-block;">Get in touch</a>
-                <button onclick="openConsultationModal()" class="button is-alternate w-button" style="display: inline-block;">Start Free Consultation</button>
+              <div style="text-align: center; margin-bottom: 2rem;">
+                <div style="display: inline-block; padding: 0.5rem 1.5rem; background: rgba(255,255,255,0.1); border-radius: 50px; margin-bottom: 2rem; backdrop-filter: blur(10px);">
+                  <span style="color: #ffffff; font-size: 0.9rem; font-weight: 500; letter-spacing: 1px;">SERVICES</span>
+                </div>
+                <h1 style="font-size: 3.5rem; font-weight: 800; margin-bottom: 1.5rem; line-height: 1.1; color: #ffffff;">Cutting-Edge Solutions for Modern Enterprises</h1>
+                <p style="font-size: 1.3rem; color: rgba(255,255,255,0.9); max-width: 700px; margin: 0 auto 2rem; line-height: 1.6;">
+                  Explore our comprehensive range of services designed to transform your business through innovative technology solutions and expert consulting.
+                </p>
+                <div style="display: flex; gap: 1.5rem; flex-wrap: wrap; justify-content: center; margin-top: 2rem;">
+                  <a href="contact.html" class="button is-alternate w-button" style="background: #22396b; color: white; padding: 0.875rem 2rem; border-radius: 8px; text-decoration: none; font-weight: 600; display: inline-block;">Get in touch</a>
+                  <button onclick="openConsultationModal()" class="button is-medium w-button" style="background: #22396b; color: white; padding: 0.875rem 2rem; border-radius: 8px; border: none; font-weight: 600; cursor: pointer;">Start Free Consultation</button>
+                </div>
               </div>
             </div>
           </div>
@@ -727,49 +768,7 @@
     </script>
 
     <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js"></script>
-    <script src="js/lead-popup-new.js"></script>
-    <style>
-      .lead-overlay { position: fixed; top: 0; left: 0; right: 0; bottom: 0; background: rgba(0,0,0,0.5); z-index: 10001; display: none; align-items: center; justify-content: center; }
-      .lead-overlay.active { display: flex; }
-      .lead-modal { background: white; border-radius: 16px; padding: 2rem; max-width: 600px; width: 90%; max-height: 80vh; overflow-y: auto; box-shadow: 0 20px 60px rgba(0,0,0,0.3); position: relative; }
-      .modal-close { position: absolute; top: 1rem; right: 1rem; background: none; border: none; font-size: 2rem; cursor: pointer; color: #666; }
-      .step-indicator { display: flex; gap: 0.5rem; margin-bottom: 2rem; justify-content: center; }
-      .step-dot { width: 12px; height: 12px; border-radius: 50%; background: #e5e7eb; transition: all 0.3s; }
-      .step-dot.active { background: #22396b; }
-      .step-content { display: none; }
-      .step-content.active { display: block; }
-      .step-title { color: #22396b; margin: 0 0 0.5rem 0; font-size: 1.5rem; text-align: center; }
-      .step-subtitle { color: #666; margin: 0 0 1.5rem 0; text-align: center; }
-      .service-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 1rem; margin-bottom: 1.5rem; }
-      .service-option { padding: 1.5rem; border: 2px solid #e5e7eb; border-radius: 12px; text-align: center; cursor: pointer; transition: all 0.3s; }
-      .service-option:hover { border-color: #22396b; background: #f8f9fa; }
-      .service-option.selected { border-color: #22396b; background: #22396b; color: white; }
-      .service-icon { width: 40px; height: 40px; margin: 0 auto 0.5rem; }
-      .service-name { margin: 0; font-size: 1rem; }
-      .form-field { margin-bottom: 1rem; }
-      .form-field label { display: block; margin-bottom: 0.5rem; font-weight: 600; color: #1f2937; }
-      .form-field input, .form-field select { width: 100%; padding: 0.75rem; border: 1px solid #ddd; border-radius: 6px; font-size: 1rem; }
-      .form-field input:focus, .form-field select:focus { outline: none; border-color: #22396b; }
-      .btn-group { display: flex; gap: 1rem; margin-top: 1.5rem; }
-      .btn { flex: 1; padding: 0.75rem; border: none; border-radius: 6px; font-weight: 600; cursor: pointer; }
-      .btn-primary { background: #22396b; color: white; }
-      .btn-primary:hover { background: #1a2d5a; }
-      .btn-secondary { background: #e5e7eb; color: #1f2937; }
-      .btn-secondary:hover { background: #d1d5db; }
-      .success-screen { text-align: center; padding: 2rem 0; }
-      .success-icon { width: 60px; height: 60px; background: #22396b; border-radius: 50%; display: flex; align-items: center; justify-content: center; margin: 0 auto 1rem; }
-      .success-title { color: #22396b; margin: 0 0 0.5rem 0; }
-      .success-text { color: #666; margin: 0; }
-    </style>
-    <script>
-      function openConsultationModal() {
-        if (typeof emailjs !== 'undefined') {
-          emailjs.init("jc8MwEV88GcpV6a7p");
-        }
-        leadPopup = new LeadPopup();
-        leadPopup.show();
-      }
-    </script>
+    <script src="js/services-popup.js"></script>
     <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
     <script>
       AOS.init({
