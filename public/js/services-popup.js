@@ -1,4 +1,4 @@
-class LeadPopup {
+class ServicePagePopup {
   constructor() {
     this.currentStep = 1;
     this.formData = {};
@@ -11,20 +11,23 @@ class LeadPopup {
   }
 
   createPopup() {
+    const existing = document.getElementById('svcLeadOverlay');
+    if (existing) existing.remove();
+
     const html = `
-      <div class="lead-overlay" id="leadOverlay">
-        <div class="lead-modal" id="leadModal">
-          <button class="modal-close" onclick="leadPopup.close()">&times;</button>
-          <div class="modal-body" id="leadModalBody">
+      <div class="lead-overlay" id="svcLeadOverlay">
+        <div class="lead-modal" id="svcLeadModal">
+          <button class="modal-close" onclick="svcPopup.close()">&times;</button>
+          <div class="modal-body" id="svcModalBody">
             <div class="step-indicator">
-              <span class="step-dot active"></span>
-              <span class="step-dot"></span>
-              <span class="step-dot"></span>
-              <span class="step-dot"></span>
+              <span class="svc-dot step-dot active"></span>
+              <span class="svc-dot step-dot"></span>
+              <span class="svc-dot step-dot"></span>
+              <span class="svc-dot step-dot"></span>
             </div>
 
             <!-- Step 1: Service Selection -->
-            <div class="step-content active" data-step="1">
+            <div class="svc-step-content step-content active" data-step="1">
               <h2 class="step-title">What can we help you with?</h2>
               <p class="step-subtitle">Select the service you're interested in</p>
               <div class="service-cards-grid">
@@ -70,51 +73,51 @@ class LeadPopup {
                 </div>
               </div>
               <div class="btn-group">
-                <button type="button" class="btn btn-primary" onclick="leadPopup.nextStep()" style="width:100%;">Continue</button>
+                <button type="button" class="btn btn-primary" onclick="svcPopup.nextStep()" style="width:100%;">Continue</button>
               </div>
             </div>
 
             <!-- Step 2: Contact Info -->
-            <div class="step-content" data-step="2">
+            <div class="svc-step-content step-content" data-step="2">
               <h2 class="step-title">Tell us about yourself</h2>
               <p class="step-subtitle">We'll use this to get in touch with you</p>
               <div class="form-field">
                 <label>Full Name *</label>
-                <input type="text" id="userName" name="name" required>
+                <input type="text" id="svcUserName" name="name" required>
               </div>
               <div class="form-field">
                 <label>Email Address *</label>
-                <input type="email" id="userEmail" name="email" required>
+                <input type="email" id="svcUserEmail" name="email" required>
               </div>
               <div class="form-field">
                 <label>Phone Number *</label>
-                <input type="tel" id="userPhone" name="phone" required>
+                <input type="tel" id="svcUserPhone" name="phone" required>
               </div>
               <div class="form-field">
                 <label>Address *</label>
-                <input type="text" id="userAddress" name="address" required>
+                <input type="text" id="svcUserAddress" name="address" required>
               </div>
               <div class="btn-group">
-                <button type="button" class="btn btn-secondary" onclick="leadPopup.prevStep()">Back</button>
-                <button type="button" class="btn btn-primary" onclick="leadPopup.nextStep()">Continue</button>
+                <button type="button" class="btn btn-secondary" onclick="svcPopup.prevStep()">Back</button>
+                <button type="button" class="btn btn-primary" onclick="svcPopup.nextStep()">Continue</button>
               </div>
             </div>
 
             <!-- Step 3: Service Questions -->
-            <div class="step-content" data-step="3">
-              <h2 class="step-title" id="serviceTitle">Service Questions</h2>
-              <p class="step-subtitle" id="serviceSubtitle">Help us understand your needs</p>
-              <form id="detailsForm">
-                <div id="serviceQuestions"></div>
+            <div class="svc-step-content step-content" data-step="3">
+              <h2 class="step-title" id="svcServiceTitle">Service Questions</h2>
+              <p class="step-subtitle" id="svcServiceSubtitle">Help us understand your needs</p>
+              <form id="svcDetailsForm">
+                <div id="svcServiceQuestions"></div>
                 <div class="btn-group">
-                  <button type="button" class="btn btn-secondary" onclick="leadPopup.prevStep()">Back</button>
+                  <button type="button" class="btn btn-secondary" onclick="svcPopup.prevStep()">Back</button>
                   <button type="submit" class="btn btn-primary">Submit</button>
                 </div>
               </form>
             </div>
 
             <!-- Step 4: Success -->
-            <div class="step-content" data-step="4">
+            <div class="svc-step-content step-content" data-step="4">
               <div class="success-screen">
                 <div class="success-icon">
                   <svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="3">
@@ -129,54 +132,54 @@ class LeadPopup {
         </div>
       </div>
     `;
+
     document.body.insertAdjacentHTML('beforeend', html);
-    document.getElementById('detailsForm').addEventListener('submit', (e) => this.submit(e));
-    this.bindServiceCardEvents();
+    document.getElementById('svcDetailsForm').addEventListener('submit', (e) => this.submit(e));
+    this.bindCardEvents();
   }
 
-  bindServiceCardEvents() {
-    document.querySelectorAll('.service-card-item').forEach(card => {
+  bindCardEvents() {
+    document.querySelectorAll('#svcLeadOverlay .service-card-item').forEach(card => {
       card.addEventListener('click', (e) => {
         if (e.target.classList.contains('view-more-btn') || e.target.closest('.view-more-btn')) return;
-        this.selectServiceCategory(card.getAttribute('data-service'));
+        this.selectService(card.getAttribute('data-service'));
       });
     });
   }
 
+  selectService(service) {
+    this.selectedService = service;
+    document.querySelectorAll('#svcLeadOverlay .service-card-item').forEach(c => c.classList.remove('selected'));
+    document.querySelector(`#svcLeadOverlay [data-service="${service}"]`).classList.add('selected');
+  }
+
   show() {
-    const overlay = document.getElementById('leadOverlay');
+    const overlay = document.getElementById('svcLeadOverlay');
     if (!overlay) return;
     overlay.classList.add('active');
     document.body.style.overflow = 'hidden';
     this.currentStep = 1;
     this.selectedService = null;
     this.formData = {};
-    document.querySelectorAll('.step-content').forEach(s => s.classList.remove('active'));
-    document.querySelector('[data-step="1"]').classList.add('active');
-    document.querySelectorAll('.step-dot').forEach((dot, i) => dot.classList.toggle('active', i === 0));
+    document.querySelectorAll('#svcLeadOverlay .step-content').forEach(s => s.classList.remove('active'));
+    document.querySelector('#svcLeadOverlay [data-step="1"]').classList.add('active');
+    document.querySelectorAll('#svcLeadOverlay .svc-dot').forEach((dot, i) => dot.classList.toggle('active', i === 0));
   }
 
   close() {
-    document.getElementById('leadOverlay').classList.remove('active');
+    document.getElementById('svcLeadOverlay').classList.remove('active');
     document.body.style.overflow = 'auto';
-    sessionStorage.setItem('trinityPopup', '1');
-  }
-
-  selectServiceCategory(service) {
-    this.selectedService = service;
-    this.formData.service = service;
-    document.querySelectorAll('.service-card-item').forEach(c => c.classList.remove('selected'));
-    document.querySelector(`[data-service="${service}"]`).classList.add('selected');
   }
 
   switchStep(from, to) {
-    const fromEl = document.querySelector(`[data-step="${from}"]`);
-    const toEl = document.querySelector(`[data-step="${to}"]`);
+    const overlay = document.getElementById('svcLeadOverlay');
+    const fromEl = overlay.querySelector(`[data-step="${from}"]`);
+    const toEl = overlay.querySelector(`[data-step="${to}"]`);
     if (fromEl) fromEl.classList.remove('active');
     if (toEl) toEl.classList.add('active');
     this.currentStep = to;
-    document.querySelectorAll('.step-dot').forEach((dot, i) => dot.classList.toggle('active', i < to));
-    const body = document.getElementById('leadModalBody');
+    overlay.querySelectorAll('.svc-dot').forEach((dot, i) => dot.classList.toggle('active', i < to));
+    const body = document.getElementById('svcModalBody');
     if (body) body.scrollTop = 0;
   }
 
@@ -188,10 +191,10 @@ class LeadPopup {
       }
     }
     if (this.currentStep === 2) {
-      const name = document.getElementById('userName').value.trim();
-      const email = document.getElementById('userEmail').value.trim();
-      const phone = document.getElementById('userPhone').value.trim();
-      const address = document.getElementById('userAddress').value.trim();
+      const name = document.getElementById('svcUserName').value.trim();
+      const email = document.getElementById('svcUserEmail').value.trim();
+      const phone = document.getElementById('svcUserPhone').value.trim();
+      const address = document.getElementById('svcUserAddress').value.trim();
       if (!name || !email || !phone || !address) {
         this.showMessage('Please fill all fields', 'error');
         return;
@@ -258,8 +261,8 @@ class LeadPopup {
     };
 
     const svc = config[this.selectedService];
-    document.getElementById('serviceTitle').textContent = svc.title;
-    document.getElementById('serviceSubtitle').textContent = svc.subtitle;
+    document.getElementById('svcServiceTitle').textContent = svc.title;
+    document.getElementById('svcServiceSubtitle').textContent = svc.subtitle;
 
     let html = '';
     svc.questions.forEach((q, i) => {
@@ -279,20 +282,18 @@ class LeadPopup {
         </div>`;
       }
     });
-    document.getElementById('serviceQuestions').innerHTML = html;
+    document.getElementById('svcServiceQuestions').innerHTML = html;
     this.initCustomSelects();
   }
 
   initCustomSelects() {
-    document.querySelectorAll('.lp-select').forEach(sel => {
+    document.querySelectorAll('#svcServiceQuestions .lp-select').forEach(sel => {
       const trigger = sel.querySelector('.lp-select-trigger');
-      const options = sel.querySelector('.lp-select-options');
       const hidden = sel.parentElement.querySelector('input[type="hidden"]');
 
       trigger.addEventListener('click', (e) => {
         e.stopPropagation();
-        // Close all others
-        document.querySelectorAll('.lp-select.open').forEach(s => {
+        document.querySelectorAll('#svcServiceQuestions .lp-select.open').forEach(s => {
           if (s !== sel) s.classList.remove('open');
         });
         sel.classList.toggle('open');
@@ -312,7 +313,7 @@ class LeadPopup {
     });
 
     document.addEventListener('click', () => {
-      document.querySelectorAll('.lp-select.open').forEach(s => s.classList.remove('open'));
+      document.querySelectorAll('#svcServiceQuestions .lp-select.open').forEach(s => s.classList.remove('open'));
     });
   }
 
@@ -338,7 +339,7 @@ class LeadPopup {
     });
 
     try {
-      await emailjs.send("service_pa43dns", "template_sr6fu8g", {
+      await emailjs.send('service_pa43dns', 'template_sr6fu8g', {
         service: serviceNames[this.selectedService],
         name: this.formData.name,
         email: this.formData.email,
@@ -355,21 +356,26 @@ class LeadPopup {
   }
 
   showMessage(text, type = 'info') {
-    document.querySelector('.popup-message')?.remove();
+    document.querySelector('#svcLeadOverlay .popup-message')?.remove();
     const el = document.createElement('div');
     el.className = `popup-message popup-message-${type}`;
     el.textContent = text;
-    const activeStep = document.querySelector('.step-content.active');
+    const activeStep = document.querySelector('#svcLeadOverlay .step-content.active');
     if (activeStep) activeStep.insertBefore(el, activeStep.firstChild);
     setTimeout(() => el.remove(), 3000);
   }
 }
 
-let leadPopup;
+let svcPopup;
 document.addEventListener('DOMContentLoaded', () => {
-  if (typeof emailjs !== 'undefined') emailjs.init("jc8MwEV88GcpV6a7p");
-  leadPopup = new LeadPopup();
-  if (!sessionStorage.getItem('trinityPopup')) {
-    setTimeout(() => leadPopup.show(), 2000);
-  }
+  if (typeof emailjs !== 'undefined') emailjs.init('jc8MwEV88GcpV6a7p');
+  svcPopup = new ServicePagePopup();
 });
+
+function openConsultationModal() {
+  if (!svcPopup) {
+    if (typeof emailjs !== 'undefined') emailjs.init('jc8MwEV88GcpV6a7p');
+    svcPopup = new ServicePagePopup();
+  }
+  svcPopup.show();
+}
