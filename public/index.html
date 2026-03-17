@@ -3146,6 +3146,74 @@ a,
       });
     </script>
 
+    <!-- Report Download Popup -->
+    <div id="pop-overlay" style="display:none; position:fixed; bottom:340px; right:20px; z-index:9998; width:260px; border-radius:12px; overflow:hidden; box-shadow:0 8px 32px rgba(34,57,107,0.35); background:linear-gradient(145deg,#22396b 0%,#1a2d5a 100%); border:1px solid rgba(255,255,255,0.1);">
+      <div style="position:relative; padding:16px 16px 14px;">
+        <button onclick="closeReportPopup()" style="position:absolute;top:10px;right:10px;background:rgba(255,255,255,0.15);border:none;color:#fff;font-size:14px;cursor:pointer;width:22px;height:22px;display:flex;align-items:center;justify-content:center;border-radius:50%;line-height:1;">&#x2715;</button>
+        <div id="pop-form">
+          <div style="display:flex;align-items:center;gap:8px;margin-bottom:8px;">
+            <div style="width:28px;height:28px;background:rgba(255,255,255,0.15);border-radius:6px;display:flex;align-items:center;justify-content:center;flex-shrink:0;">
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none"><path d="M12 2L2 7L12 12L22 7L12 2Z" stroke="#fff" stroke-width="2" stroke-linejoin="round"/><path d="M2 17L12 22L22 17" stroke="#fff" stroke-width="2" stroke-linejoin="round"/><path d="M2 12L12 17L22 12" stroke="#fff" stroke-width="2" stroke-linejoin="round"/></svg>
+            </div>
+            <span style="font-size:10px;font-weight:600;color:rgba(255,255,255,0.7);letter-spacing:0.5px;text-transform:uppercase;">Trinity Insights</span>
+          </div>
+          <h2 style="font-size:13px;font-weight:700;color:#fff;line-height:1.3;margin-bottom:6px;padding-right:24px;">What Businesses Are Doing with IT &amp; Data?</h2>
+          <p style="font-size:11px;color:rgba(255,255,255,0.7);line-height:1.5;margin-bottom:10px;">Get the free report on data strategies driving growth.</p>
+          <input type="email" id="pop-email" placeholder="Enter your mail ID" autocomplete="email" onkeydown="if(event.key==='Enter') submitReportPopup()" style="width:100%;background:rgba(255,255,255,0.12);border:1px solid rgba(255,255,255,0.25);border-radius:6px;padding:7px 10px;font-size:11px;font-family:'Inter',sans-serif;color:#fff;outline:none;margin-bottom:8px;box-sizing:border-box;"/>
+          <button onclick="submitReportPopup()" style="width:100%;background:#4d65ff;border:none;border-radius:6px;padding:8px;color:#fff;font-size:11px;font-weight:700;font-family:'Inter',sans-serif;cursor:pointer;display:flex;align-items:center;justify-content:center;gap:6px;">
+            <svg width="12" height="12" viewBox="0 0 24 24" fill="none"><path d="M12 16l4-4h-3V4h-2v8H8l4 4z" fill="white"/><path d="M20 18H4v2h16v-2z" fill="white"/></svg>
+            Download Free Report
+          </button>
+        </div>
+        <div id="pop-success" style="display:none;text-align:center;padding:8px 0 4px;">
+          <div style="width:40px;height:40px;background:rgba(34,197,94,0.15);border:2px solid rgba(34,197,94,0.4);border-radius:50%;display:flex;align-items:center;justify-content:center;margin:0 auto 10px;font-size:18px;color:#4ade80;">✓</div>
+          <h3 style="font-size:13px;font-weight:700;color:#4ade80;margin-bottom:6px;">You're all set!</h3>
+          <p style="font-size:11px;color:rgba(255,255,255,0.65);line-height:1.5;margin:0 0 10px;">Check your inbox — report is on its way!</p>
+          <button onclick="closeReportPopup()" style="background:rgba(255,255,255,0.12);border:1px solid rgba(255,255,255,0.2);border-radius:6px;padding:7px 16px;color:#fff;font-size:11px;font-family:'Inter',sans-serif;cursor:pointer;">Close →</button>
+        </div>
+      </div>
+    </div>
+
+    <style>
+      #pop-overlay { animation: popFadeIn 0.28s ease; }
+      #pop-overlay.hiding { animation: popFadeOut 0.22s ease forwards; pointer-events:none; }
+      @keyframes popFadeIn { from{opacity:0} to{opacity:1} }
+      @keyframes popFadeOut { from{opacity:1} to{opacity:0} }
+      .pop-box { animation: popIn 0.32s cubic-bezier(0.34,1.35,0.64,1); }
+      @keyframes popIn { from{transform:scale(0.94) translateY(14px);opacity:0} to{transform:scale(1) translateY(0);opacity:1} }
+      #pop-email::placeholder { color:#9ca3af; }
+      #pop-email:focus { box-shadow:0 0 0 3px rgba(139,92,246,0.4),0 2px 6px rgba(0,0,0,0.25) !important; outline:none; }
+      #pop-email.err { box-shadow:0 0 0 3px rgba(248,113,113,0.5) !important; }
+    </style>
+
+    <script>
+      (function() {
+        var ov = document.getElementById('pop-overlay');
+        ov.style.display = 'block';
+      })();
+
+      function closeReportPopup() {
+        var ov = document.getElementById('pop-overlay');
+        ov.classList.add('hiding');
+        setTimeout(function() { ov.style.display = 'none'; ov.classList.remove('hiding'); }, 240);
+      }
+
+      function submitReportPopup() {
+        var inp = document.getElementById('pop-email');
+        var val = inp.value.trim();
+        if (!val || !val.includes('@') || !val.includes('.')) {
+          inp.classList.add('err');
+          inp.focus();
+          setTimeout(function() { inp.classList.remove('err'); }, 2000);
+          return;
+        }
+        document.getElementById('pop-form').style.display = 'none';
+        document.getElementById('pop-success').style.display = 'block';
+      }
+
+
+    </script>
+
     <!-- Chatbot HTML -->
     <div id="chatbot-container">
       <!-- Greeting Popup -->
