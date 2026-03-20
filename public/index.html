@@ -3147,7 +3147,7 @@ a,
     </script>
 
     <!-- Report Download Popup -->
-    <div id="pop-overlay" style="display:none; position:fixed; bottom:340px; right:20px; z-index:9998; width:260px; border-radius:12px; overflow:hidden; box-shadow:0 8px 32px rgba(34,57,107,0.35); background:linear-gradient(145deg,#22396b 0%,#1a2d5a 100%); border:1px solid rgba(255,255,255,0.1);">
+    <div id="pop-overlay" style="display:block; position:fixed; bottom:340px; right:20px; z-index:9998; width:260px; border-radius:12px; overflow:hidden; box-shadow:0 8px 32px rgba(34,57,107,0.35); background:linear-gradient(145deg,#22396b 0%,#1a2d5a 100%); border:1px solid rgba(255,255,255,0.1);">
       <div style="position:relative; padding:16px 16px 14px;">
         <button onclick="closeReportPopup()" style="position:absolute;top:10px;right:10px;background:rgba(255,255,255,0.15);border:none;color:#fff;font-size:14px;cursor:pointer;width:22px;height:22px;display:flex;align-items:center;justify-content:center;border-radius:50%;line-height:1;">&#x2715;</button>
         <div id="pop-form">
@@ -3166,31 +3166,23 @@ a,
           </button>
         </div>
         <div id="pop-success" style="display:none;text-align:center;padding:8px 0 4px;">
-          <div style="width:40px;height:40px;background:rgba(34,197,94,0.15);border:2px solid rgba(34,197,94,0.4);border-radius:50%;display:flex;align-items:center;justify-content:center;margin:0 auto 10px;font-size:18px;color:#4ade80;">✓</div>
+          <div style="width:40px;height:40px;background:rgba(34,197,94,0.15);border:2px solid rgba(34,197,94,0.4);border-radius:50%;display:flex;align-items:center;justify-content:center;margin:0 auto 10px;font-size:18px;color:#4ade80;">&#10003;</div>
           <h3 style="font-size:13px;font-weight:700;color:#4ade80;margin-bottom:6px;">You're all set!</h3>
-          <p style="font-size:11px;color:rgba(255,255,255,0.65);line-height:1.5;margin:0 0 10px;">Check your inbox — report is on its way!</p>
-          <button onclick="closeReportPopup()" style="background:rgba(255,255,255,0.12);border:1px solid rgba(255,255,255,0.2);border-radius:6px;padding:7px 16px;color:#fff;font-size:11px;font-family:'Inter',sans-serif;cursor:pointer;">Close →</button>
+          <p style="font-size:11px;color:rgba(255,255,255,0.65);line-height:1.5;margin:0 0 10px;">Check your inbox &mdash; report is on its way!</p>
+          <button onclick="closeReportPopup()" style="background:rgba(255,255,255,0.12);border:1px solid rgba(255,255,255,0.2);border-radius:6px;padding:7px 16px;color:#fff;font-size:11px;font-family:'Inter',sans-serif;cursor:pointer;">Close &#8594;</button>
         </div>
       </div>
     </div>
 
     <style>
-      #pop-overlay { animation: popFadeIn 0.28s ease; }
       #pop-overlay.hiding { animation: popFadeOut 0.22s ease forwards; pointer-events:none; }
-      @keyframes popFadeIn { from{opacity:0} to{opacity:1} }
       @keyframes popFadeOut { from{opacity:1} to{opacity:0} }
-      .pop-box { animation: popIn 0.32s cubic-bezier(0.34,1.35,0.64,1); }
-      @keyframes popIn { from{transform:scale(0.94) translateY(14px);opacity:0} to{transform:scale(1) translateY(0);opacity:1} }
-      #pop-email::placeholder { color:#9ca3af; }
-      #pop-email:focus { box-shadow:0 0 0 3px rgba(139,92,246,0.4),0 2px 6px rgba(0,0,0,0.25) !important; outline:none; }
-      #pop-email.err { box-shadow:0 0 0 3px rgba(248,113,113,0.5) !important; }
+      #pop-email::placeholder { color:rgba(255,255,255,0.4); }
+      #pop-email:focus { border-color:rgba(255,255,255,0.5) !important; outline:none; }
     </style>
 
     <script>
-      (function() {
-        var ov = document.getElementById('pop-overlay');
-        ov.style.display = 'block';
-      })();
+      // popup hidden by default, display:none on the element
 
       function closeReportPopup() {
         var ov = document.getElementById('pop-overlay');
@@ -3202,16 +3194,14 @@ a,
         var inp = document.getElementById('pop-email');
         var val = inp.value.trim();
         if (!val || !val.includes('@') || !val.includes('.')) {
-          inp.classList.add('err');
+          inp.style.borderColor = '#f87171';
           inp.focus();
-          setTimeout(function() { inp.classList.remove('err'); }, 2000);
+          setTimeout(function() { inp.style.borderColor = 'rgba(255,255,255,0.25)'; }, 2000);
           return;
         }
         document.getElementById('pop-form').style.display = 'none';
         document.getElementById('pop-success').style.display = 'block';
       }
-
-
     </script>
 
     <!-- Chatbot HTML -->
