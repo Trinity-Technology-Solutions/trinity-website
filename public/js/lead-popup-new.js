@@ -369,7 +369,4 @@ let leadPopup;
 document.addEventListener('DOMContentLoaded', () => {
   if (typeof emailjs !== 'undefined') emailjs.init("jc8MwEV88GcpV6a7p");
   leadPopup = new LeadPopup();
-  if (!sessionStorage.getItem('trinityPopup')) {
-    setTimeout(() => leadPopup.show(), 2000);
-  }
 });
