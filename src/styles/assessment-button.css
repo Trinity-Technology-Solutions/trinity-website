@@ -1,0 +1,202 @@
+/* Assessment Button - Same as Connect with Us */
+.assessment-button {
+  background: #4d65ff !important;
+  color: white !important;
+  border: none !important;
+  padding: 0.875rem 2rem !important;
+  border-radius: 8px !important;
+  font-size: 1rem !important;
+  font-weight: 700 !important;
+  cursor: pointer !important;
+  transition: all 0.3s ease !important;
+  box-shadow: 0 4px 12px rgba(77, 101, 255, 0.3) !important;
+  display: inline-block !important;
+  white-space: nowrap !important;
+}
+
+.assessment-button:hover {
+  background: #3d52cc !important;
+  transform: translateY(-2px) !important;
+  box-shadow: 0 6px 16px rgba(77, 101, 255, 0.4) !important;
+}
+
+.assessment-button:active {
+  transform: translateY(0) !important;
+}
+
+/* Button Container */
+.hero-buttons-container {
+  display: flex;
+  gap: 1rem;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: center;
+  margin-top: 1.5rem;
+}
+
+/* Assessment Modal */
+.assessment-modal {
+  display: none;
+  position: fixed;
+  z-index: 10001;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.6);
+  backdrop-filter: blur(5px);
+}
+
+.assessment-modal.active {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.assessment-modal-content {
+  background: white;
+  border-radius: 20px;
+  width: 90%;
+  max-width: 600px;
+  max-height: 90vh;
+  overflow-y: auto;
+  box-shadow: 0 25px 80px rgba(0, 0, 0, 0.3);
+}
+
+.assessment-modal-header {
+  background: linear-gradient(135deg, #4d65ff 0%, #3d52cc 100%);
+  color: white;
+  padding: 2rem;
+  border-radius: 20px 20px 0 0;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.assessment-modal-header h2 {
+  margin: 0;
+  font-size: 1.75rem;
+}
+
+.assessment-modal-close {
+  background: rgba(255, 255, 255, 0.2);
+  border: none;
+  color: white;
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  cursor: pointer;
+  font-size: 24px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.3s;
+}
+
+.assessment-modal-close:hover {
+  background: rgba(255, 255, 255, 0.3);
+  transform: rotate(90deg);
+}
+
+.assessment-modal-body {
+  padding: 2rem;
+}
+
+.assessment-form-group {
+  margin-bottom: 1.5rem;
+}
+
+.assessment-form-group label {
+  display: block;
+  font-weight: 600;
+  color: #1f2937;
+  margin-bottom: 0.5rem;
+  font-size: 0.95rem;
+}
+
+.assessment-form-group input,
+.assessment-form-group select,
+.assessment-form-group textarea {
+  width: 100%;
+  padding: 0.75rem 1rem;
+  border: 2px solid #e5e7eb;
+  border-radius: 8px;
+  font-size: 0.95rem;
+  font-family: inherit;
+  transition: all 0.3s;
+  box-sizing: border-box;
+}
+
+.assessment-form-group input:focus,
+.assessment-form-group select:focus,
+.assessment-form-group textarea:focus {
+  outline: none;
+  border-color: #4d65ff;
+  box-shadow: 0 0 0 3px rgba(77, 101, 255, 0.1);
+}
+
+.assessment-form-group textarea {
+  resize: vertical;
+  min-height: 100px;
+}
+
+.assessment-submit-btn {
+  background: #4d65ff;
+  color: white;
+  border: none;
+  padding: 0.875rem 2rem;
+  border-radius: 8px;
+  font-size: 1rem;
+  font-weight: 700;
+  cursor: pointer;
+  width: 100%;
+  transition: all 0.3s;
+  box-shadow: 0 4px 12px rgba(77, 101, 255, 0.3);
+}
+
+.assessment-submit-btn:hover {
+  background: #3d52cc;
+  transform: translateY(-2px);
+  box-shadow: 0 6px 16px rgba(77, 101, 255, 0.4);
+}
+
+.assessment-submit-btn:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+  transform: none;
+}
+
+@media (max-width: 768px) {
+  .assessment-button {
+    padding: 0.875rem 2rem;
+    font-size: 1rem;
+  }
+
+  .hero-buttons-container {
+    flex-direction: column;
+    width: 100%;
+  }
+
+  .hero-buttons-container .assessment-button,
+  .hero-buttons-container .button {
+    width: 100%;
+    text-align: center;
+  }
+
+  .assessment-modal-content {
+    width: 95%;
+    max-height: 95vh;
+  }
+
+  .assessment-modal-header {
+    padding: 1.5rem;
+  }
+
+  .assessment-modal-header h2 {
+    font-size: 1.5rem;
+  }
+
+  .assessment-modal-body {
+    padding: 1.5rem;
+  }
+}
