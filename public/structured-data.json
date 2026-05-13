@@ -1,0 +1,98 @@
+{
+  "@context": "https://schema.org",
+  "@type": "Organization",
+  "name": "Trinity Technology Solutions",
+  "alternateName": "Trinity Tech",
+  "url": "https://trinitetech.com",
+  "logo": "https://cdn.prod.website-files.com/68c8ed013c167a28e6d84332/68c8eeafa4b5417495dddb90_Trinity%20Logo%20PNG%20(3).png",
+  "description": "Trinity Technology Solutions delivers expert data analytics and AI solutions across India, the Netherlands, Oman, and the USA to help businesses turn data into sustainable growth.",
+  "foundingDate": "2020",
+  "inLanguage": "en",
+  "address": [
+    {
+      "@type": "PostalAddress",
+      "streetAddress": "Avvaiyar Street, Ambal Nagar, Ekkatuthangal",
+      "addressLocality": "Chennai",
+      "addressRegion": "Tamil Nadu",
+      "postalCode": "600032",
+      "addressCountry": "IN"
+    },
+    {
+      "@type": "PostalAddress",
+      "addressLocality": "The Hague",
+      "addressCountry": "NL"
+    },
+    {
+      "@type": "PostalAddress",
+      "addressLocality": "Muscat",
+      "addressCountry": "OM"
+    },
+    {
+      "@type": "PostalAddress",
+      "addressLocality": "Plano",
+      "addressRegion": "Texas",
+      "addressCountry": "US"
+    }
+  ],
+  "contactPoint": {
+    "@type": "ContactPoint",
+    "telephone": "+1-214-206-8558",
+    "contactType": "customer service",
+    "email": "sales@trinitetech.com",
+    "availableLanguage": "English"
+  },
+  "sameAs": [
+    "https://www.linkedin.com/company/trinity-technology-solutions/"
+  ],
+  "serviceArea": [
+    {
+      "@type": "Country",
+      "name": "United States"
+    },
+    {
+      "@type": "Country", 
+      "name": "India"
+    },
+    {
+      "@type": "Country",
+      "name": "Netherlands"
+    },
+    {
+      "@type": "Country",
+      "name": "Oman"
+    }
+  ],
+  "knowsAbout": [
+    "Data Analytics",
+    "Artificial Intelligence",
+    "Cloud Computing",
+    "Digital Transformation",
+    "Business Intelligence",
+    "Data Engineering",
+    "Databricks",
+    "Azure",
+    "AWS"
+  ],
+  "offers": [
+    {
+      "@type": "Service",
+      "name": "Data Strategy",
+      "description": "Comprehensive data strategy consulting services"
+    },
+    {
+      "@type": "Service", 
+      "name": "Data Engineering",
+      "description": "End-to-end data engineering solutions"
+    },
+    {
+      "@type": "Service",
+      "name": "Business Intelligence",
+      "description": "Advanced business intelligence and analytics"
+    },
+    {
+      "@type": "Service",
+      "name": "AI Solutions",
+      "description": "Artificial intelligence implementation and consulting"
+    }
+  ]
+}

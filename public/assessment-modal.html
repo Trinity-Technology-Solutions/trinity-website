@@ -1,0 +1,48 @@
+<!-- Assessment Modal -->
+<div id="assessmentModal" class="assessment-modal">
+  <div class="assessment-modal-content">
+    <div class="assessment-modal-header">
+      <h2>Start Your Free Assessment</h2>
+      <button class="assessment-modal-close" onclick="closeAssessmentModal()">&times;</button>
+    </div>
+    <div class="assessment-modal-body">
+      <form id="assessmentForm" onsubmit="submitAssessmentForm(event)">
+        <div class="assessment-form-group">
+          <label for="assessmentName">Full Name *</label>
+          <input type="text" id="assessmentName" name="name" required>
+        </div>
+        <div class="assessment-form-group">
+          <label for="assessmentEmail">Email Address *</label>
+          <input type="email" id="assessmentEmail" name="email" required>
+        </div>
+        <div class="assessment-form-group">
+          <label for="assessmentPhone">Phone Number *</label>
+          <input type="tel" id="assessmentPhone" name="phone" required>
+        </div>
+        <div class="assessment-form-group">
+          <label for="assessmentCompany">Company Name *</label>
+          <input type="text" id="assessmentCompany" name="company" required>
+        </div>
+        <div class="assessment-form-group">
+          <label for="assessmentService">Service Interest *</label>
+          <select id="assessmentService" name="service" required>
+            <option value="">Select a service</option>
+            <option value="Data Strategy">Data Strategy</option>
+            <option value="Data Engineering">Data Engineering</option>
+            <option value="Data Governance">Data Governance</option>
+            <option value="Business Intelligence">Business Intelligence</option>
+            <option value="AI Solutions">AI Solutions</option>
+            <option value="ERP Planning">ERP Planning</option>
+            <option value="Web Development">Web Development</option>
+            <option value="Other">Other</option>
+          </select>
+        </div>
+        <div class="assessment-form-group">
+          <label for="assessmentMessage">Tell us about your project</label>
+          <textarea id="assessmentMessage" name="message" placeholder="Describe your business needs and goals..."></textarea>
+        </div>
+        <button type="submit" class="assessment-submit-btn">Get Free Assessment</button>
+      </form>
+    </div>
+  </div>
+</div>
