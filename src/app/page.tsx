@@ -1,8 +1,154 @@
 'use client'
-import { useEffect } from 'react'
+import { useEffect, useState } from 'react'
 import Link from 'next/link'
+import { motion, useInView } from 'framer-motion'
+import { useRef } from 'react'
+import ConsultationPopup from '@/components/ConsultationPopup'
+import StickyBanner from '@/components/StickyBanner'
+import ChatBot from '@/components/ChatBot'
+
+const HOME_SERVICES = [
+  {
+    href: '/services#staffing',
+    title: 'Staffing Solutions',
+    desc: 'Access top-tier data and AI talent to power your projects with precision.',
+    color: '#f472b6',
+    icon: (
+      <svg width="28" height="28" viewBox="0 0 24 24" fill="none">
+        <path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
+        <circle cx="9" cy="7" r="4" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
+        <path d="M23 21v-2a4 4 0 0 0-3-3.87" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
+        <path d="M16 3.13a4 4 0 0 1 0 7.75" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
+      </svg>
+    ),
+  },
+  {
+    href: '/services#erp',
+    title: 'ERP Solutions',
+    desc: 'Streamline enterprise operations with smart, scalable ERP implementations.',
+    color: '#fb923c',
+    icon: (
+      <svg width="28" height="28" viewBox="0 0 24 24" fill="none">
+        <rect x="2" y="3" width="20" height="14" rx="2" stroke="currentColor" strokeWidth="2"/>
+        <path d="M8 21h8M12 17v4" stroke="currentColor" strokeWidth="2" strokeLinecap="round"/>
+        <path d="M7 8h10M7 11h6" stroke="currentColor" strokeWidth="2" strokeLinecap="round"/>
+      </svg>
+    ),
+  },
+  {
+    href: '/services#ai',
+    title: 'AI Solutions',
+    desc: 'Deploy intelligent AI models that automate workflows and accelerate decisions.',
+    color: '#c084fc',
+    icon: (
+      <svg width="28" height="28" viewBox="0 0 24 24" fill="none">
+        <path d="M12 2a2 2 0 0 1 2 2c0 .74-.4 1.39-1 1.73V7h1a7 7 0 0 1 7 7h1a1 1 0 0 1 1 1v3a1 1 0 0 1-1 1h-1v1a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-1H2a1 1 0 0 1-1-1v-3a1 1 0 0 1 1-1h1a7 7 0 0 1 7-7h1V5.73c-.6-.34-1-.99-1-1.73a2 2 0 0 1 2-2z" stroke="currentColor" strokeWidth="1.8" strokeLinejoin="round"/>
+        <circle cx="9" cy="14" r="1" fill="currentColor"/>
+        <circle cx="15" cy="14" r="1" fill="currentColor"/>
+      </svg>
+    ),
+  },
+  {
+    href: '/services#web',
+    title: 'Web Development',
+    desc: 'Build high-performance, modern web applications and digital platforms.',
+    color: '#34d399',
+    icon: (
+      <svg width="28" height="28" viewBox="0 0 24 24" fill="none">
+        <path d="M3 12l2-2m0 0l7-7 7 7M5 10v10a1 1 0 001 1h3m10-11l2 2m-2-2v10a1 1 0 01-1 1h-3m-6 0a1 1 0 001-1v-4a1 1 0 011-1h2a1 1 0 011 1v4a1 1 0 001 1m-6 0h6" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
+      </svg>
+    ),
+  },
+]
+
+function HomeServicesSection() {
+  const ref = useRef(null)
+  const inView = useInView(ref, { once: true, margin: '-80px' })
+
+  return (
+    <section id="services" className="services-premium" ref={ref}>
+      <div className="svc-glow svc-glow-1"></div>
+      <div className="svc-glow svc-glow-2"></div>
+      <div className="svc-gradient-overlay"></div>
+      <div className="padding-global">
+        <div className="container-large">
+
+          <motion.div
+            className="svc-heading-block"
+            initial={{ opacity: 0, y: 30 }}
+            animate={inView ? { opacity: 1, y: 0 } : {}}
+            transition={{ duration: 0.6 }}
+          >
+            <div className="svc-label">OUR SERVICES</div>
+            <h2 className="svc-main-heading">
+              Four Core <span className="svc-gradient-text">Solutions We Deliver</span>
+            </h2>
+            <p className="svc-subtitle">Trinity&apos;s focused service offerings designed to transform your business with talent, technology, and intelligence.</p>
+          </motion.div>
+
+          <div className="svc-cards-grid svc-cards-grid-4">
+            {HOME_SERVICES.map((s, i) => (
+              <motion.div
+                key={i}
+                initial={{ opacity: 0, y: 50 }}
+                animate={inView ? { opacity: 1, y: 0 } : {}}
+                transition={{ duration: 0.55, delay: i * 0.12 }}
+                whileHover={{ y: -10, transition: { duration: 0.25 } }}
+              >
+                <Link href={s.href} className="svc-card svc-card-home">
+                  <div className="svc-card-top-line" style={{ background: `linear-gradient(to right, ${s.color}, transparent)` }}></div>
+                  <motion.div
+                    className="svc-card-icon"
+                    style={{ color: s.color }}
+                    whileHover={{ scale: 1.15, rotate: 5 }}
+                    transition={{ type: 'spring', stiffness: 300 }}
+                  >
+                    {s.icon}
+                  </motion.div>
+                  <h3 className="svc-card-title">{s.title}</h3>
+                  <p className="svc-card-desc">{s.desc}</p>
+                  <div className="svc-card-arrow" style={{ color: s.color }}>
+                    <svg width="18" height="18" viewBox="0 0 24 24" fill="none">
+                      <path d="M7 17L17 7M17 7H7M17 7V17" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
+                    </svg>
+                  </div>
+                </Link>
+              </motion.div>
+            ))}
+          </div>
+
+          <motion.div
+            className="svc-stats-glass"
+            initial={{ opacity: 0, y: 30 }}
+            animate={inView ? { opacity: 1, y: 0 } : {}}
+            transition={{ duration: 0.6, delay: 0.55 }}
+          >
+            {[['50+','Projects Delivered'],['25+','Years Experience'],['4+','Countries Served'],['100+','Combined Experience']].map(([num, label], i) => (
+              <div key={i} className="svc-stat-item">
+                <span className="svc-stat-num">{num}</span>
+                <span className="svc-stat-label">{label}</span>
+              </div>
+            ))}
+          </motion.div>
+
+          <motion.div
+            className="svc-cta-block"
+            initial={{ opacity: 0 }}
+            animate={inView ? { opacity: 1 } : {}}
+            transition={{ duration: 0.5, delay: 0.7 }}
+          >
+            <Link href="/services" className="svc-cta-btn">Explore All Services</Link>
+          </motion.div>
+
+        </div>
+      </div>
+    </section>
+  )
+}
 
 export default function HomePage() {
+  const [showPopup, setShowPopup] = useState(false)
+
   useEffect(() => {
     // AOS
     import('aos').then((AOS) => {
@@ -110,9 +256,9 @@ export default function HomePage() {
                       Harnessing the power of data analytics to transform businesses in USA, India, Oman, and Netherlands.
                     </p>
                     <div style={{ display: 'flex', gap: '1rem', flexWrap: 'wrap', marginTop: '1.5rem' }}>
-                      <Link href="/contact" className="button is-medium w-button" style={{ background: '#4d65ff', color: 'white', padding: '0.875rem 2rem', borderRadius: '8px', fontWeight: 600, textDecoration: 'none' }}>
+                      <button onClick={() => setShowPopup(true)} className="button is-medium w-button" style={{ background: '#4d65ff', color: 'white', padding: '0.875rem 2rem', borderRadius: '8px', fontWeight: 600, border: 'none', cursor: 'pointer' }}>
                         Start Free Consultation
-                      </Link>
+                      </button>
                     </div>
                   </div>
                 </div>
@@ -241,73 +387,7 @@ export default function HomePage() {
         </section>
 
         {/* Services */}
-        <section id="services" className="services-premium">
-          <div className="svc-glow svc-glow-1"></div>
-          <div className="svc-glow svc-glow-2"></div>
-          <div className="svc-gradient-overlay"></div>
-          <div className="padding-global">
-            <div className="container-large">
-
-              {/* Heading */}
-              <div className="svc-heading-block">
-                <div className="svc-label">OUR SERVICES</div>
-                <h2 className="svc-main-heading">
-                  Comprehensive <span className="svc-gradient-text">AI & Data Solutions</span>
-                </h2>
-                <p className="svc-subtitle">Trinity&apos;s enterprise-grade services designed to transform your business with cutting-edge data analytics and AI.</p>
-              </div>
-
-              {/* Service Cards */}
-              <div className="svc-cards-grid">
-                {[
-                  { href: '/services/data-strategy', title: 'Data Strategy', desc: 'Build a roadmap to turn your data into a strategic business asset.', color: '#3b82f6' },
-                  { href: '/services/data-engineering', title: 'Data Engineering', desc: 'Design and build scalable, reliable data pipelines and platforms.', color: '#06b6d4' },
-                  { href: '/services/data-governance', title: 'Data Governance', desc: 'Ensure data quality, compliance, and security across your organization.', color: '#22d3ee' },
-                  { href: '/services/business-intelligence', title: 'Business Intelligence', desc: 'Transform raw data into actionable dashboards and insights.', color: '#818cf8' },
-                  { href: '/services/data-modernization', title: 'Data Modernization', desc: 'Migrate legacy systems to modern cloud-native data architectures.', color: '#a78bfa' },
-                  { href: '/services/web-development', title: 'Web Development', desc: 'Build high-performance, modern web applications and platforms.', color: '#34d399' },
-                  { href: '/services/ai-solution', title: 'AI Solutions', desc: 'Deploy intelligent AI models that automate and accelerate decisions.', color: '#c084fc' },
-                  { href: '/services/erp-planning', title: 'Intelligent ERP', desc: 'Streamline enterprise operations with smart ERP implementations.', color: '#fb923c' },
-                  { href: '/services/staffing-solutions', title: 'Staffing Solutions', desc: 'Access top-tier data and AI talent to power your projects.', color: '#f472b6' },
-                ].map((s, i) => (
-                  <Link key={i} href={s.href} className="svc-card">
-                    <div className="svc-card-top-line" style={{ background: `linear-gradient(to right, ${s.color}, transparent)` }}></div>
-                    <div className="svc-card-icon" style={{ color: s.color }}>
-                      <svg width="22" height="22" viewBox="0 0 24 24" fill="none">
-                        <path d="M12 2L2 7L12 12L22 7L12 2Z" stroke="currentColor" strokeWidth="2" strokeLinejoin="round" />
-                        <path d="M2 17L12 22L22 17" stroke="currentColor" strokeWidth="2" strokeLinejoin="round" />
-                        <path d="M2 12L12 17L22 12" stroke="currentColor" strokeWidth="2" strokeLinejoin="round" />
-                      </svg>
-                    </div>
-                    <h3 className="svc-card-title">{s.title}</h3>
-                    <p className="svc-card-desc">{s.desc}</p>
-                    <div className="svc-card-arrow" style={{ color: s.color }}>
-                      <svg width="18" height="18" viewBox="0 0 24 24" fill="none">
-                        <path d="M7 17L17 7M17 7H7M17 7V17" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
-                      </svg>
-                    </div>
-                  </Link>
-                ))}
-              </div>
-
-              {/* Stats Glass Container */}
-              <div className="svc-stats-glass">
-                {[['50+','Projects Delivered'],['25+','Years Experience'],['4+','Countries Served'],['100+','Combined Experience']].map(([num, label], i) => (
-                  <div key={i} className="svc-stat-item">
-                    <span className="svc-stat-num">{num}</span>
-                    <span className="svc-stat-label">{label}</span>
-                  </div>
-                ))}
-              </div>
-
-              {/* CTA */}
-              <div className="svc-cta-block">
-                <Link href="/services" className="svc-cta-btn">Explore All Services</Link>
-              </div>
-
-            </div>
-          </div>
-        </section>
+        <HomeServicesSection />
 
         {/* Industries */}
         <section className="sectors-premium">
@@ -478,6 +558,9 @@ export default function HomePage() {
         </section>
 
       </main>
+      {showPopup && <ConsultationPopup onClose={() => setShowPopup(false)} />}
+      <StickyBanner />
+      <ChatBot />
     </div>
   )
 }
