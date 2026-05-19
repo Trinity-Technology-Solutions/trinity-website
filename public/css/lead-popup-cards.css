@@ -23,15 +23,8 @@
   gap: 0.5rem 1rem;
 }
 
-.svc-questions-grid .form-field {
-  margin-bottom: 0;
-}
-
-.svc-questions-grid .form-field label {
-  font-size: 0.78rem;
-  margin-bottom: 0.3rem;
-}
-
+.svc-questions-grid .form-field { margin-bottom: 0; }
+.svc-questions-grid .form-field label { font-size: 0.78rem; margin-bottom: 0.3rem; }
 .svc-questions-grid .form-field input,
 .svc-questions-grid .form-field select {
   padding: 0.55rem 0.75rem;
@@ -39,15 +32,8 @@
   border-radius: 8px;
 }
 
-.svc-form-grid .form-field {
-  margin-bottom: 0;
-}
-
-.svc-form-grid .form-field label {
-  font-size: 0.85rem;
-  margin-bottom: 0.3rem;
-}
-
+.svc-form-grid .form-field { margin-bottom: 0; }
+.svc-form-grid .form-field label { font-size: 0.85rem; margin-bottom: 0.3rem; }
 .svc-form-grid .form-field input {
   padding: 0.6rem 0.85rem;
   font-size: 0.9rem;
@@ -56,10 +42,9 @@
 
 @media (max-width: 600px) {
   .svc-form-grid,
-  .svc-questions-grid {
-    grid-template-columns: 1fr;
-  }
+  .svc-questions-grid { grid-template-columns: 1fr; }
 }
+
 .service-cards-grid {
   display: grid;
   grid-template-columns: repeat(2, 1fr);
@@ -81,14 +66,14 @@
 }
 
 .service-card-item:hover {
-  border-color: #6b7fff;
+  border-color: #3d52d5;
   transform: translateY(-3px);
-  box-shadow: 0 10px 28px rgba(107, 127, 255, 0.2);
+  box-shadow: 0 10px 28px rgba(61, 82, 213, 0.2);
 }
 
 .service-card-item.selected {
-  border-color: #6b7fff;
-  box-shadow: 0 10px 28px rgba(107, 127, 255, 0.25);
+  border-color: #3d52d5;
+  box-shadow: 0 10px 28px rgba(61, 82, 213, 0.25);
 }
 
 .service-card-item.selected::after {
@@ -98,7 +83,7 @@
   right: 10px;
   width: 26px;
   height: 26px;
-  background: #6b7fff;
+  background: #3d52d5;
   color: white;
   border-radius: 50%;
   display: flex;
@@ -113,7 +98,7 @@
   width: 100%;
   height: 120px;
   overflow: hidden;
-  background: #f0f2ff;
+  background: #eef0fd;
   flex-shrink: 0;
 }
 
@@ -126,9 +111,7 @@
   transition: transform 0.3s ease;
 }
 
-.service-card-item:hover .service-card-image img {
-  transform: scale(1.05);
-}
+.service-card-item:hover .service-card-image img { transform: scale(1.05); }
 
 .service-card-content {
   padding: 10px 12px 12px;
@@ -158,7 +141,7 @@
 }
 
 .view-more-btn {
-  background: #6b7fff;
+  background: #3d52d5;
   color: white;
   border: none;
   border-radius: 6px;
@@ -173,7 +156,7 @@
 }
 
 .view-more-btn:hover {
-  background: #5a6eee;
+  background: #2e3fb5;
   transform: translateY(-1px);
 }
 
