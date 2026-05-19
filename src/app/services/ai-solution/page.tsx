@@ -360,30 +360,47 @@ export default function AISolutionPage() {
                 fontSize: '2.5rem', 
                 fontWeight: 700, 
                 color: '#1f2937', 
-                marginBottom: '1.5rem' 
+                marginBottom: '1rem' 
               }}>
                 Why Most Businesses Fail to Leverage Data
               </h2>
               <p style={{ 
                 fontSize: '1.1rem', 
                 color: '#6b7280', 
-                maxWidth: '800px', 
-                margin: '0 auto', 
+                maxWidth: '750px', 
+                margin: '0 auto 2.5rem', 
                 lineHeight: 1.7 
               }}>
-                To stand ahead in the highly competitive business world, data plays a major role in deciding the entire business strategy. Today, every business has access to a huge amount of data, but they can't convert that data into actionable insights. Without connected systems, poor data quality, and AI adaptation, businesses cannot scale and make decisions.
-              </p>
-              <p style={{ 
-                fontSize: '1.1rem', 
-                color: '#6b7280', 
-                maxWidth: '800px', 
-                margin: '1rem auto 0', 
-                lineHeight: 1.7,
-                fontWeight: 600
-              }}>
-                Even if the business is at the top of the competition, if its data foundation is not strong that fails to deliver real business value.
+                Every business has access to vast data, but most can't convert it into actionable insights due to disconnected systems, poor data quality, and lack of AI adoption.
               </p>
             </motion.div>
+
+            <div className="ai-problems-grid" style={{ display: 'grid', gridTemplateColumns: 'repeat(2, 1fr)', gap: '1.5rem', alignItems: 'stretch' }}>
+              {[
+                { title: 'Disconnected Data Systems', desc: 'Siloed data across departments prevents a unified view, making it impossible to act on insights quickly.' },
+                { title: 'Poor Data Quality', desc: 'Inconsistent, duplicate, or incomplete data leads to unreliable reports and flawed business decisions.' },
+                { title: 'No AI Adoption Strategy', desc: 'Without a clear AI roadmap, businesses miss automation opportunities and fall behind competitors.' },
+                { title: 'Weak Data Foundation', desc: 'Even top-performing businesses fail to deliver real value when their data infrastructure cannot scale.' }
+              ].map((item, index) => (
+                <motion.div
+                  key={index}
+                  initial={{ opacity: 0, y: 40 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  transition={{ duration: 0.5, delay: index * 0.1 }}
+                  viewport={{ once: true }}
+                  style={{
+                    background: 'white',
+                    padding: '1.5rem',
+                    borderRadius: '16px',
+                    boxShadow: '0 8px 30px rgba(15,23,42,0.05)',
+                    border: '1px solid #e5e7eb'
+                  }}
+                >
+                  <h3 style={{ fontSize: '1.05rem', fontWeight: 700, color: '#111827', marginBottom: '0.75rem' }}>{item.title}</h3>
+                  <p style={{ color: '#4b5563', lineHeight: 1.75, margin: 0, fontSize: '0.96rem' }}>{item.desc}</p>
+                </motion.div>
+              ))}
+            </div>
           </div>
         </section>
 
@@ -613,6 +630,16 @@ export default function AISolutionPage() {
       </main>
 
       <style>{`
+        .ai-problems-grid {
+          grid-template-columns: repeat(2, 1fr);
+        }
+
+        @media (max-width: 760px) {
+          .ai-problems-grid {
+            grid-template-columns: 1fr !important;
+          }
+        }
+
         .solution-card:hover {
           transform: translateY(-8px);
           box-shadow: 0 12px 40px rgba(0,0,0,0.15);

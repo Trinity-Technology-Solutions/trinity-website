@@ -1,5 +1,10 @@
 'use client'
 import { useState } from 'react'
+import emailjs from '@emailjs/browser'
+
+const EMAILJS_SERVICE_ID = 'service_pa43dns'
+const EMAILJS_TEMPLATE_ID = 'template_sr6fu8g'
+const EMAILJS_PUBLIC_KEY = 'jc8MwEV88GcpV6a7p'
 
 const services = [
   { title: 'AI Solutions', desc: 'Transform your business with intelligent automation and predictive analytics.', img: 'https://images.unsplash.com/photo-1677442135703-1787eea5ce01?w=600&q=80' },
@@ -94,6 +99,7 @@ export default function ConsultationPopup({ onClose, theme = 'purple' }: { onClo
   const [contact, setContact] = useState({ name: '', email: '', phone: '', address: '' })
   const [svcForm, setSvcForm] = useState<ServiceForm>({})
   const [submitted, setSubmitted] = useState(false)
+  const [sending, setSending] = useState(false)
 
   const btnBg = theme === 'navy' ? '#2d4a7a' : '#6b7fff'
   const modalBg = theme === 'navy'
@@ -183,7 +189,28 @@ export default function ConsultationPopup({ onClose, theme = 'purple' }: { onClo
               <StepDots />
               <h2 className="step-title" style={{ fontSize: '1.4rem', marginBottom: '0.1rem', color: titleColor }}>{qConfig.title}</h2>
               <p className="step-subtitle" style={{ marginBottom: '0.6rem', color: subtitleColor }}>{qConfig.subtitle}</p>
-              <form onSubmit={(e) => { e.preventDefault(); setSubmitted(true) }}>
+              <form onSubmit={async (e) => {
+                e.preventDefault()
+                setSending(true)
+                const qConfig = selected !== null ? serviceQuestions[selected] : null
+                const questions = qConfig?.fields.map(f => `Q${f.qNum}: ${f.label}\nAnswer: ${svcForm[f.key] ?? '-'}`).join('\n\n') ?? ''
+                await emailjs.send(
+                  EMAILJS_SERVICE_ID,
+                  EMAILJS_TEMPLATE_ID,
+                  {
+                    name: contact.name,
+                    email: contact.email,
+                    phone: contact.phone,
+                    address: contact.address,
+                    service: qConfig?.title ?? 'Not selected',
+                    message: `Service: ${qConfig?.title ?? 'Not selected'}`,
+                    questions,
+                  },
+                  EMAILJS_PUBLIC_KEY
+                ).catch(() => {})
+                setSending(false)
+                setSubmitted(true)
+              }}>
                 {qConfig.fields.map((f) =>
                   f.type === 'input' ? (
                     <div key={f.key} style={F}>
@@ -202,7 +229,7 @@ export default function ConsultationPopup({ onClose, theme = 'purple' }: { onClo
                 )}
                 <div className="btn-group" style={{ marginTop: '0.5rem', gap: '0.75rem' }}>
                   <button type="button" className="btn btn-secondary" onClick={() => setStep(2)}>Back</button>
-                  <button type="submit" className="btn btn-primary" style={{ background: btnBg }}>Submit</button>
+                  <button type="submit" className="btn btn-primary" style={{ background: btnBg }} disabled={sending}>{sending ? 'Sending...' : 'Submit'}</button>
                 </div>
               </form>
             </div>

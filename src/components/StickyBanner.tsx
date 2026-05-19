@@ -38,7 +38,14 @@ export default function StickyBanner() {
       <p className="sticky-banner-desc">Get the free report on data strategies driving growth.</p>
 
       {!done ? (
-        <form onSubmit={(e) => { e.preventDefault(); setDone(true) }}>
+        <form onSubmit={(e) => {
+          e.preventDefault()
+          const a = document.createElement('a')
+          a.href = '/trinity-whitepaper.pdf'
+          a.download = 'Trinity-Whitepaper.pdf'
+          a.click()
+          setDone(true)
+        }}>
           <input
             type="email"
             required
