@@ -6,11 +6,11 @@ import ConsultationPopup from '@/components/ConsultationPopup'
 
 const services = [
   {
-    href: '/services/staffing-solutions',
+    href: '/services/staffing-solution',
     title: 'Staffing Solutions',
-    desc: 'Access top-tier data and AI talent to power your projects.',
+    desc: 'Access top-tier data and AI talent to power your projects with precision and speed.',
     color: '#f472b6',
-    image: 'https://images.unsplash.com/photo-1521737711867-e3b97375f902?w=600&h=200&fit=crop',
+    image: '/assets/images/Staffying Solutions.jpg',
     from: -80,
   },
   {
@@ -18,7 +18,7 @@ const services = [
     title: 'ERP Solutions',
     desc: 'Streamline enterprise operations with smart ERP implementations.',
     color: '#fb923c',
-    image: 'https://images.unsplash.com/photo-1551288049-bebda4e38f71?w=600&h=200&fit=crop',
+    image: '/assets/images/ERP.jpg',
     from: 80,
   },
   {
@@ -26,7 +26,7 @@ const services = [
     title: 'AI Solutions',
     desc: 'Deploy intelligent AI models that automate and accelerate decisions.',
     color: '#c084fc',
-    image: 'https://images.unsplash.com/photo-1677442135703-1787eea5ce01?w=600&h=200&fit=crop',
+    image: '/assets/images/AI Solutions.jpg',
     from: -80,
   },
   {
@@ -34,7 +34,7 @@ const services = [
     title: 'Web Development',
     desc: 'Build high-performance, modern web applications and platforms.',
     color: '#34d399',
-    image: 'https://images.unsplash.com/photo-1547658719-da2b51169166?w=600&h=200&fit=crop',
+    image: '/assets/images/Web development.jpg',
     from: 80,
   },
 ]
@@ -50,13 +50,13 @@ function ServiceCard({ s }: { s: typeof services[0] }) {
       animate={inView ? { opacity: 1, x: 0 } : {}}
       transition={{ duration: 0.6, ease: [0.25, 0.46, 0.45, 0.94] }}
       className="svc-card"
-      style={{ background: '#ffffff', overflow: 'hidden', padding: 0 }}
+      style={{ background: '#ffffff', overflow: 'hidden', padding: 0, display: 'flex', flexDirection: 'column', height: '100%' }}
     >
       {/* Colored top line */}
       <div className="svc-card-top-line" style={{ background: `linear-gradient(to right, ${s.color}, transparent)` }} />
 
       {/* Image */}
-      <div style={{ height: '160px', overflow: 'hidden', position: 'relative' }}>
+      <div style={{ height: '220px', overflow: 'hidden', position: 'relative' }}>
         <img
           src={s.image}
           alt={s.title}
@@ -67,7 +67,7 @@ function ServiceCard({ s }: { s: typeof services[0] }) {
       </div>
 
       {/* Card content — same layout as before */}
-      <div style={{ padding: '1.5rem 1.75rem 1.5rem' }}>
+      <div style={{ padding: '1.5rem 1.75rem 1.5rem', display: 'flex', flexDirection: 'column', flex: 1 }}>
         <div className="svc-card-icon" style={{ color: s.color, marginBottom: '0.75rem' }}>
           <svg width="22" height="22" viewBox="0 0 24 24" fill="none">
             <path d="M12 2L2 7L12 12L22 7L12 2Z" stroke="currentColor" strokeWidth="2" strokeLinejoin="round" />
@@ -76,7 +76,7 @@ function ServiceCard({ s }: { s: typeof services[0] }) {
           </svg>
         </div>
         <h3 className="svc-card-title">{s.title}</h3>
-        <p className="svc-card-desc">{s.desc}</p>
+        <p className="svc-card-desc" style={{ flex: 1 }}>{s.desc}</p>
         <Link href={s.href} className="svc-card-arrow" style={{ color: s.color, textDecoration: 'none', display: 'inline-block', marginTop: '0.75rem' }}>
           <svg width="18" height="18" viewBox="0 0 24 24" fill="none">
             <path d="M7 17L17 7M17 7H7M17 7V17" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
@@ -125,7 +125,7 @@ export default function ServicesPage() {
         <section className="services-section" style={{ padding: '80px 0', background: 'white' }}>
           <div className="container-large" style={{ maxWidth: '1200px', margin: '0 auto', padding: '0 2rem' }}>
             <h2 style={{ fontSize: '2rem', fontWeight: 700, color: '#22396b', marginBottom: '3rem', textAlign: 'center' }}>Explore the services we offer to support your business</h2>
-            <div style={{ display: 'grid', gridTemplateColumns: 'repeat(2,1fr)', gap: '2rem', maxWidth: '900px', margin: '0 auto' }}>
+            <div style={{ display: 'grid', gridTemplateColumns: 'repeat(2,1fr)', gap: '2rem', maxWidth: '900px', margin: '0 auto', alignItems: 'stretch' }}>
               {services.map((s, i) => (
                 <ServiceCard key={i} s={s} />
               ))}
@@ -142,8 +142,29 @@ export default function ServicesPage() {
             <div className="container-large">
               <div className="logos-scroll-container">
                 <div className="logos-scroll">
-                  {['SAP-Logo.svg.png', 'fivetran-logo.png', 'Microsoft-Azure-Emblem.png', 'Odoo_logo_rgb.svg.png', 'Oracle-Logo-History-4-864x540.png', 'dbt-icon-2yxlz1fvy25mvn5scgnlw.webp', 'java-coffee-cup-logo.png', 'databricks-logo.png', 'nextjs-logo.png', 'SAP-Logo.svg.png', 'fivetran-logo.png', 'Microsoft-Azure-Emblem.png', 'Odoo_logo_rgb.svg.png', 'Oracle-Logo-History-4-864x540.png', 'dbt-icon-2yxlz1fvy25mvn5scgnlw.webp', 'java-coffee-cup-logo.png', 'databricks-logo.png', 'nextjs-logo.png'].map((img, i) => (
-                    <img key={i} src={`/assets/images/${img}`} alt={img.split('-')[0]} className="partner-logo" />
+                  {[
+                    { src: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRAnZkZJkvI08aejoNEmEy2W3rDrTKYa2dUdGkvS8xy7Vzt3T5PpLu-gumocc2IZZjDZBo&usqp=CAU', alt: 'SAP' },
+                    { src: 'https://images.icon-icons.com/2699/PNG/512/fivetran_logo_icon_170149.png', alt: 'Fivetran' },
+                    { src: '/assets/images/AWS-logo.png', alt: 'AWS' },
+                    { src: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQFQ68GQ7HaMDD9EHZkEcthYaVxDZstZadJ4A&s', alt: 'Odoo' },
+                    { src: '/assets/images/Oracle-Logo-History-4-864x540.png', alt: 'Oracle' },
+                    { src: '/assets/images/dbt-icon-2yxlz1fvy25mvn5scgnlw.webp', alt: 'DBT' },
+                    { src: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/java/java-original.svg', alt: 'Java' },
+                    { src: 'https://www.databricks.com/wp-content/uploads/2021/10/db-nav-logo.svg', alt: 'Databricks' },
+                    { src: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/nextjs/nextjs-original-wordmark.svg', alt: 'Next.js' },
+                    { src: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/azure/azure-original.svg', alt: 'Azure' },
+                    { src: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRAnZkZJkvI08aejoNEmEy2W3rDrTKYa2dUdGkvS8xy7Vzt3T5PpLu-gumocc2IZZjDZBo&usqp=CAU', alt: 'SAP' },
+                    { src: 'https://images.icon-icons.com/2699/PNG/512/fivetran_logo_icon_170149.png', alt: 'Fivetran' },
+                    { src: '/assets/images/AWS-logo.png', alt: 'AWS' },
+                    { src: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQFQ68GQ7HaMDD9EHZkEcthYaVxDZstZadJ4A&s', alt: 'Odoo' },
+                    { src: '/assets/images/Oracle-Logo-History-4-864x540.png', alt: 'Oracle' },
+                    { src: '/assets/images/dbt-icon-2yxlz1fvy25mvn5scgnlw.webp', alt: 'DBT' },
+                    { src: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/java/java-original.svg', alt: 'Java' },
+                    { src: 'https://www.databricks.com/wp-content/uploads/2021/10/db-nav-logo.svg', alt: 'Databricks' },
+                    { src: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/nextjs/nextjs-original-wordmark.svg', alt: 'Next.js' },
+                    { src: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/azure/azure-original.svg', alt: 'Azure' },
+                  ].map((logo, i) => (
+                    <img key={i} src={logo.src} alt={logo.alt} className="partner-logo" />
                   ))}
                 </div>
               </div>

@@ -135,6 +135,68 @@ export default function AboutPage() {
         </section>
 
       </main>
+
+      <style>{`
+        /* CENTER ALL TEXT */
+        .about-hero,
+        .about-hero-content,
+        .about-story-content,
+        .about-story-content h2,
+        .about-story-content p,
+        .about-label,
+        .about-section-header,
+        .about-section-header h2,
+        .about-section-header p,
+        .about-feature-card,
+        .about-feature-card h3,
+        .about-feature-card p,
+        .about-feature-icon,
+        .about-databricks-inner,
+        .about-value-card,
+        .about-value-card h3,
+        .about-value-card p,
+        .about-bottom-cta-inner { text-align: center !important; }
+
+        .about-feature-icon { margin-left: auto !important; margin-right: auto !important; }
+        .about-value-icon { margin-left: auto !important; margin-right: auto !important; }
+
+        /* FIX HORIZONTAL SCROLL */
+        html, body { overflow-x: hidden !important; }
+        .about-values-section { overflow-x: hidden !important; }
+        .about-values-grid {
+          display: grid !important;
+          grid-template-columns: repeat(4, 1fr) !important;
+          gap: 1.75rem !important;
+          width: 100% !important;
+          box-sizing: border-box !important;
+          overflow: hidden !important;
+        }
+        .about-value-card { min-width: 0 !important; box-sizing: border-box !important; }
+        .about-features-grid { overflow: hidden !important; }
+        .about-feature-card { min-width: 0 !important; box-sizing: border-box !important; }
+
+        /* REMOVE SCROLLBAR */
+        .about-hero {
+          overflow: hidden !important;
+          max-height: none !important;
+          height: auto !important;
+        }
+        .page-wrapper, .main-wrapper {
+          overflow: hidden !important;
+        }
+        .page-wrapper ::-webkit-scrollbar,
+        .main-wrapper ::-webkit-scrollbar,
+        .about-hero ::-webkit-scrollbar { display: none !important; }
+        .page-wrapper *, .main-wrapper * { scrollbar-width: none !important; }
+
+        @media (max-width: 1100px) {
+          .about-values-grid { grid-template-columns: repeat(2, 1fr) !important; }
+        }
+        @media (max-width: 600px) {
+          .about-values-grid { grid-template-columns: 1fr !important; }
+          .about-features-grid { grid-template-columns: 1fr !important; }
+        }
+      `}</style>
     </div>
   )
 }

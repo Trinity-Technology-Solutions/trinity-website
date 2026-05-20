@@ -224,14 +224,20 @@ export default function HomePage() {
 
         {/* Hero Section */}
         <section className="section_hero">
-          <div></div>
-          <video autoPlay muted loop playsInline preload="auto">
-            <source src="/assets/videos/hero-video.mp4" type="video/mp4" />
+          <video
+            autoPlay
+            muted
+            loop
+            playsInline
+            preload="auto"
+            className="hero-bg-video"
+          >
+            <source src="/assets/videos/hero-bg.mp4" type="video/mp4" />
           </video>
-          <div className="u-nav-spacer"></div>
+          <div className="hero-video-overlay"></div>
           <div className="padding-global padding-horizontal-m-0">
             <div className="container-large hero-container">
-              <div className="hero_grid" style={{ paddingTop: '14rem' }}>
+              <div className="hero_grid">
                 <div className="hero_content hero-fade-in">
                   <div style={{ textAlign: 'left' }}>
                     <a href="https://www.databricks.com/company/partners" target="_blank" rel="noopener" className="partner-pill">
@@ -274,8 +280,27 @@ export default function HomePage() {
             <div className="container-large">
               <div className="logos-scroll-container">
                 <div className="logos-scroll">
-                  {['SAP-Logo.svg.png','fivetran-logo.png','Microsoft-Azure-Emblem.png','Odoo_logo_rgb.svg.png','Oracle-Logo-History-4-864x540.png','dbt-icon-2yxlz1fvy25mvn5scgnlw.webp','java-coffee-cup-logo.png','databricks-logo.png','nextjs-logo.png','SAP-Logo.svg.png','fivetran-logo.png','Microsoft-Azure-Emblem.png','Odoo_logo_rgb.svg.png','Oracle-Logo-History-4-864x540.png','dbt-icon-2yxlz1fvy25mvn5scgnlw.webp','java-coffee-cup-logo.png','databricks-logo.png','nextjs-logo.png'].map((img, i) => (
-                    <img key={i} src={`/assets/images/${img}`} alt={img.split('-')[0]} className="partner-logo" />
+                  {[
+                    { src: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRAnZkZJkvI08aejoNEmEy2W3rDrTKYa2dUdGkvS8xy7Vzt3T5PpLu-gumocc2IZZjDZBo&usqp=CAU', alt: 'SAP' },
+                    { src: 'https://images.icon-icons.com/2699/PNG/512/fivetran_logo_icon_170149.png', alt: 'Fivetran' },
+                    { src: '/assets/images/AWS-logo.png', alt: 'AWS' },
+                    { src: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQFQ68GQ7HaMDD9EHZkEcthYaVxDZstZadJ4A&s', alt: 'Odoo' },
+                    { src: '/assets/images/Oracle-Logo-History-4-864x540.png', alt: 'Oracle' },
+                    { src: '/assets/images/dbt-icon-2yxlz1fvy25mvn5scgnlw.webp', alt: 'DBT' },
+                    { src: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/java/java-original.svg', alt: 'Java' },
+                    { src: 'https://www.databricks.com/wp-content/uploads/2021/10/db-nav-logo.svg', alt: 'Databricks' },
+                    { src: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/nextjs/nextjs-original-wordmark.svg', alt: 'Next.js' },
+                    { src: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRAnZkZJkvI08aejoNEmEy2W3rDrTKYa2dUdGkvS8xy7Vzt3T5PpLu-gumocc2IZZjDZBo&usqp=CAU', alt: 'SAP' },
+                    { src: 'https://images.icon-icons.com/2699/PNG/512/fivetran_logo_icon_170149.png', alt: 'Fivetran' },
+                    { src: '/assets/images/AWS-logo.png', alt: 'AWS' },
+                    { src: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQFQ68GQ7HaMDD9EHZkEcthYaVxDZstZadJ4A&s', alt: 'Odoo' },
+                    { src: '/assets/images/Oracle-Logo-History-4-864x540.png', alt: 'Oracle' },
+                    { src: '/assets/images/dbt-icon-2yxlz1fvy25mvn5scgnlw.webp', alt: 'DBT' },
+                    { src: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/java/java-original.svg', alt: 'Java' },
+                    { src: 'https://www.databricks.com/wp-content/uploads/2021/10/db-nav-logo.svg', alt: 'Databricks' },
+                    { src: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/nextjs/nextjs-original-wordmark.svg', alt: 'Next.js' },
+                  ].map((logo, i) => (
+                    <img key={i} src={logo.src} alt={logo.alt} className="partner-logo" />
                   ))}
                 </div>
               </div>
@@ -305,7 +330,7 @@ export default function HomePage() {
                 </div>
               </div>
               <div className="about-image-wrap">
-                <img src="https://cdn.prod.website-files.com/68c8ed013c167a28e6d84332/68c8ed023c167a28e6d8443e_66dec62704d296fdf1be0088_team_discussion.avif" alt="Team Discussion" className="about-image" />
+                <img src="/assets/images/team-discussion.avif" alt="Team Discussion" className="about-image" />
                 <div className="about-image-overlay"></div>
                 <div className="about-floating-stats">
                   {[['100+','Experts'],['50+','Projects'],['4','Countries']].map(([num, label], i) => (
@@ -364,8 +389,8 @@ export default function HomePage() {
                   { img: 'https://www.databricks.com/wp-content/uploads/2021/10/db-nav-logo.svg', name: 'Databricks', desc: 'Data Analytics', glow: '#f97316' },
                   { img: '/assets/images/dbt-icon-2yxlz1fvy25mvn5scgnlw.webp', name: 'DBT', desc: 'Data Transform', glow: '#a855f7' },
                   { img: 'https://images.icon-icons.com/2699/PNG/512/fivetran_logo_icon_170149.png', name: 'Fivetran', desc: 'Data Pipeline', glow: '#06b6d4' },
-                  { img: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/nextjs/nextjs-original-wordmark.svg', name: 'Next.js', desc: 'Web Framework', glow: '#ffffff' },
-                  { img: 'https://upload.wikimedia.org/wikipedia/commons/thumb/9/93/Amazon_Web_Services_Logo.svg/200px-Amazon_Web_Services_Logo.svg.png', name: 'AWS', desc: 'Cloud Services', glow: '#eab308' },
+                  { img: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/nextjs/nextjs-original-wordmark.svg', name: 'Next.js', desc: 'Web Framework', glow: '#ffffff', invert: true },
+                  { img: '/assets/images/AWS-logo.png', name: 'AWS', desc: 'Cloud Services', glow: '#eab308' },
                   { img: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQFQ68GQ7HaMDD9EHZkEcthYaVxDZstZadJ4A&s', name: 'Odoo', desc: 'ERP System', glow: '#10b981' },
                   { img: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/java/java-original.svg', name: 'Java', desc: 'Programming', glow: '#ef4444' },
                   { img: '/assets/images/Oracle-Logo-History-4-864x540.png', name: 'Oracle', desc: 'Database', glow: '#f97316' },
@@ -375,7 +400,7 @@ export default function HomePage() {
                     <div className="tech-card-top-line" style={{ background: `linear-gradient(to right, ${t.glow}, transparent)` }}></div>
                     <div className="tech-card-glow" style={{ background: `radial-gradient(circle at center, ${t.glow}22, transparent 70%)` }}></div>
                     <div className="tech-card-icon-wrap">
-                      <img src={t.img} alt={t.name} />
+                      <img src={t.img} alt={t.name} style={(t as any).invert ? { filter: 'invert(1) brightness(2)', background: 'transparent' } : undefined} />
                     </div>
                     <h3>{t.name}</h3>
                     <p>{t.desc}</p>
@@ -458,11 +483,6 @@ export default function HomePage() {
                       <div className="biz-card-tags">
                         {b.tags.map((tag, j) => <span key={j} className="biz-card-tag">{tag}</span>)}
                       </div>
-                      <div className="biz-card-footer">
-                        {b.link
-                          ? <a href={b.link} target="_blank" rel="noopener" className="biz-card-btn">Visit Website <span className="biz-btn-arrow">→</span></a>
-                          : <span className="biz-card-soon">Coming Soon</span>}
-                      </div>
                     </div>
                   </div>
                 ))}
@@ -534,11 +554,7 @@ export default function HomePage() {
         <section className="faq-section">
           <div className="padding-global">
             <div className="container-large">
-              <div className="title_block">
-                <h2 className="title-small">FAQ</h2>
-                <div className="title-row"><p>Frequently Asked Questions</p></div>
-              </div>
-              <div className="faq-padding"></div>
+              <h2 className="faq-main-title">Frequently Asked Questions</h2>
               <div className="faq-grid">
                 {[
                   { q: 'What is data analytics and AI?', a: 'Data analytics is the process of examining data to uncover valuable insights, and AI helps by automating this analysis, making it faster and more effective.' },
