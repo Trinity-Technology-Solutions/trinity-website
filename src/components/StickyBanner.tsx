@@ -4,19 +4,52 @@ import { useEffect, useState } from 'react'
 export default function StickyBanner() {
   const [visible, setVisible] = useState(false)
   const [dismissed, setDismissed] = useState(false)
+  const [chatOpen, setChatOpen] = useState(false)
+  const [scrolledAway, setScrolledAway] = useState(false)
   const [email, setEmail] = useState('')
   const [done, setDone] = useState(false)
 
+  // Show after 1s on mount
   useEffect(() => {
     if (dismissed) return
     const t = setTimeout(() => setVisible(true), 1000)
     return () => clearTimeout(t)
   }, [dismissed])
 
-  if (!visible || dismissed) return null
+  // Hide/show based on scroll position
+  useEffect(() => {
+    const onScroll = () => {
+      // Hide when scrolled more than 300px, show again when back near top
+      setScrolledAway(window.scrollY > 300)
+    }
+    window.addEventListener('scroll', onScroll, { passive: true })
+    return () => window.removeEventListener('scroll', onScroll)
+  }, [])
+
+  // Hide when chatbot opens
+  useEffect(() => {
+    const onOpen = () => setChatOpen(true)
+    const onClose = () => setChatOpen(false)
+    window.addEventListener('chatbot-open', onOpen)
+    window.addEventListener('chatbot-close', onClose)
+    return () => {
+      window.removeEventListener('chatbot-open', onOpen)
+      window.removeEventListener('chatbot-close', onClose)
+    }
+  }, [])
+
+  if (!visible || dismissed || chatOpen) return null
 
   return (
-    <div className="sticky-banner">
+    <div
+      className="sticky-banner"
+      style={{
+        transition: 'opacity 0.4s ease, transform 0.4s ease',
+        opacity: scrolledAway ? 0 : 1,
+        transform: scrolledAway ? 'translateY(12px)' : 'translateY(0)',
+        pointerEvents: scrolledAway ? 'none' : 'auto',
+      }}
+    >
       <button className="sticky-banner-close" onClick={() => setDismissed(true)} aria-label="Close">
         <svg width="14" height="14" viewBox="0 0 14 14" fill="none">
           <path d="M1 1l12 12M13 1L1 13" stroke="currentColor" strokeWidth="2" strokeLinecap="round"/>

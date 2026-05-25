@@ -20,10 +20,6 @@ body, html {
 
 /* AOS animation adjustments for mobile */
 @media (max-width: 768px) {
-  [data-aos] {
-    transform: none !important;
-  }
-  
   [data-aos="slide-right"] {
     transform: translateX(0) !important;
   }

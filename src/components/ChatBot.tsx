@@ -59,8 +59,8 @@ export default function ChatBot() {
       messagesRef.current.scrollTop = messagesRef.current.scrollHeight
   }, [msgs, isTyping])
 
-  function openChat() { setOpen(true); setGreetingVisible(false) }
-  function closeChat() { setOpen(false) }
+  function openChat() { setOpen(true); setGreetingVisible(false); window.dispatchEvent(new CustomEvent('chatbot-open')) }
+  function closeChat() { setOpen(false); window.dispatchEvent(new CustomEvent('chatbot-close')) }
 
   function sendMessage(text?: string) {
     const msg = text ?? input.trim()

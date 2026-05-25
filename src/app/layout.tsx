@@ -1,7 +1,9 @@
 import type { Metadata } from 'next'
 import './globals.css'
+import 'aos/dist/aos.css'
 import Header from '@/components/Header'
 import Footer from '@/components/Footer'
+import ScrollAnimations from '@/components/ScrollAnimations'
 import '@/styles/trinity-styles.css'
 import '@/styles/animations.css'
 import '@/styles/mobile-fix.css'
@@ -17,6 +19,8 @@ import '@/styles/lead-popup-cards.css'
 import '@/styles/inter-font.css'
 import '@/styles/sticky-banner.css'
 import '@/styles/chatbot.css'
+import '@/styles/faq-redesign.css'
+import '@/styles/career.css'
 
 export const metadata: Metadata = {
   title: 'Data Analytics and AI Services | Trinity Technology Solutions',
@@ -58,6 +62,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
         })}} />
       </head>
       <body style={{ overflowX: 'hidden' }}>
+        <ScrollAnimations />
         <Header />
         {children}
         <Footer />

@@ -552,9 +552,15 @@ export default function HomePage() {
 
         {/* FAQ */}
         <section className="faq-section">
+          <div className="faq-bg-glow faq-bg-glow-1"></div>
+          <div className="faq-bg-glow faq-bg-glow-2"></div>
           <div className="padding-global">
             <div className="container-large">
-              <h2 className="faq-main-title">Frequently Asked Questions</h2>
+              <div className="faq-header">
+                <div className="faq-label">GOT QUESTIONS?</div>
+                <h2 className="faq-main-title">Frequently Asked <span className="faq-gradient-text">Questions</span></h2>
+                <p className="faq-subtitle">Everything you need to know about our data analytics and AI services.</p>
+              </div>
               <div className="faq-grid">
                 {[
                   { q: 'What is data analytics and AI?', a: 'Data analytics is the process of examining data to uncover valuable insights, and AI helps by automating this analysis, making it faster and more effective.' },
@@ -564,8 +570,18 @@ export default function HomePage() {
                   { q: 'How do I get started with Trinity Technology Solutions?', a: 'Contact us for a consultation, and we will help you plan and execute your data analytics and AI initiatives.' },
                 ].map((item, i) => (
                   <div key={i} className="faq-item">
-                    <h3 className="faq-question">{item.q}</h3>
-                    <p className="faq-answer">{item.a}</p>
+                    <div className="faq-item-number">0{i + 1}</div>
+                    <div className="faq-item-body">
+                      <h3 className="faq-question">
+                        {item.q}
+                        <span className="faq-icon">
+                          <svg width="20" height="20" viewBox="0 0 24 24" fill="none">
+                            <path d="M6 9l6 6 6-6" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
+                          </svg>
+                        </span>
+                      </h3>
+                      <p className="faq-answer">{item.a}</p>
+                    </div>
                   </div>
                 ))}
               </div>

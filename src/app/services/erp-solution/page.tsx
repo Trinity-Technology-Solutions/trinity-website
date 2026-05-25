@@ -11,7 +11,7 @@ const erpServices = [
         capabilities: ['Process assessment & gap analysis', 'ERP selection strategy', 'Roadmap design', 'Business outcomes planning'],
         color: '#2563eb',
         icon: '📈',
-        image: 'https://images.unsplash.com/photo-1526374965328-7f61d4dc18c5?w=600&h=400&fit=crop'
+        image: '/assets/images/Card-1 ERP.jpg'
     },
     {
         title: 'ERP Implementation Services',
@@ -19,7 +19,7 @@ const erpServices = [
         capabilities: ['System configuration', 'Custom module setup', 'User onboarding', 'Go-live planning'],
         color: '#0f766e',
         icon: '⚙️',
-        image: 'https://images.unsplash.com/photo-1553877522-43269d4ea984?w=600&h=400&fit=crop'
+        image: '/assets/images/Card-2 ERP.jpg'
     },
     {
         title: 'ERP Integration Services',
@@ -27,7 +27,7 @@ const erpServices = [
         capabilities: ['API integration', 'Middleware setup', 'Third-party connectors', 'Automation workflows'],
         color: '#d97706',
         icon: '🔗',
-        image: 'https://images.unsplash.com/photo-1519389950473-47ba0277781c?w=600&h=400&fit=crop'
+        image: '/assets/images/card-3 ERP.jpg'
     },
     {
         title: 'Custom ERP Software Solutions',
@@ -35,7 +35,7 @@ const erpServices = [
         capabilities: ['Custom module development', 'User experience design', 'Workflow automation', 'Scalable architecture'],
         color: '#9333ea',
         icon: '🧩',
-        image: 'https://images.unsplash.com/photo-1542223616-2d19f7c96ddb?w=600&h=400&fit=crop'
+        image: '/assets/images/Card-4 ERP.jpg'
     }
 ]
 
@@ -264,7 +264,7 @@ export default function ERPSolutionPage() {
                     className="hero-fade-in section-with-curve"
                     data-aos="fade-up"
                     style={{
-                        background: "linear-gradient(rgba(0,0,0,0.7),rgba(0,0,0,0.7)),url('https://images.unsplash.com/photo-1551288049-bebda4e38f71?w=1920&h=1080&fit=crop') center/cover",
+                        background: "linear-gradient(rgba(0,0,0,0.7),rgba(0,0,0,0.7)),url('/assets/images/header image erp.jpg') center/cover",
                         minHeight: '100vh',
                         display: 'flex',
                         alignItems: 'center',
