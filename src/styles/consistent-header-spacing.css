@@ -17,18 +17,15 @@
 }
 
 /* Consistent hero section spacing for all pages */
-.main-wrapper > section:first-child,
-section[style*="background: linear-gradient"],
 section.hero-fade-in,
 .section_hero {
-  padding-top: 120px !important; /* 80px header + 40px gap */
+  padding-top: 120px !important;
   padding-bottom: 80px !important;
   margin-top: 0 !important;
 }
 
 /* Special handling for index page video hero */
 .section_hero {
-  min-height: calc(100vh - 80px) !important;
   padding-top: 60px !important;
 }
 
@@ -49,8 +46,6 @@ section.hero-fade-in,
     padding-top: 60px !important;
   }
   
-  .main-wrapper > section:first-child,
-  section[style*="background: linear-gradient"],
   section.hero-fade-in,
   .section_hero {
     padding-top: 60px !important;
@@ -58,7 +53,6 @@ section.hero-fade-in,
   }
   
   .section_hero {
-    min-height: calc(100vh - 60px) !important;
     padding-top: 60px !important;
   }
 }
@@ -72,8 +66,6 @@ section.hero-fade-in,
     padding-top: 50px !important;
   }
   
-  .main-wrapper > section:first-child,
-  section[style*="background: linear-gradient"],
   section.hero-fade-in,
   .section_hero {
     padding-top: 60px !important;
@@ -81,7 +73,6 @@ section.hero-fade-in,
   }
   
   .section_hero {
-    min-height: calc(100vh - 50px) !important;
     padding-top: 60px !important;
   }
 }

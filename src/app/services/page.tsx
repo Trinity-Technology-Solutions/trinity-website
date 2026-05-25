@@ -6,12 +6,17 @@ import ConsultationPopup from '@/components/ConsultationPopup'
 
 const services = [
   {
-    href: '/services/staffing-solution',
-    title: 'Staffing Solutions',
-    desc: 'Access top-tier data and AI talent to power your projects with precision and speed.',
-    color: '#f472b6',
-    image: '/assets/images/Staffying Solutions.jpg',
+    href: '/services/ai-solution',
+    title: 'Data & AI Solutions',
+    desc: 'Deploy intelligent AI models that automate and accelerate decisions.',
+    color: '#c084fc',
+    image: '/assets/images/AI Solutions.jpg',
     from: -80,
+    icon: (
+      <svg width="22" height="22" viewBox="0 0 24 24" fill="none">
+        <path d="M9 3H5a2 2 0 0 0-2 2v4m6-6h10a2 2 0 0 1 2 2v4M9 3v18m0 0h10a2 2 0 0 0 2-2v-4M9 21H5a2 2 0 0 1-2-2v-4m0 0h18" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
+      </svg>
+    ),
   },
   {
     href: '/services/erp-solution',
@@ -20,22 +25,43 @@ const services = [
     color: '#fb923c',
     image: '/assets/images/ERP.jpg',
     from: 80,
-  },
-  {
-    href: '/services/ai-solution',
-    title: 'AI Solutions',
-    desc: 'Deploy intelligent AI models that automate and accelerate decisions.',
-    color: '#c084fc',
-    image: '/assets/images/AI Solutions.jpg',
-    from: -80,
+    icon: (
+      <svg width="22" height="22" viewBox="0 0 24 24" fill="none">
+        <path d="M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
+        <polyline points="3.27 6.96 12 12.01 20.73 6.96" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
+        <line x1="12" y1="22.08" x2="12" y2="12" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
+      </svg>
+    ),
   },
   {
     href: '/services/web-development',
-    title: 'Web Development',
+    title: 'Software Services',
     desc: 'Build high-performance, modern web applications and platforms.',
     color: '#34d399',
     image: '/assets/images/Web development.jpg',
+    from: -80,
+    icon: (
+      <svg width="22" height="22" viewBox="0 0 24 24" fill="none">
+        <polyline points="16 18 22 12 16 6" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round"/>
+        <polyline points="8 6 2 12 8 18" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round"/>
+        <line x1="14" y1="4" x2="10" y2="20" stroke="currentColor" strokeWidth="2" strokeLinecap="round"/>
+      </svg>
+    ),
+  },
+  {
+    href: '/services/staffing-solution',
+    title: 'Staffing Solutions',
+    desc: 'Access top-tier data and AI talent to power your projects with precision and speed.',
+    color: '#f472b6',
+    image: '/assets/images/Staffying Solutions.jpg',
     from: 80,
+    icon: (
+      <svg width="22" height="22" viewBox="0 0 24 24" fill="none">
+        <path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
+        <circle cx="9" cy="7" r="4" stroke="currentColor" strokeWidth="2"/>
+        <path d="M23 21v-2a4 4 0 0 0-3-3.87M16 3.13a4 4 0 0 1 0 7.75" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
+      </svg>
+    ),
   },
 ]
 
@@ -69,11 +95,7 @@ function ServiceCard({ s }: { s: typeof services[0] }) {
       {/* Card content — same layout as before */}
       <div style={{ padding: '1.5rem 1.75rem 1.5rem', display: 'flex', flexDirection: 'column', flex: 1 }}>
         <div className="svc-card-icon" style={{ color: s.color, marginBottom: '0.75rem' }}>
-          <svg width="22" height="22" viewBox="0 0 24 24" fill="none">
-            <path d="M12 2L2 7L12 12L22 7L12 2Z" stroke="currentColor" strokeWidth="2" strokeLinejoin="round" />
-            <path d="M2 17L12 22L22 17" stroke="currentColor" strokeWidth="2" strokeLinejoin="round" />
-            <path d="M2 12L12 17L22 12" stroke="currentColor" strokeWidth="2" strokeLinejoin="round" />
-          </svg>
+          {s.icon}
         </div>
         <h3 className="svc-card-title">{s.title}</h3>
         <p className="svc-card-desc" style={{ flex: 1 }}>{s.desc}</p>

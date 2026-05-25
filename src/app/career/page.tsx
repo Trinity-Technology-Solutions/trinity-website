@@ -2,8 +2,8 @@
 import { useEffect, useState } from 'react'
 import Link from 'next/link'
 
-const ZYNCJOBS_API = process.env.NEXT_PUBLIC_ZYNCJOBS_API || 'http://localhost:5000/api'
-const ZYNCJOBS_URL = process.env.NEXT_PUBLIC_ZYNCJOBS_URL || 'http://localhost:5173'
+const ZYNCJOBS_API = process.env.NEXT_PUBLIC_ZYNCJOBS_API || ''
+const ZYNCJOBS_URL = process.env.NEXT_PUBLIC_ZYNCJOBS_URL || 'https://zyncjobs.com'
 
 type Job = {
   id: string
@@ -26,12 +26,12 @@ type Job = {
 }
 
 const WHY_JOIN = [
-  { icon: '🌍', title: 'Global Projects', desc: 'Work on enterprise-scale data and AI projects across USA, India, Netherlands, and Oman.' },
-  { icon: '📈', title: 'Career Growth', desc: 'Structured growth paths, certifications, and mentorship from 100+ years of combined leadership.' },
-  { icon: '🤖', title: 'Cutting-Edge Tech', desc: 'Work with Databricks, AWS, Azure, dbt, and the latest AI/ML frameworks every day.' },
-  { icon: '🏠', title: 'Flexible Work', desc: 'Hybrid and remote options available. We trust our team to deliver results from anywhere.' },
-  { icon: '🎓', title: 'Learning Culture', desc: 'Sponsored certifications, internal workshops, and access to premium learning platforms.' },
-  { icon: '💰', title: 'Competitive Pay', desc: 'Market-leading salaries, performance bonuses, and comprehensive benefits package.' },
+  { icon: <svg width="24" height="24" viewBox="0 0 24 24" fill="none"><circle cx="12" cy="12" r="10" stroke="currentColor" strokeWidth="2"/><path d="M2 12h20M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z" stroke="currentColor" strokeWidth="2"/></svg>, title: 'Global Projects', desc: 'Work on enterprise-scale data and AI projects across USA, India, Netherlands, and Oman.' },
+  { icon: <svg width="24" height="24" viewBox="0 0 24 24" fill="none"><path d="M18 20V10M12 20V4M6 20v-6" stroke="currentColor" strokeWidth="2" strokeLinecap="round"/></svg>, title: 'Career Growth', desc: 'Structured growth paths, certifications, and mentorship from 100+ years of combined leadership.' },
+  { icon: <svg width="24" height="24" viewBox="0 0 24 24" fill="none"><path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/></svg>, title: 'Cutting-Edge Tech', desc: 'Work with Databricks, AWS, Azure, dbt, and the latest AI/ML frameworks every day.' },
+  { icon: <svg width="24" height="24" viewBox="0 0 24 24" fill="none"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z" stroke="currentColor" strokeWidth="2" strokeLinejoin="round"/><path d="M9 22V12h6v10" stroke="currentColor" strokeWidth="2" strokeLinejoin="round"/></svg>, title: 'Flexible Work', desc: 'Hybrid and remote options available. We trust our team to deliver results from anywhere.' },
+  { icon: <svg width="24" height="24" viewBox="0 0 24 24" fill="none"><path d="M22 10v6M2 10l10-7 10 7-10 7-10-7z" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/><path d="M6 12v5c3 3 9 3 12 0v-5" stroke="currentColor" strokeWidth="2" strokeLinecap="round"/></svg>, title: 'Learning Culture', desc: 'Sponsored certifications, internal workshops, and access to premium learning platforms.' },
+  { icon: <svg width="24" height="24" viewBox="0 0 24 24" fill="none"><path d="M12 2v20M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6" stroke="currentColor" strokeWidth="2" strokeLinecap="round"/></svg>, title: 'Competitive Pay', desc: 'Market-leading salaries, performance bonuses, and comprehensive benefits package.' },
 ]
 
 const PROCESS = [
@@ -65,9 +65,9 @@ function JobCard({ job }: { job: Job }) {
       <h3 className="career-job-title">{job.jobTitle}</h3>
       <p className="career-job-company">{job.company}</p>
       <div className="career-job-details">
-        <span>📍 {job.location}</span>
-        {job.experienceRange && <span>⏱ {job.experienceRange}</span>}
-        {salary && <span>💰 {salary}</span>}
+        <span style={{display:'inline-flex',alignItems:'center',gap:'0.3rem'}}><svg width="14" height="14" viewBox="0 0 24 24" fill="none"><path d="M21 10c0 7-9 13-9 13S3 17 3 10a9 9 0 0 1 18 0z" stroke="currentColor" strokeWidth="2"/><circle cx="12" cy="10" r="3" stroke="currentColor" strokeWidth="2"/></svg> {job.location}</span>
+        {job.experienceRange && <span style={{display:'inline-flex',alignItems:'center',gap:'0.3rem'}}><svg width="14" height="14" viewBox="0 0 24 24" fill="none"><circle cx="12" cy="12" r="10" stroke="currentColor" strokeWidth="2"/><path d="M12 6v6l4 2" stroke="currentColor" strokeWidth="2" strokeLinecap="round"/></svg> {job.experienceRange}</span>}
+        {salary && <span style={{display:'inline-flex',alignItems:'center',gap:'0.3rem'}}><svg width="14" height="14" viewBox="0 0 24 24" fill="none"><path d="M12 2v20M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6" stroke="currentColor" strokeWidth="2" strokeLinecap="round"/></svg> {salary}</span>}
       </div>
       {job.skills?.length > 0 && (
         <div className="career-job-skills">
@@ -94,6 +94,11 @@ export default function CareerPage() {
   const PER_PAGE = 9
 
   useEffect(() => {
+    if (!ZYNCJOBS_API) {
+      setError('Job listings are currently unavailable. Please check back soon.')
+      setLoading(false)
+      return
+    }
     fetch(`${ZYNCJOBS_API}/jobs?limit=100`)
       .then(r => r.json())
       .then(data => {
@@ -146,7 +151,7 @@ export default function CareerPage() {
                 </p>
                 <div className="career-hero-btns">
                   <a href="#open-positions" className="career-hero-btn-primary">Explore Openings</a>
-                  <a href="mailto:sales@trinitetech.com" className="career-hero-btn-secondary">Join Talent Network</a>
+                  <a href="https://www.zyncjobs.com" target="_blank" rel="noopener noreferrer" className="career-hero-btn-secondary">Find Jobs on ZyncJobs</a>
                 </div>
                 <div className="career-hero-stats">
                   {[['50+', 'Open Roles'], ['4', 'Countries'], ['100+', 'Team Members'], ['5★', 'Culture Rating']].map(([n, l]) => (
@@ -171,7 +176,7 @@ export default function CareerPage() {
               <div className="career-why-grid">
                 {WHY_JOIN.map((item, i) => (
                   <div key={i} className="career-why-card">
-                    <div className="career-why-icon">{item.icon}</div>
+                <div className="career-why-icon" style={{display:'flex',alignItems:'center',justifyContent:'center',color:'#4a6fa5'}}>{item.icon}</div>
                     <h3>{item.title}</h3>
                     <p>{item.desc}</p>
                   </div>
@@ -236,9 +241,9 @@ export default function CareerPage() {
 
               {error && (
                 <div className="career-error">
-                  <span>⚠️</span>
+                  <svg width="32" height="32" viewBox="0 0 24 24" fill="none"><path d="M10.29 3.86L1.82 18a2 2 0 0 0 1.71 3h16.94a2 2 0 0 0 1.71-3L13.71 3.86a2 2 0 0 0-3.42 0z" stroke="currentColor" strokeWidth="2" strokeLinejoin="round"/><path d="M12 9v4M12 17h.01" stroke="currentColor" strokeWidth="2" strokeLinecap="round"/></svg>
                   <p>{error}</p>
-                  <a href={`${ZYNCJOBS_URL}/jobs`} target="_blank" rel="noopener noreferrer" className="career-apply-btn">
+                  <a href="https://www.zyncjobs.com/job-listings" target="_blank" rel="noopener noreferrer" className="career-apply-btn">
                     Browse on ZyncJobs →
                   </a>
                 </div>
@@ -246,7 +251,7 @@ export default function CareerPage() {
 
               {!loading && !error && paginated.length === 0 && (
                 <div className="career-empty">
-                  <span>🔍</span>
+                  <svg width="32" height="32" viewBox="0 0 24 24" fill="none"><circle cx="11" cy="11" r="8" stroke="currentColor" strokeWidth="2"/><path d="M21 21l-4.35-4.35" stroke="currentColor" strokeWidth="2" strokeLinecap="round"/></svg>
                   <p>No positions found matching your criteria.</p>
                   <button onClick={() => { setSearch(''); setLocationFilter(''); setTypeFilter('') }} className="career-filter-clear">
                     Clear Filters
@@ -308,7 +313,7 @@ export default function CareerPage() {
                 <p>We're always looking for exceptional talent. Drop us your resume and we'll reach out when the perfect opportunity arises.</p>
                 <div className="career-cta-btns">
                   <a href="mailto:sales@trinitetech.com" className="career-cta-btn-primary">Send Your Resume</a>
-                  <a href={`${ZYNCJOBS_URL}/jobs`} target="_blank" rel="noopener noreferrer" className="career-cta-btn-secondary">Browse All Jobs on ZyncJobs →</a>
+                  <a href="https://www.zyncjobs.com/job-listings" target="_blank" rel="noopener noreferrer" className="career-cta-btn-secondary">Browse All Jobs on ZyncJobs →</a>
                 </div>
               </div>
           </div>

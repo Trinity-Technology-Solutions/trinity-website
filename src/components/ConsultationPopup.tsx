@@ -7,10 +7,10 @@ const EMAILJS_TEMPLATE_ID = 'template_sr6fu8g'
 const EMAILJS_PUBLIC_KEY = 'jc8MwEV88GcpV6a7p'
 
 const services = [
-  { title: 'AI Solutions', desc: 'Transform your business with intelligent automation and predictive analytics.', img: 'https://images.unsplash.com/photo-1677442135703-1787eea5ce01?w=600&q=80' },
-  { title: 'Intelligent ERP Solutions', desc: 'Streamline operations with comprehensive enterprise resource planning.', img: 'https://images.unsplash.com/photo-1551288049-bebda4e38f71?w=600&q=80' },
+  { title: 'Data & AI Solutions', desc: 'Transform your business with intelligent automation and predictive analytics.', img: 'https://images.unsplash.com/photo-1677442135703-1787eea5ce01?w=600&q=80' },
+  { title: 'ERP Solutions', desc: 'Streamline operations with comprehensive enterprise resource planning.', img: 'https://images.unsplash.com/photo-1551288049-bebda4e38f71?w=600&q=80' },
+  { title: 'Software Services', desc: 'Build modern, responsive web applications that drive business growth.', img: 'https://images.unsplash.com/photo-1547658719-da2b51169166?w=600&q=80' },
   { title: 'Staffing Solutions', desc: 'Find top talent and build your team with expert recruitment services.', img: 'https://images.unsplash.com/photo-1522202176988-66273c2fd55f?w=600&q=80' },
-  { title: 'Web Development', desc: 'Build modern, responsive web applications that drive business growth.', img: 'https://images.unsplash.com/photo-1547658719-da2b51169166?w=600&q=80' },
 ]
 
 type ServiceForm = Record<string, string>
@@ -48,14 +48,14 @@ function Sel({ label, qNum, field, options, val, onChange }: {
 // ── Service question configs ──
 const serviceQuestions: Record<number, { title: string; subtitle: string; fields: { type: 'input' | 'select'; qNum: number; label: string; key: string; placeholder?: string; options?: string[] }[] }> = {
   0: {
-    title: 'AI Solutions',
+    title: 'Data & AI Solutions',
     subtitle: 'Help us understand your AI project needs',
     fields: [
       { type: 'input', qNum: 1, label: 'What is your business/company name?', key: 'company', placeholder: 'Enter your company name' },
       { type: 'select', qNum: 2, label: 'What industry is your business in?', key: 'industry', options: ['Retail', 'E-commerce', 'Education', 'Healthcare', 'Real Estate', 'Other'] },
       { type: 'select', qNum: 3, label: 'What do you want to use AI for?', key: 'aiUse', options: ['Customer Support Automation', 'Marketing Automation', 'Lead Generation', 'Sales Automation', 'Data Analysis', 'Custom AI Solutions'] },
       { type: 'select', qNum: 4, label: 'Are you currently using any automation or software tools?', key: 'tools', options: ['No', 'CRM', 'Chatbots', 'Marketing tools', 'Custom software'] },
-      { type: 'select', qNum: 5, label: 'Would you like a FREE AI Solutions Consultation?', key: 'consultation', options: ['Yes', 'No'] },
+      { type: 'select', qNum: 5, label: 'Would you like a FREE Data & AI Solutions Consultation?', key: 'consultation', options: ['Yes', 'No'] },
     ],
   },
   1: {
@@ -70,6 +70,17 @@ const serviceQuestions: Record<number, { title: string; subtitle: string; fields
     ],
   },
   2: {
+    title: 'Software Services',
+    subtitle: 'Help us understand your web project needs',
+    fields: [
+      { type: 'input', qNum: 1, label: 'What is your business/company name?', key: 'company', placeholder: 'Enter your company name' },
+      { type: 'select', qNum: 2, label: 'What industry is your business in?', key: 'industry', options: ['Retail', 'E-commerce', 'Education', 'Healthcare', 'Real Estate', 'IT / Services', 'Other'] },
+      { type: 'select', qNum: 3, label: 'What type of website are you looking for?', key: 'websiteType', options: ['Business website', 'E-commerce website', 'Portfolio website', 'Landing page', 'Custom web application'] },
+      { type: 'select', qNum: 4, label: 'Do you need additional services for your website?', key: 'additionalServices', options: ['SEO optimization', 'Website maintenance', 'Content creation', 'Digital marketing', 'No'] },
+      { type: 'select', qNum: 5, label: 'Would you like a FREE Software Services Consultation?', key: 'consultation', options: ['Yes', 'No'] },
+    ],
+  },
+  3: {
     title: 'Staffing Solutions',
     subtitle: 'Help us understand your hiring needs',
     fields: [
@@ -78,17 +89,6 @@ const serviceQuestions: Record<number, { title: string; subtitle: string; fields
       { type: 'select', qNum: 3, label: 'What type of staffing support do you need?', key: 'staffingType', options: ['Permanent Hiring', 'Contract Staffing', 'Temporary Staffing', 'Internship / Fresher Hiring', 'Project-based Hiring'] },
       { type: 'select', qNum: 4, label: 'Which roles are you looking to hire for?', key: 'roles', options: ['Technical roles', 'Sales & Marketing', 'Administrative / Operations', 'Customer Support', 'Other'] },
       { type: 'select', qNum: 5, label: 'Would you like a FREE Staffing Solutions Consultation?', key: 'consultation', options: ['Yes', 'No'] },
-    ],
-  },
-  3: {
-    title: 'Web Development',
-    subtitle: 'Help us understand your web project needs',
-    fields: [
-      { type: 'input', qNum: 1, label: 'What is your business/company name?', key: 'company', placeholder: 'Enter your company name' },
-      { type: 'select', qNum: 2, label: 'What industry is your business in?', key: 'industry', options: ['Retail', 'E-commerce', 'Education', 'Healthcare', 'Real Estate', 'IT / Services', 'Other'] },
-      { type: 'select', qNum: 3, label: 'What type of website are you looking for?', key: 'websiteType', options: ['Business website', 'E-commerce website', 'Portfolio website', 'Landing page', 'Custom web application'] },
-      { type: 'select', qNum: 4, label: 'Do you need additional services for your website?', key: 'additionalServices', options: ['SEO optimization', 'Website maintenance', 'Content creation', 'Digital marketing', 'No'] },
-      { type: 'select', qNum: 5, label: 'Would you like a FREE Web Development Consultation?', key: 'consultation', options: ['Yes', 'No'] },
     ],
   },
 }

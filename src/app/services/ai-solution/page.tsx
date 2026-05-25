@@ -11,7 +11,7 @@ const aiSolutions = [
     desc: 'Converting disorganized, scattered data into a well integrated, scalable, high quality data solution.',
     capabilities: ['Data integration & consolidation', 'Data quality & governance', 'Data modernization strategies', 'Cloud data migration'],
     color: '#3b82f6',
-    icon: '🗄️',
+    icon: <svg width="22" height="22" viewBox="0 0 24 24" fill="none"><ellipse cx="12" cy="5" rx="9" ry="3" stroke="currentColor" strokeWidth="2"/><path d="M3 5v14c0 1.66 4.03 3 9 3s9-1.34 9-3V5" stroke="currentColor" strokeWidth="2"/><path d="M3 12c0 1.66 4.03 3 9 3s9-1.34 9-3" stroke="currentColor" strokeWidth="2"/></svg>,
     image: 'https://images.unsplash.com/photo-1551288049-bebda4e38f71?w=600&h=400&fit=crop'
   },
   {
@@ -19,7 +19,7 @@ const aiSolutions = [
     desc: 'Deploy smart systems that predict, automate, and improve outcomes.',
     capabilities: ['Machine learning model development', 'Predictive analytics', 'Generative AI solutions', 'AI automation systems'],
     color: '#8b5cf6',
-    icon: '🤖',
+    icon: <svg width="22" height="22" viewBox="0 0 24 24" fill="none"><rect x="3" y="3" width="18" height="18" rx="3" stroke="currentColor" strokeWidth="2"/><circle cx="9" cy="10" r="1.5" fill="currentColor"/><circle cx="15" cy="10" r="1.5" fill="currentColor"/><path d="M9 15s1 2 3 2 3-2 3-2" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round"/></svg>,
     image: 'https://images.unsplash.com/photo-1677442135703-1787eea5ce01?w=600&h=400&fit=crop'
   },
   {
@@ -27,7 +27,7 @@ const aiSolutions = [
     desc: 'Turn complex data into actionable insights in real-time with dashboards and analytics.',
     capabilities: ['Data visualization dashboards', 'KPI tracking systems', 'Real-time reporting', 'Advanced analytics'],
     color: '#06b6d4',
-    icon: '📊',
+    icon: <svg width="22" height="22" viewBox="0 0 24 24" fill="none"><path d="M18 20V10M12 20V4M6 20v-6" stroke="currentColor" strokeWidth="2" strokeLinecap="round"/></svg>,
     image: 'https://images.unsplash.com/photo-1460925895917-afdab827c52f?w=600&h=400&fit=crop'
   },
   {
@@ -35,7 +35,7 @@ const aiSolutions = [
     desc: 'Build scalable data pipelines and architectures that support AI and analytics at scale.',
     capabilities: ['Data pipeline development (ETL/ELT)', 'Data warehousing', 'Big data processing', 'Cloud-based data architecture'],
     color: '#10b981',
-    icon: '⚙️',
+    icon: <svg width="22" height="22" viewBox="0 0 24 24" fill="none"><path d="M12 15a3 3 0 1 0 0-6 3 3 0 0 0 0 6z" stroke="currentColor" strokeWidth="2"/><path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 0 1-2.83 2.83l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 0 1-4 0v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 0 1-2.83-2.83l.06-.06A1.65 1.65 0 0 0 4.68 15a1.65 1.65 0 0 0-1.51-1H3a2 2 0 0 1 0-4h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 0 1 2.83-2.83l.06.06A1.65 1.65 0 0 0 9 4.68a1.65 1.65 0 0 0 1-1.51V3a2 2 0 0 1 4 0v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 0 1 2.83 2.83l-.06.06A1.65 1.65 0 0 0 19.4 9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 0 1 0 4h-.09a1.65 1.65 0 0 0-1.51 1z" stroke="currentColor" strokeWidth="2"/></svg>,
     image: 'https://images.unsplash.com/photo-1558618666-fcd25c85cd64?w=600&h=400&fit=crop'
   }
 ]
@@ -108,21 +108,6 @@ function SolutionCard({ solution, index }: { solution: typeof aiSolutions[0], in
           }}
           className="solution-card-img"
         />
-        <div style={{
-          position: 'absolute',
-          inset: 0,
-          background: `linear-gradient(135deg, ${solution.color}40, ${solution.color}20)`,
-          display: 'flex',
-          alignItems: 'center',
-          justifyContent: 'center'
-        }}>
-          <div style={{
-            fontSize: '3rem',
-            opacity: 0.9
-          }}>
-            {solution.icon}
-          </div>
-        </div>
       </div>
       
       <div style={{ padding: '1.75rem', display: 'flex', flexDirection: 'column', flex: 1 }}>

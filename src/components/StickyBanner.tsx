@@ -96,7 +96,10 @@ export default function StickyBanner() {
           </button>
         </form>
       ) : (
-        <p className="sticky-banner-thanks">✓ Thanks! Check your inbox shortly.</p>
+        <p className="sticky-banner-thanks" style={{display:'flex',alignItems:'center',gap:'0.5rem'}}>
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none"><path d="M20 6L9 17l-5-5" stroke="#22c55e" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round"/></svg>
+          Thanks! Check your inbox shortly.
+        </p>
       )}
     </div>
   )

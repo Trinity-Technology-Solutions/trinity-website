@@ -61,7 +61,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
           "sameAs": ["https://www.linkedin.com/company/trinity-technology-solutions/"]
         })}} />
       </head>
-      <body style={{ overflowX: 'hidden' }}>
+      <body style={{ overflowX: 'hidden', overflowY: 'auto', height: 'auto' }}>
         <ScrollAnimations />
         <Header />
         {children}

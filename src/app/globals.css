@@ -2054,15 +2054,23 @@
 }
 
 /* ===== GLOBAL OVERFLOW FIX ===== */
-html,
+html {
+  overflow-x: hidden !important;
+  overflow-y: auto !important;
+  max-width: 100vw;
+  height: auto !important;
+}
+
 body {
   overflow-x: hidden !important;
+  overflow-y: auto !important;
   max-width: 100vw;
+  height: auto !important;
 }
 
 .page-wrapper,
 .main-wrapper {
-  overflow-x: clip !important;
+  overflow: visible !important;
   width: 100%;
   max-width: 100vw;
 }
@@ -2125,6 +2133,22 @@ section {
 .global-section,
 .faq-section {
   overflow: clip !important;
+}
+
+/* Prevent any div from becoming an unintended scroll container */
+.page-wrapper > *,
+.main-wrapper > * {
+  overflow-x: clip !important;
+}
+
+/* Career page specific fix */
+.career-hero,
+.career-why,
+.career-jobs,
+.career-process,
+.career-cta {
+  max-width: 100vw;
+  overflow-x: clip !important;
 }
 
 /* AOS fix - prevent translate animations from causing scrollbar */
