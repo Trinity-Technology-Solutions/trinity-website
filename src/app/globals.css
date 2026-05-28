@@ -2136,8 +2136,8 @@ section {
 }
 
 /* Prevent any div from becoming an unintended scroll container */
-.page-wrapper > *,
-.main-wrapper > * {
+.page-wrapper>*,
+.main-wrapper>* {
   overflow-x: clip !important;
 }
 

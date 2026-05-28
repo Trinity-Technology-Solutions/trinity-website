@@ -14,8 +14,22 @@ export default function AboutPage() {
       <main className="main-wrapper">
 
         {/* Hero */}
-        <section className="about-hero">
-          <div className="padding-global">
+        <section className="about-hero" style={{
+          backgroundImage: 'url("/assets/images/About center page.jpg")',
+          backgroundSize: 'cover',
+          backgroundPosition: 'center',
+          backgroundRepeat: 'no-repeat',
+          minHeight: '70vh',
+          display: 'flex',
+          alignItems: 'center',
+          position: 'relative'
+        }}>
+          <div style={{
+            position: 'absolute',
+            inset: 0,
+            background: 'linear-gradient(rgba(10,15,46,0.70), rgba(10,15,46,0.70))'
+          }} />
+          <div className="padding-global" style={{ position: 'relative', zIndex: 1, width: '100%' }}>
             <div className="container-large">
               <div className="about-hero-content" data-aos="fade-up">
                 <div className="about-hero-badge">ABOUT TRINITY</div>
@@ -137,6 +151,34 @@ export default function AboutPage() {
       </main>
 
       <style>{`
+        /* HERO TEXT */
+        .about-hero-content h1 {
+          font-size: 3.5rem;
+          font-weight: 800;
+          color: #ffffff !important;
+          line-height: 1.15;
+          margin: 0 0 1.25rem;
+        }
+        .about-hero-content p {
+          font-size: 1.15rem;
+          color: rgba(255,255,255,0.82) !important;
+          max-width: 600px;
+          margin: 0 auto;
+          line-height: 1.7;
+        }
+        .about-hero-badge {
+          display: inline-block;
+          padding: 0.4rem 1.2rem;
+          background: rgba(99,102,241,0.18);
+          border: 1px solid rgba(99,102,241,0.45);
+          border-radius: 50px;
+          color: #a5b4fc !important;
+          font-size: 0.75rem;
+          font-weight: 700;
+          letter-spacing: 2px;
+          margin-bottom: 1.5rem;
+        }
+
         /* CENTER ALL TEXT */
         .about-hero,
         .about-hero-content,
@@ -189,6 +231,12 @@ export default function AboutPage() {
         .about-hero ::-webkit-scrollbar { display: none !important; }
         .page-wrapper *, .main-wrapper * { scrollbar-width: none !important; }
 
+        @media (max-width: 768px) {
+          .about-hero-content h1 { font-size: 2.4rem !important; }
+        }
+        @media (max-width: 480px) {
+          .about-hero-content h1 { font-size: 1.9rem !important; }
+        }
         @media (max-width: 1100px) {
           .about-values-grid { grid-template-columns: repeat(2, 1fr) !important; }
         }

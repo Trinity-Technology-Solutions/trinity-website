@@ -11,7 +11,7 @@ const webServices = [
         capabilities: ['Modern layouts', 'Intuitive navigation', 'Conversion-focused design', 'Lead generation optimization'],
         color: '#3b82f6',
         icon: <svg width="22" height="22" viewBox="0 0 24 24" fill="none"><rect x="2" y="3" width="20" height="14" rx="2" stroke="currentColor" strokeWidth="2"/><path d="M8 21h8M12 17v4" stroke="currentColor" strokeWidth="2" strokeLinecap="round"/></svg>,
-        image: 'https://images.unsplash.com/photo-1547658719-da2b51169166?w=600&h=400&fit=crop'
+        image: '/assets/images/business website development.jpg'
     },
     {
         title: 'E-Commerce Website Development',
@@ -19,7 +19,7 @@ const webServices = [
         capabilities: ['Secure payment integration', 'Product management', 'Shopping cart optimization', 'Mobile-optimized stores'],
         color: '#10b981',
         icon: <svg width="22" height="22" viewBox="0 0 24 24" fill="none"><path d="M6 2L3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4z" stroke="currentColor" strokeWidth="2" strokeLinejoin="round"/><path d="M3 6h18M16 10a4 4 0 0 1-8 0" stroke="currentColor" strokeWidth="2" strokeLinecap="round"/></svg>,
-        image: 'https://images.unsplash.com/photo-1460925895917-afdab827c52f?w=600&h=400&fit=crop'
+        image: '/assets/images/Ecommerce website development.jpg'
     },
     {
         title: 'Custom Website Development',
@@ -27,7 +27,7 @@ const webServices = [
         capabilities: ['Custom features', 'API integrations', 'Scalable architecture', 'Advanced functionality'],
         color: '#8b5cf6',
         icon: <svg width="22" height="22" viewBox="0 0 24 24" fill="none"><path d="M12 15a3 3 0 1 0 0-6 3 3 0 0 0 0 6z" stroke="currentColor" strokeWidth="2"/><path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 0 1-2.83 2.83l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 0 1-4 0v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 0 1-2.83-2.83l.06-.06A1.65 1.65 0 0 0 4.68 15a1.65 1.65 0 0 0-1.51-1H3a2 2 0 0 1 0-4h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 0 1 2.83-2.83l.06.06A1.65 1.65 0 0 0 9 4.68a1.65 1.65 0 0 0 1-1.51V3a2 2 0 0 1 4 0v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 0 1 2.83 2.83l-.06.06A1.65 1.65 0 0 0 19.4 9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 0 1 0 4h-.09a1.65 1.65 0 0 0-1.51 1z" stroke="currentColor" strokeWidth="2"/></svg>,
-        image: 'https://images.unsplash.com/photo-1517694712202-14dd9538aa97?w=600&h=400&fit=crop'
+        image: '/assets/images/Custom Website Development.jpg'
     },
     {
         title: 'Responsive Website Design',
@@ -35,7 +35,7 @@ const webServices = [
         capabilities: ['Mobile-first design', 'Cross-browser compatibility', 'Performance optimization', 'Flexible layouts'],
         color: '#06b6d4',
         icon: <svg width="22" height="22" viewBox="0 0 24 24" fill="none"><rect x="5" y="2" width="14" height="20" rx="2" stroke="currentColor" strokeWidth="2"/><path d="M9 7h6M9 11h6M9 15h4" stroke="currentColor" strokeWidth="2" strokeLinecap="round"/></svg>,
-        image: 'https://images.unsplash.com/photo-1551288049-bebda4e38f71?w=600&h=400&fit=crop'
+        image: '/assets/images/Web development.jpg'
     },
     {
         title: 'CMS Website Development',
@@ -43,7 +43,7 @@ const webServices = [
         capabilities: ['Easy content updates', 'User-friendly interface', 'Flexible architecture', 'Minimal technical effort'],
         color: '#f59e0b',
         icon: <svg width="22" height="22" viewBox="0 0 24 24" fill="none"><path d="M11 4H4a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2v-7" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/><path d="M18.5 2.5a2.121 2.121 0 0 1 3 3L12 15l-4 1 1-4 9.5-9.5z" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/></svg>,
-        image: 'https://images.unsplash.com/photo-1499750310107-5fef28a66643?w=600&h=400&fit=crop'
+        image: '/assets/images/CMS website development.png'
     },
     {
         title: 'Landing Page Development',
@@ -51,7 +51,7 @@ const webServices = [
         capabilities: ['Conversion optimization', 'Performance tracking', 'A/B testing ready', 'Lead capture forms'],
         color: '#ec4899',
         icon: <svg width="22" height="22" viewBox="0 0 24 24" fill="none"><path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/></svg>,
-        image: 'https://images.unsplash.com/photo-1504384308090-c894fdcc538d?w=600&h=400&fit=crop'
+        image: '/assets/images/Landing-page-development.webp'
     }
 ]
 
@@ -271,7 +271,7 @@ export default function WebDevelopmentPage() {
                     className="hero-fade-in section-with-curve"
                     data-aos="fade-up"
                     style={{
-                        background: "linear-gradient(rgba(0,0,0,0.7),rgba(0,0,0,0.7)),url('https://images.unsplash.com/photo-1517694712202-14dd9538aa97?w=1920&h=1080&fit=crop') center/cover",
+                        background: "linear-gradient(rgba(0,0,0,0.6),rgba(0,0,0,0.6)),url('/assets/images/Software services center page.jpg') center/cover no-repeat",
                         minHeight: '100vh',
                         display: 'flex',
                         alignItems: 'center',

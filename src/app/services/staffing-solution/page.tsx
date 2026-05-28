@@ -11,7 +11,7 @@ const staffingServices = [
         capabilities: ['Short-term placements', 'Rapid onboarding', 'Flexible contracts', 'Payroll & compliance'],
         color: '#3b82f6',
         icon: <svg width="22" height="22" viewBox="0 0 24 24" fill="none"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2" stroke="currentColor" strokeWidth="2" strokeLinecap="round"/><circle cx="12" cy="7" r="4" stroke="currentColor" strokeWidth="2"/></svg>,
-        image: 'https://images.unsplash.com/photo-1559526324-593bc073d938?w=600&h=400&fit=crop'
+        image: '/assets/images/Temporary Staffing.jpg'
     },
     {
         title: 'Permanent Recruitment',
@@ -19,7 +19,7 @@ const staffingServices = [
         capabilities: ['Executive search', 'Technical hiring', 'Culture fit evaluation', 'Offer negotiation'],
         color: '#10b981',
         icon: <svg width="22" height="22" viewBox="0 0 24 24" fill="none"><path d="M21 10c0 7-9 13-9 13S3 17 3 10a9 9 0 0 1 18 0z" stroke="currentColor" strokeWidth="2"/><circle cx="12" cy="10" r="3" stroke="currentColor" strokeWidth="2"/></svg>,
-        image: 'https://images.unsplash.com/photo-1544197150-b99a580bb7a8?w=600&h=400&fit=crop'
+        image: '/assets/images/Permanent Recruitment.jpg'
     },
     {
         title: 'Contract & Project Staffing',
@@ -27,7 +27,7 @@ const staffingServices = [
         capabilities: ['Project-based teams', 'Contract specialists', 'Scaled resourcing', 'Delivery support'],
         color: '#8b5cf6',
         icon: <svg width="22" height="22" viewBox="0 0 24 24" fill="none"><path d="M14.7 6.3a1 1 0 0 0 0 1.4l1.6 1.6a1 1 0 0 0 1.4 0l3.77-3.77a6 6 0 0 1-7.94 7.94l-6.91 6.91a2.12 2.12 0 0 1-3-3l6.91-6.91a6 6 0 0 1 7.94-7.94l-3.76 3.76z" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/></svg>,
-        image: 'https://images.unsplash.com/photo-1542744173-8e7e53415bb0?w=600&h=400&fit=crop'
+        image: '/assets/images/Contract & Project Staffing.jpg'
     },
     {
         title: 'Managed Talent & RPO',
@@ -35,7 +35,7 @@ const staffingServices = [
         capabilities: ['RPO services', 'Managed talent pools', 'Recruitment analytics', 'Continuous sourcing'],
         color: '#06b6d4',
         icon: <svg width="22" height="22" viewBox="0 0 24 24" fill="none"><path d="M17 1l4 4-4 4M3 11V9a4 4 0 0 1 4-4h14M7 23l-4-4 4-4M21 13v2a4 4 0 0 1-4 4H3" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/></svg>,
-        image: 'https://images.unsplash.com/photo-1522071820081-009f0129c71c?w=600&h=400&fit=crop'
+        image: '/assets/images/Managed Talent & RPO.jpg'
     }
 ]
 
@@ -249,7 +249,7 @@ export default function StaffingSolutionPage() {
                     className="hero-fade-in section-with-curve"
                     data-aos="fade-up"
                     style={{
-                        background: "linear-gradient(rgba(0,0,0,0.7),rgba(0,0,0,0.7)),url('https://images.unsplash.com/photo-1559526324-593bc073d938?w=1920&h=1080&fit=crop') center/cover",
+                        background: "linear-gradient(rgba(0,0,0,0.6),rgba(0,0,0,0.6)),url('/assets/images/Staffying center page.jpg') center/cover no-repeat",
                         minHeight: '100vh',
                         display: 'flex',
                         alignItems: 'center',

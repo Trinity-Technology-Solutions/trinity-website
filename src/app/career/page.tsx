@@ -4,6 +4,9 @@ import Link from 'next/link'
 
 const ZYNCJOBS_API = process.env.NEXT_PUBLIC_ZYNCJOBS_API || ''
 const ZYNCJOBS_URL = process.env.NEXT_PUBLIC_ZYNCJOBS_URL || 'https://zyncjobs.com'
+const TRINITY_COMPANY_ID = 'ce66e828-6b29-4109-8d36-59a672c198d0'
+const TRINITY_EMPLOYER_ID = '0420'
+const TRINITY_LOGO = 'https://img.logo.dev/trinitetech.com?token=pk_cY8JBeWnQR6g5m_ymQhBoQ&size=80'
 
 type Job = {
   id: string
@@ -23,6 +26,8 @@ type Job = {
   description: string
   companyLogo: string | null
   createdAt: string
+  employerId: string
+  companyId: string
 }
 
 const WHY_JOIN = [
@@ -36,10 +41,10 @@ const WHY_JOIN = [
 
 const PROCESS = [
   { step: '01', title: 'Apply', desc: 'Submit your application on ZyncJobs with your resume and profile.' },
-  { step: '02', title: 'Screening', desc: 'Our HR team reviews your profile and reaches out within 3 business days.' },
-  { step: '03', title: 'Technical Round', desc: 'Role-specific technical assessment or case study with our engineering leads.' },
-  { step: '04', title: 'HR Round', desc: 'Culture fit discussion and deep dive into your experience and goals.' },
-  { step: '05', title: 'Offer Letter', desc: 'Welcome to Trinity! We move fast — offers within 48 hours of final round.' },
+  { step: '02', title: 'Screening', desc: 'Our HR team reviews your profile and connects with shortlisted candidates.' },
+  { step: '03', title: 'Technical Round', desc: 'Role-specific technical assessment with our engineering team.' },
+  { step: '04', title: 'HR Round', desc: 'A conversation about your experience, goals, and fit with Trinity.' },
+  { step: '05', title: 'Offer & Onboarding', desc: 'Selected candidates receive an offer and are guided through onboarding.' },
 ]
 
 function JobCard({ job }: { job: Job }) {
@@ -47,34 +52,43 @@ function JobCard({ job }: { job: Job }) {
   const salary = job.salaryMin && job.salaryMax
     ? `${job.currency || 'INR'} ${(job.salaryMin / 100000).toFixed(1)}L – ${(job.salaryMax / 100000).toFixed(1)}L`
     : null
+  const skills = job.skills || []
 
   return (
     <div className="career-job-card">
       <div className="career-job-card-top">
         <div className="career-job-company-logo">
-          {job.companyLogo
-            ? <img src={job.companyLogo} alt={job.company} />
-            : <span>{job.company?.charAt(0) || 'T'}</span>
-          }
+          <img src={TRINITY_LOGO} alt="Trinity Technology Solutions" />
         </div>
         <div className="career-job-meta">
-          <span className="career-job-type">{job.jobType}</span>
+          <span className="career-job-type">{job.jobType || 'Full-time'}</span>
           {job.workSetting && <span className="career-job-setting">{job.workSetting}</span>}
         </div>
       </div>
       <h3 className="career-job-title">{job.jobTitle}</h3>
       <p className="career-job-company">{job.company}</p>
       <div className="career-job-details">
-        <span style={{display:'inline-flex',alignItems:'center',gap:'0.3rem'}}><svg width="14" height="14" viewBox="0 0 24 24" fill="none"><path d="M21 10c0 7-9 13-9 13S3 17 3 10a9 9 0 0 1 18 0z" stroke="currentColor" strokeWidth="2"/><circle cx="12" cy="10" r="3" stroke="currentColor" strokeWidth="2"/></svg> {job.location}</span>
-        {job.experienceRange && <span style={{display:'inline-flex',alignItems:'center',gap:'0.3rem'}}><svg width="14" height="14" viewBox="0 0 24 24" fill="none"><circle cx="12" cy="12" r="10" stroke="currentColor" strokeWidth="2"/><path d="M12 6v6l4 2" stroke="currentColor" strokeWidth="2" strokeLinecap="round"/></svg> {job.experienceRange}</span>}
-        {salary && <span style={{display:'inline-flex',alignItems:'center',gap:'0.3rem'}}><svg width="14" height="14" viewBox="0 0 24 24" fill="none"><path d="M12 2v20M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6" stroke="currentColor" strokeWidth="2" strokeLinecap="round"/></svg> {salary}</span>}
+        <span className="career-detail-item">
+          <svg width="13" height="13" viewBox="0 0 24 24" fill="none"><path d="M21 10c0 7-9 13-9 13S3 17 3 10a9 9 0 0 1 18 0z" stroke="currentColor" strokeWidth="2"/><circle cx="12" cy="10" r="3" stroke="currentColor" strokeWidth="2"/></svg>
+          {job.location || '—'}
+        </span>
+        {job.experienceRange && (
+          <span className="career-detail-item">
+            <svg width="13" height="13" viewBox="0 0 24 24" fill="none"><circle cx="12" cy="12" r="10" stroke="currentColor" strokeWidth="2"/><path d="M12 6v6l4 2" stroke="currentColor" strokeWidth="2" strokeLinecap="round"/></svg>
+            {job.experienceRange}
+          </span>
+        )}
       </div>
-      {job.skills?.length > 0 && (
-        <div className="career-job-skills">
-          {job.skills.slice(0, 4).map((s, i) => <span key={i} className="career-skill-tag">{s}</span>)}
-          {job.skills.length > 4 && <span className="career-skill-more">+{job.skills.length - 4}</span>}
+      {salary && (
+        <div className="career-job-salary">
+          <svg width="13" height="13" viewBox="0 0 24 24" fill="none"><path d="M12 2v20M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6" stroke="currentColor" strokeWidth="2" strokeLinecap="round"/></svg>
+          {salary}
         </div>
       )}
+      <div className="career-job-skills">
+        {skills.slice(0, 4).map((s, i) => <span key={i} className="career-skill-tag">{s}</span>)}
+        {skills.length > 4 && <span className="career-skill-more">+{skills.length - 4}</span>}
+      </div>
       <a href={applyUrl} target="_blank" rel="noopener noreferrer" className="career-apply-btn">
         Apply Now →
       </a>
@@ -99,10 +113,12 @@ export default function CareerPage() {
       setLoading(false)
       return
     }
-    fetch(`${ZYNCJOBS_API}/jobs?limit=100`)
+    fetch(`${ZYNCJOBS_API}/jobs?limit=200`)
       .then(r => r.json())
       .then(data => {
-        const list = Array.isArray(data) ? data : []
+        const list = (Array.isArray(data) ? data : [])
+          .filter((j: Job) => j.employerId === TRINITY_EMPLOYER_ID || j.companyId === TRINITY_COMPANY_ID)
+          .sort((a: Job, b: Job) => new Date(b.createdAt).getTime() - new Date(a.createdAt).getTime())
         setJobs(list)
         setFiltered(list)
         setLoading(false)
@@ -176,7 +192,7 @@ export default function CareerPage() {
               <div className="career-why-grid">
                 {WHY_JOIN.map((item, i) => (
                   <div key={i} className="career-why-card">
-                <div className="career-why-icon" style={{display:'flex',alignItems:'center',justifyContent:'center',color:'#4a6fa5'}}>{item.icon}</div>
+                <div className="career-why-icon" style={{display:'flex',alignItems:'center',justifyContent:'flex-start',color:'#4a6fa5'}}>{item.icon}</div>
                     <h3>{item.title}</h3>
                     <p>{item.desc}</p>
                   </div>
@@ -276,11 +292,7 @@ export default function CareerPage() {
                 </div>
               )}
 
-              {/* Powered by badge */}
-              <div className="career-powered-by">
-                <span>Powered by</span>
-                <a href={ZYNCJOBS_URL} target="_blank" rel="noopener noreferrer">ZyncJobs</a>
-              </div>
+              {/* Powered by badge - hidden */}
           </div>
         </section>
 
@@ -290,7 +302,7 @@ export default function CareerPage() {
               <div className="career-section-header">
                 <div className="career-section-label">HOW IT WORKS</div>
                 <h2 className="career-section-title">Our Hiring <span className="career-gradient-text">Process</span></h2>
-                <p className="career-section-sub">Transparent, fast, and candidate-friendly. From apply to offer in under 2 weeks.</p>
+                <p className="career-section-sub">A transparent and structured process designed to find the right fit for both you and Trinity.</p>
               </div>
               <div className="career-process-steps">
                 {PROCESS.map((item, i) => (

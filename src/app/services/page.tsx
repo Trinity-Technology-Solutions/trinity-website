@@ -123,7 +123,7 @@ export default function ServicesPage() {
       <main className="main-wrapper">
 
         {/* Hero — unchanged */}
-        <section className="hero-fade-in section-with-curve hero-services" data-aos="fade-up" style={{ background: "linear-gradient(rgba(0,0,0,0.7),rgba(0,0,0,0.7)),url('https://images.unsplash.com/photo-1451187580459-43490279c0fa?w=1920&h=1080&fit=crop') center/cover", minHeight: '100vh', display: 'flex', alignItems: 'center', color: 'white' }}>
+        <section className="hero-fade-in section-with-curve hero-services" data-aos="fade-up" style={{ background: "linear-gradient(rgba(0,0,0,0.6),rgba(0,0,0,0.6)),url('/assets/images/Service center page.png') center/cover no-repeat", minHeight: '100vh', display: 'flex', alignItems: 'center', color: 'white' }}>
           <div className="padding-global" style={{ width: '100%' }}>
             <div className="container-large">
               <div style={{ textAlign: 'center', marginBottom: '2rem' }}>
