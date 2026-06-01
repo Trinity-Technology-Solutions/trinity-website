@@ -6,6 +6,8 @@ const ZYNCJOBS_API = process.env.NEXT_PUBLIC_ZYNCJOBS_API || ''
 const ZYNCJOBS_URL = process.env.NEXT_PUBLIC_ZYNCJOBS_URL || 'https://zyncjobs.com'
 const TRINITY_COMPANY_ID = 'ce66e828-6b29-4109-8d36-59a672c198d0'
 const TRINITY_EMPLOYER_ID = '0420'
+const NAMBIKKAI_COMPANY_ID = '0c2caff6-0f71-471c-ae7b-24757b955e97'
+const NAMBIKKAI_EMPLOYER_ID = '6661'
 const TRINITY_LOGO = 'https://img.logo.dev/trinitetech.com?token=pk_cY8JBeWnQR6g5m_ymQhBoQ&size=80'
 
 type Job = {
@@ -58,7 +60,11 @@ function JobCard({ job }: { job: Job }) {
     <div className="career-job-card">
       <div className="career-job-card-top">
         <div className="career-job-company-logo">
-          <img src={TRINITY_LOGO} alt="Trinity Technology Solutions" />
+          <img
+            src={job.companyLogo || (job.companyId === NAMBIKKAI_COMPANY_ID ? 'https://img.logo.dev/nambikkai.in?token=pk_cY8JBeWnQR6g5m_ymQhBoQ&size=80' : TRINITY_LOGO)}
+            alt={job.company}
+            onError={(e) => { (e.target as HTMLImageElement).src = TRINITY_LOGO }}
+          />
         </div>
         <div className="career-job-meta">
           <span className="career-job-type">{job.jobType || 'Full-time'}</span>
@@ -113,14 +119,22 @@ export default function CareerPage() {
       setLoading(false)
       return
     }
-    fetch(`${ZYNCJOBS_API}/jobs?limit=200`)
-      .then(r => r.json())
-      .then(data => {
-        const list = (Array.isArray(data) ? data : [])
-          .filter((j: Job) => j.employerId === TRINITY_EMPLOYER_ID || j.companyId === TRINITY_COMPANY_ID)
-          .sort((a: Job, b: Job) => new Date(b.createdAt).getTime() - new Date(a.createdAt).getTime())
-        setJobs(list)
-        setFiltered(list)
+    const fetchJobs = (company: string) =>
+      fetch(`${ZYNCJOBS_API}/jobs?limit=100&search=${encodeURIComponent(company)}`)
+        .then(r => r.json())
+        .then(d => Array.isArray(d) ? d : [])
+        .catch(() => [])
+
+    Promise.all([fetchJobs('Trinity Technology Solutions'), fetchJobs('Nambikkai India')])
+      .then(([trinity, nambikkai]) => {
+        const seen = new Set<string>()
+        const merged = [...trinity, ...nambikkai].filter((j: Job) => {
+          if (seen.has(j.id)) return false
+          seen.add(j.id)
+          return true
+        }).sort((a: Job, b: Job) => new Date(b.createdAt).getTime() - new Date(a.createdAt).getTime())
+        setJobs(merged)
+        setFiltered(merged)
         setLoading(false)
       })
       .catch(() => {
