@@ -67,7 +67,7 @@
   
   /* Partners Section */
   .logos-scroll-container {
-    overflow-x: auto !important;
+    overflow: clip !important;
   }
   
   .partner-logo {

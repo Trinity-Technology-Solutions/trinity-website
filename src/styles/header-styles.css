@@ -30,7 +30,6 @@
 
 /* Page Wrapper Styles */
 .page-wrapper {
-  overflow-x: hidden !important;
   max-width: 100vw !important;
   width: 100% !important;
 }
@@ -114,7 +113,6 @@
 /* Partners Section Styles */
 .partners_comp {
   padding: 0.5rem 0;
-  overflow-x: hidden;
   margin-top: -60px;
 }
 
@@ -123,7 +121,6 @@
   padding-bottom: 0.5rem;
   width: 100%;
   max-width: 100vw;
-  overflow-x: hidden;
 }
 
 .partners_comp h2 {
@@ -134,7 +131,6 @@
 
 .partners_comp .container-large {
   max-width: 100%;
-  overflow-x: hidden;
 }
 
 /* About Section Styles */

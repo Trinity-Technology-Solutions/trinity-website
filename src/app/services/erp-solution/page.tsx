@@ -10,7 +10,7 @@ const erpServices = [
         desc: 'Assess your processes, identify gaps, and develop a clear ERP roadmap with your objectives in mind.',
         capabilities: ['Process assessment & gap analysis', 'ERP selection strategy', 'Roadmap design', 'Business outcomes planning'],
         color: '#2563eb',
-        icon: '📈',
+        icon: <svg width="22" height="22" viewBox="0 0 24 24" fill="none"><path d="M18 20V10M12 20V4M6 20v-6" stroke="currentColor" strokeWidth="2" strokeLinecap="round"/></svg>,
         image: '/assets/images/Card-1 ERP.jpg'
     },
     {
@@ -18,7 +18,7 @@ const erpServices = [
         desc: 'Complete ERP implementation from system setup to custom configuration that supports your business.',
         capabilities: ['System configuration', 'Custom module setup', 'User onboarding', 'Go-live planning'],
         color: '#0f766e',
-        icon: '⚙️',
+        icon: <svg width="22" height="22" viewBox="0 0 24 24" fill="none"><path d="M12 15a3 3 0 1 0 0-6 3 3 0 0 0 0 6z" stroke="currentColor" strokeWidth="2"/><path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 0 1-2.83 2.83l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 0 1-4 0v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 0 1-2.83-2.83l.06-.06A1.65 1.65 0 0 0 4.68 15a1.65 1.65 0 0 0-1.51-1H3a2 2 0 0 1 0-4h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 0 1 2.83-2.83l.06.06A1.65 1.65 0 0 0 9 4.68a1.65 1.65 0 0 0 1-1.51V3a2 2 0 0 1 4 0v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 0 1 2.83 2.83l-.06.06A1.65 1.65 0 0 0 19.4 9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 0 1 0 4h-.09a1.65 1.65 0 0 0-1.51 1z" stroke="currentColor" strokeWidth="2"/></svg>,
         image: '/assets/images/Card-2 ERP.jpg'
     },
     {
@@ -26,7 +26,7 @@ const erpServices = [
         desc: 'Effortless integration with existing tools, CRM\'s, and other applications for seamless workflows.',
         capabilities: ['API integration', 'Middleware setup', 'Third-party connectors', 'Automation workflows'],
         color: '#d97706',
-        icon: '🔗',
+        icon: <svg width="22" height="22" viewBox="0 0 24 24" fill="none"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71" stroke="currentColor" strokeWidth="2" strokeLinecap="round"/><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71" stroke="currentColor" strokeWidth="2" strokeLinecap="round"/></svg>,
         image: '/assets/images/card-3 ERP.jpg'
     },
     {
@@ -34,7 +34,7 @@ const erpServices = [
         desc: 'Develop and customize ERP solutions to fit your business and processes for maximum efficiency.',
         capabilities: ['Custom module development', 'User experience design', 'Workflow automation', 'Scalable architecture'],
         color: '#9333ea',
-        icon: '🧩',
+        icon: <svg width="22" height="22" viewBox="0 0 24 24" fill="none"><rect x="3" y="3" width="7" height="7" rx="1" stroke="currentColor" strokeWidth="2"/><rect x="14" y="3" width="7" height="7" rx="1" stroke="currentColor" strokeWidth="2"/><rect x="3" y="14" width="7" height="7" rx="1" stroke="currentColor" strokeWidth="2"/><rect x="14" y="14" width="7" height="7" rx="1" stroke="currentColor" strokeWidth="2"/></svg>,
         image: '/assets/images/Card-4 ERP.jpg'
     }
 ]
@@ -108,21 +108,6 @@ function SolutionCard({ solution, index }: { solution: typeof erpServices[0], in
                     }}
                     className="solution-card-img"
                 />
-                <div style={{
-                    position: 'absolute',
-                    inset: 0,
-                    background: `linear-gradient(135deg, ${solution.color}40, ${solution.color}20)`,
-                    display: 'flex',
-                    alignItems: 'center',
-                    justifyContent: 'center'
-                }}>
-                    <div style={{
-                        fontSize: '3rem',
-                        opacity: 0.9
-                    }}>
-                        {solution.icon}
-                    </div>
-                </div>
             </div>
 
             <div style={{ padding: '1.75rem', display: 'flex', flexDirection: 'column', flex: 1 }}>

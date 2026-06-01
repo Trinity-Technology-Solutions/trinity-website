@@ -47,8 +47,9 @@ export default function ContactPage() {
                   <div className="title-small">Business consulting</div>
                   <h2 data-aos="fade-up">Get in touch</h2>
                   <p style={{ marginBottom: '2rem', color: '#666', fontSize: '1.1rem', textAlign: 'justify' }}>Ready to discuss your project? Click the button below to send us a message.</p>
-                  <button onClick={contactUs} style={{ background: 'linear-gradient(135deg,#4f46e5,#7c3aed)', color: 'white', padding: '1.2rem 3rem', border: 'none', borderRadius: '50px', fontSize: '1.2rem', fontWeight: 600, cursor: 'pointer', boxShadow: '0 4px 20px rgba(79,70,229,0.4)', margin: '0 auto' }}>
-                    📧 Contact Us Now
+                  <button onClick={contactUs} style={{ background: 'linear-gradient(135deg,#4f46e5,#7c3aed)', color: 'white', padding: '1.2rem 3rem', border: 'none', borderRadius: '50px', fontSize: '1.2rem', fontWeight: 600, cursor: 'pointer', boxShadow: '0 4px 20px rgba(79,70,229,0.4)', margin: '0 auto', display: 'inline-flex', alignItems: 'center', gap: '0.5rem' }}>
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z" stroke="white" strokeWidth="2" strokeLinejoin="round"/><path d="M22 6l-10 7L2 6" stroke="white" strokeWidth="2" strokeLinecap="round"/></svg>
+                    Contact Us Now
                   </button>
                 </div>
               </div>
@@ -62,10 +63,14 @@ export default function ContactPage() {
             <div className="container-large">
               <div style={{ maxWidth: '800px', margin: '0 auto', textAlign: 'center' }}>
                 <div style={{ background: '#f8f9fa', borderRadius: '16px', padding: '2.5rem', border: '1px solid #e5e7eb', boxShadow: '0 4px 20px rgba(0,0,0,0.08)' }}>
-                  <h3 style={{ color: '#1f2937', fontSize: '1.5rem', fontWeight: 700, marginBottom: '1rem' }}>📅 Schedule a Consultation</h3>
+                  <h3 style={{ color: '#1f2937', fontSize: '1.5rem', fontWeight: 700, marginBottom: '1rem' }}>
+                    <svg width="22" height="22" viewBox="0 0 24 24" fill="none" style={{display:'inline',verticalAlign:'middle',marginRight:'0.5rem'}}><rect x="3" y="4" width="18" height="18" rx="2" stroke="#1f2937" strokeWidth="2"/><path d="M16 2v4M8 2v4M3 10h18" stroke="#1f2937" strokeWidth="2" strokeLinecap="round"/></svg>
+                    Schedule a Consultation
+                  </h3>
                   <p style={{ color: '#6b7280', marginBottom: '2rem', fontSize: '1.1rem', lineHeight: 1.6 }}>Book a free 30-minute consultation with one of our data experts to discuss your project.</p>
                   <a href="https://calendly.com/antonytrinity" target="_blank" rel="noopener" style={{ background: 'linear-gradient(135deg,#4f46e5,#7c3aed)', color: 'white', padding: '1rem 2.5rem', borderRadius: '50px', textDecoration: 'none', fontWeight: 600, fontSize: '1.1rem', display: 'inline-flex', alignItems: 'center', gap: '0.75rem' }}>
-                    📅 Book a Meeting
+                    <svg width="18" height="18" viewBox="0 0 24 24" fill="none"><rect x="3" y="4" width="18" height="18" rx="2" stroke="white" strokeWidth="2"/><path d="M16 2v4M8 2v4M3 10h18" stroke="white" strokeWidth="2" strokeLinecap="round"/></svg>
+                    Book a Meeting
                   </a>
                 </div>
               </div>
@@ -79,14 +84,14 @@ export default function ContactPage() {
             <div className="container-large">
               <div className="contact-cards-grid" style={{ display: 'grid', gridTemplateColumns: 'repeat(4,1fr)', gap: '2rem', maxWidth: '1200px', margin: '0 auto' }}>
                 {[
-                  { icon: '📍', title: 'Locations', desc: 'USA, India, Oman, Netherlands - Global presence serving clients worldwide.', action: 'Get Direction', onClick: () => {} },
-                  { icon: '📧', title: 'Email Address', desc: 'Please inform us if you are interested in data analytics and AI solutions.', action: 'sales@trinitetech.com', href: 'mailto:sales@trinitetech.com' },
-                  { icon: '📞', title: 'Phone Call', desc: 'Inform us if you are interested in discussing the project or anything.', action: '+1 214-206-8558', href: 'tel:+12142068558' },
-                  { icon: '💬', title: 'Drop a Message', desc: "If you'd like to hear more about a project or like to see more of our work, drop us a line!", action: 'Send Message', href: '#contact-form' },
+                  { icon: <svg width="22" height="22" viewBox="0 0 24 24" fill="none"><path d="M21 10c0 7-9 13-9 13S3 17 3 10a9 9 0 0 1 18 0z" stroke="white" strokeWidth="2"/><circle cx="12" cy="10" r="3" stroke="white" strokeWidth="2"/></svg>, title: 'Locations', desc: 'USA, India, Oman, Netherlands - Global presence serving clients worldwide.', action: 'Get Direction', onClick: () => {} },
+                  { icon: <svg width="22" height="22" viewBox="0 0 24 24" fill="none"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z" stroke="white" strokeWidth="2" strokeLinejoin="round"/><path d="M22 6l-10 7L2 6" stroke="white" strokeWidth="2" strokeLinecap="round"/></svg>, title: 'Email Address', desc: 'Please inform us if you are interested in data analytics and AI solutions.', action: 'sales@trinitetech.com', href: 'mailto:sales@trinitetech.com' },
+                  { icon: <svg width="22" height="22" viewBox="0 0 24 24" fill="none"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07A19.5 19.5 0 0 1 4.69 12a19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 3.6 1.27h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L7.91 8.91a16 16 0 0 0 6 6l.91-.91a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0 1 21.73 16.92z" stroke="white" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/></svg>, title: 'Phone Call', desc: 'Inform us if you are interested in discussing the project or anything.', action: '+1 214-206-8558', href: 'tel:+12142068558' },
+                  { icon: <svg width="22" height="22" viewBox="0 0 24 24" fill="none"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z" stroke="white" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/></svg>, title: 'Drop a Message', desc: "If you'd like to hear more about a project or like to see more of our work, drop us a line!", action: 'Send Message', href: '#contact-form' },
                 ].map((card, i) => (
                   <div key={i} style={{ background: 'white', padding: '2rem', borderRadius: '12px', boxShadow: '0 4px 20px rgba(0,0,0,0.08)', textAlign: 'center', display: 'flex', flexDirection: 'column', justifyContent: 'space-between', minHeight: '300px' }} data-aos="zoom-in">
                     <div>
-                      <div style={{ width: '60px', height: '60px', background: '#4285f4', borderRadius: '50%', display: 'flex', alignItems: 'center', justifyContent: 'center', margin: '0 auto 1.5rem', fontSize: '1.5rem' }}>{card.icon}</div>
+                      <div style={{ width: '60px', height: '60px', background: '#4285f4', borderRadius: '50%', display: 'flex', alignItems: 'center', justifyContent: 'center', margin: '0 auto 1.5rem' }}>{card.icon}</div>
                       <h3 style={{ color: '#333', marginBottom: '1rem', fontSize: '1.25rem' }}>{card.title}</h3>
                       <p style={{ color: '#666', marginBottom: '1.5rem', lineHeight: 1.5 }}>{card.desc}</p>
                     </div>

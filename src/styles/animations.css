@@ -15,7 +15,6 @@ body, html {
 .container-medium,
 .container-small {
   max-width: 100% !important;
-  overflow-x: hidden;
 }
 
 /* AOS animation adjustments for mobile */

@@ -9,7 +9,44 @@ import ChatBot from '@/components/ChatBot'
 
 const HOME_SERVICES = [
   {
-    href: '/services#staffing',
+    href: '/services/ai-solution',
+    title: 'Data & AI Solutions',
+    desc: 'Deploy intelligent AI models that automate workflows and accelerate decisions.',
+    color: '#c084fc',
+    icon: (
+      <svg width="28" height="28" viewBox="0 0 24 24" fill="none">
+        <path d="M9 3H5a2 2 0 0 0-2 2v4m6-6h10a2 2 0 0 1 2 2v4M9 3v18m0 0h10a2 2 0 0 0 2-2v-4M9 21H5a2 2 0 0 1-2-2v-4m0 0h18" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
+      </svg>
+    ),
+  },
+  {
+    href: '/services/erp-solution',
+    title: 'ERP Solutions',
+    desc: 'Streamline enterprise operations with smart, scalable ERP implementations.',
+    color: '#fb923c',
+    icon: (
+      <svg width="28" height="28" viewBox="0 0 24 24" fill="none">
+        <path d="M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
+        <polyline points="3.27 6.96 12 12.01 20.73 6.96" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
+        <line x1="12" y1="22.08" x2="12" y2="12" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
+      </svg>
+    ),
+  },
+  {
+    href: '/services/web-development',
+    title: 'Software Services',
+    desc: 'Build high-performance, modern web applications and digital platforms.',
+    color: '#34d399',
+    icon: (
+      <svg width="28" height="28" viewBox="0 0 24 24" fill="none">
+        <polyline points="16 18 22 12 16 6" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round"/>
+        <polyline points="8 6 2 12 8 18" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round"/>
+        <line x1="14" y1="4" x2="10" y2="20" stroke="currentColor" strokeWidth="2" strokeLinecap="round"/>
+      </svg>
+    ),
+  },
+  {
+    href: '/services/staffing-solution',
     title: 'Staffing Solutions',
     desc: 'Access top-tier data and AI talent to power your projects with precision.',
     color: '#f472b6',
@@ -19,43 +56,6 @@ const HOME_SERVICES = [
         <circle cx="9" cy="7" r="4" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
         <path d="M23 21v-2a4 4 0 0 0-3-3.87" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
         <path d="M16 3.13a4 4 0 0 1 0 7.75" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
-      </svg>
-    ),
-  },
-  {
-    href: '/services#erp',
-    title: 'ERP Solutions',
-    desc: 'Streamline enterprise operations with smart, scalable ERP implementations.',
-    color: '#fb923c',
-    icon: (
-      <svg width="28" height="28" viewBox="0 0 24 24" fill="none">
-        <rect x="2" y="3" width="20" height="14" rx="2" stroke="currentColor" strokeWidth="2"/>
-        <path d="M8 21h8M12 17v4" stroke="currentColor" strokeWidth="2" strokeLinecap="round"/>
-        <path d="M7 8h10M7 11h6" stroke="currentColor" strokeWidth="2" strokeLinecap="round"/>
-      </svg>
-    ),
-  },
-  {
-    href: '/services#ai',
-    title: 'AI Solutions',
-    desc: 'Deploy intelligent AI models that automate workflows and accelerate decisions.',
-    color: '#c084fc',
-    icon: (
-      <svg width="28" height="28" viewBox="0 0 24 24" fill="none">
-        <path d="M12 2a2 2 0 0 1 2 2c0 .74-.4 1.39-1 1.73V7h1a7 7 0 0 1 7 7h1a1 1 0 0 1 1 1v3a1 1 0 0 1-1 1h-1v1a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-1H2a1 1 0 0 1-1-1v-3a1 1 0 0 1 1-1h1a7 7 0 0 1 7-7h1V5.73c-.6-.34-1-.99-1-1.73a2 2 0 0 1 2-2z" stroke="currentColor" strokeWidth="1.8" strokeLinejoin="round"/>
-        <circle cx="9" cy="14" r="1" fill="currentColor"/>
-        <circle cx="15" cy="14" r="1" fill="currentColor"/>
-      </svg>
-    ),
-  },
-  {
-    href: '/services#web',
-    title: 'Web Development',
-    desc: 'Build high-performance, modern web applications and digital platforms.',
-    color: '#34d399',
-    icon: (
-      <svg width="28" height="28" viewBox="0 0 24 24" fill="none">
-        <path d="M3 12l2-2m0 0l7-7 7 7M5 10v10a1 1 0 001 1h3m10-11l2 2m-2-2v10a1 1 0 01-1 1h-3m-6 0a1 1 0 001-1v-4a1 1 0 011-1h2a1 1 0 011 1v4a1 1 0 001 1m-6 0h6" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
       </svg>
     ),
   },
@@ -427,21 +427,20 @@ export default function HomePage() {
               </div>
               <div className="sectors-grid">
                 {[
-                  { img: 'https://images.unsplash.com/photo-1559757148-5c350d0d3c56?w=800&q=80', title: 'Healthcare', desc: 'AI-powered clinical analytics & patient intelligence', icon: '🏥' },
-                  { img: 'https://images.unsplash.com/photo-1551288049-bebda4e38f71?w=800&q=80', title: 'Finance', desc: 'Real-time financial intelligence & risk systems', icon: '💹' },
-                  { img: 'https://images.unsplash.com/photo-1556742049-0cfed4f6a45d?w=800&q=80', title: 'Retail', desc: 'Customer analytics & demand forecasting platforms', icon: '🛒' },
-                  { img: 'https://images.unsplash.com/photo-1581091226825-a6a2a5aee158?w=800&q=80', title: 'Manufacturing', desc: 'Smart factory data & predictive maintenance', icon: '🏭' },
-                  { img: 'https://images.unsplash.com/photo-1558618666-fcd25c85cd64?w=800&q=80', title: 'Telecommunications', desc: 'Network analytics & subscriber intelligence', icon: '📡' },
-                  { img: 'https://images.unsplash.com/photo-1451187580459-43490279c0fa?w=800&q=80', title: 'Information Technology', desc: 'Cloud-native data platforms & AI integration', icon: '💻' },
-                  { img: 'https://images.unsplash.com/photo-1554224155-6726b3ff858f?w=800&q=80', title: 'BFSI', desc: 'Banking data modernization & compliance analytics', icon: '🏦' },
-                  { img: 'https://images.unsplash.com/photo-1581092160562-40aa08e78837?w=800&q=80', title: 'Engineering', desc: 'IoT data pipelines & operational intelligence', icon: '⚙️' },
+                  { img: '/assets/images/Healthcare.jpg', title: 'Healthcare', desc: 'AI-powered clinical analytics & patient intelligence', icon: <svg width="28" height="28" viewBox="0 0 24 24" fill="none"><path d="M12 2a10 10 0 1 0 0 20A10 10 0 0 0 12 2z" stroke="currentColor" strokeWidth="1.8"/><path d="M12 7v10M7 12h10" stroke="currentColor" strokeWidth="2" strokeLinecap="round"/></svg> },
+                  { img: '/assets/images/finance.jpg', title: 'Finance', desc: 'Real-time financial intelligence & risk systems', icon: <svg width="28" height="28" viewBox="0 0 24 24" fill="none"><path d="M12 2v20M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6" stroke="currentColor" strokeWidth="2" strokeLinecap="round"/></svg> },
+                  { img: '/assets/images/Retail.webp', title: 'Retail', desc: 'Customer analytics & demand forecasting platforms', icon: <svg width="28" height="28" viewBox="0 0 24 24" fill="none"><path d="M6 2L3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4z" stroke="currentColor" strokeWidth="2" strokeLinejoin="round"/><path d="M3 6h18M16 10a4 4 0 0 1-8 0" stroke="currentColor" strokeWidth="2" strokeLinecap="round"/></svg> },
+                  { img: '/assets/images/Manufacturing.jpg', title: 'Manufacturing', desc: 'Smart factory data & predictive maintenance', icon: <svg width="28" height="28" viewBox="0 0 24 24" fill="none"><path d="M2 20h20M4 20V10l4-4 4 4 4-6 4 6v10" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/></svg> },
+                  { img: '/assets/images/Telecommunication.jpg', title: 'Telecommunications', desc: 'Network analytics & subscriber intelligence', icon: <svg width="28" height="28" viewBox="0 0 24 24" fill="none"><path d="M1.5 8.5a13 13 0 0 1 21 0M5 12a10 10 0 0 1 14 0M8.5 15.5a6 6 0 0 1 7 0M12 19h.01" stroke="currentColor" strokeWidth="2" strokeLinecap="round"/></svg> },
+                  { img: '/assets/images/Information Technology.jpeg', title: 'Information Technology', desc: 'Cloud-native data platforms & AI integration', icon: <svg width="28" height="28" viewBox="0 0 24 24" fill="none"><rect x="2" y="3" width="20" height="14" rx="2" stroke="currentColor" strokeWidth="2"/><path d="M8 21h8M12 17v4" stroke="currentColor" strokeWidth="2" strokeLinecap="round"/></svg> },
+                  { img: '/assets/images/bfsi.webp', title: 'BFSI', desc: 'Banking data modernization & compliance analytics', icon: <svg width="28" height="28" viewBox="0 0 24 24" fill="none"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z" stroke="currentColor" strokeWidth="2" strokeLinejoin="round"/><path d="M9 22V12h6v10" stroke="currentColor" strokeWidth="2" strokeLinejoin="round"/></svg> },
+                  { img: '/assets/images/Engineering.jpg', title: 'Engineering', desc: 'IoT data pipelines & operational intelligence', icon: <svg width="28" height="28" viewBox="0 0 24 24" fill="none"><path d="M12 15a3 3 0 1 0 0-6 3 3 0 0 0 0 6z" stroke="currentColor" strokeWidth="2"/><path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 0 1-2.83 2.83l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 0 1-4 0v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 0 1-2.83-2.83l.06-.06A1.65 1.65 0 0 0 4.68 15a1.65 1.65 0 0 0-1.51-1H3a2 2 0 0 1 0-4h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 0 1 2.83-2.83l.06.06A1.65 1.65 0 0 0 9 4.68a1.65 1.65 0 0 0 1-1.51V3a2 2 0 0 1 4 0v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 0 1 2.83 2.83l-.06.06A1.65 1.65 0 0 0 19.4 9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 0 1 0 4h-.09a1.65 1.65 0 0 0-1.51 1z" stroke="currentColor" strokeWidth="2"/></svg> },
                 ].map((s, i) => (
                   <div key={i} className="sector-card">
                     <img src={s.img} loading="lazy" alt={s.title} className="sector-card-img" />
                     <div className="sector-card-overlay"></div>
                     <div className="sector-card-bottom-line"></div>
                     <div className="sector-card-content">
-                      <div className="sector-card-icon">{s.icon}</div>
                       <h3 className="sector-card-title">{s.title}</h3>
                       <p className="sector-card-desc">{s.desc}</p>
                       <div className="sector-card-cta">Explore →</div>
@@ -466,10 +465,10 @@ export default function HomePage() {
               </div>
               <div className="biz-grid">
                 {[
-                  { img: 'https://images.unsplash.com/photo-1566073771259-6a8506099945?w=800&h=500&fit=crop', title: 'Hotelierlinks', category: 'Hospitality Tech', desc: 'Transforming the hospitality industry through innovative technology solutions and data-driven guest experiences.', tags: ['AI Powered','Global Reach'], link: 'https://hotelierlinks.com/about-us/' },
-                  { img: 'https://images.unsplash.com/photo-1460925895917-afdab827c52f?w=800&h=500&fit=crop', title: 'GrowthPulse', category: 'Digital Marketing', desc: 'Full-service digital marketing agency driving measurable business growth through strategic optimization.', tags: ['Growth Analytics','SEO & Ads'], link: 'https://growthpulss.com/' },
-                  { img: 'https://images.unsplash.com/photo-1551288049-bebda4e38f71?w=800&h=500&fit=crop', title: 'TNova', category: 'ERP Solutions', desc: 'Leading provider of ERPNext implementation and customization services for enterprise business optimization.', tags: ['ERPNext','Enterprise'], link: null },
-                  { img: 'https://images.unsplash.com/photo-1522202176988-66273c2fd55f?w=800&h=500&fit=crop', title: 'Kallooriconnect', category: 'EdTech', desc: 'Comprehensive educational networking platform bridging students, institutions, and career opportunities.', tags: ['EdTech','Networking'], link: 'https://kallooriconnect.com/' },
+                  { img: '/assets/images/Hotelier links (2).jpg', title: 'Hotelierlinks', category: 'Hospitality Tech', desc: 'Transforming the hospitality industry through innovative technology solutions and data-driven guest experiences.', tags: ['AI Powered','Global Reach'], link: 'https://hotelierlinks.com/about-us/' },
+                  { img: '/assets/images/Growthpulse.jpg', title: 'GrowthPulse', category: 'Digital Marketing', desc: 'Full-service digital marketing agency driving measurable business growth through strategic optimization.', tags: ['Growth Analytics','SEO & Ads'], link: 'https://growthpulss.com/' },
+                  { img: '/assets/images/Tnova.jpg', title: 'TNova', category: 'ERP Solutions', desc: 'Leading provider of ERPNext implementation and customization services for enterprise business optimization.', tags: ['ERPNext','Enterprise'], link: null },
+                  { img: '/assets/images/Kallori connect.png', title: 'Kallooriconnect', category: 'EdTech', desc: 'Comprehensive educational networking platform bridging students, institutions, and career opportunities.', tags: ['EdTech','Networking'], link: 'https://kallooriconnect.com/' },
                 ].map((b, i) => (
                   <div key={i} className="biz-card">
                     <div className="biz-card-img-wrap">
@@ -563,11 +562,11 @@ export default function HomePage() {
               </div>
               <div className="faq-grid">
                 {[
-                  { q: 'What is data analytics and AI?', a: 'Data analytics is the process of examining data to uncover valuable insights, and AI helps by automating this analysis, making it faster and more effective.' },
-                  { q: 'How does artificial intelligence enhance data analytics?', a: 'AI accelerates data analysis, identifies hidden patterns, and predicts future trends, enabling businesses to make more informed decisions.' },
-                  { q: 'Why is digital transformation important for modern businesses?', a: 'Digital transformation helps businesses stay competitive by using advanced technology to improve efficiency, innovate, and better serve customers.' },
-                  { q: 'What industries does Trinity Technology Solutions serve?', a: 'We serve finance, healthcare, manufacturing, retail, and more, tailoring AI and data solutions based on each industry\'s requirements.' },
-                  { q: 'How do I get started with Trinity Technology Solutions?', a: 'Contact us for a consultation, and we will help you plan and execute your data analytics and AI initiatives.' },
+                  { q: 'What is data analytics and AI?', a: 'Data analytics is the process of examining data to uncover meaningful insights that drive smarter business decisions. AI takes this further by enabling machines to learn from data and make predictions automatically. Together, they help organizations automate analysis, reduce costs, and unlock new growth opportunities at scale.' },
+                  { q: 'How does artificial intelligence enhance data analytics?', a: 'AI automates complex data processing tasks, identifies hidden patterns across large datasets, and predicts future trends with high accuracy. It enables real-time anomaly detection and analysis of unstructured data like documents and emails. The result is faster, deeper insights that give businesses a true competitive edge.' },
+                  { q: 'Why is digital transformation important for modern businesses?', a: 'Digital transformation enables businesses to automate processes, deliver personalized experiences, and respond to market changes in real time. It breaks down data silos and connects teams across geographies. Companies that delay risk falling behind competitors already leveraging cloud, AI, and data platforms.' },
+                  { q: 'What industries does Trinity Technology Solutions serve?', a: 'We serve Finance, Healthcare, Retail, Manufacturing, Telecommunications, IT, BFSI, and Engineering. Each engagement is tailored to the industry\'s specific data challenges and compliance requirements. From fraud detection for banks to predictive maintenance for manufacturers, we bring deep domain expertise.' },
+                  { q: 'How do I get started with Trinity Technology Solutions?', a: 'Reach out through our Contact page or book a free consultation. Our team will schedule a discovery call to understand your data landscape and business goals. We then design a tailored roadmap and focus on delivering measurable outcomes from day one.' },
                 ].map((item, i) => (
                   <div key={i} className="faq-item">
                     <div className="faq-item-number">0{i + 1}</div>

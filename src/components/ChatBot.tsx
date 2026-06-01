@@ -42,7 +42,7 @@ export default function ChatBot() {
   const [greetingVisible, setGreetingVisible] = useState(false)
   const [greetingDismissed, setGreetingDismissed] = useState(false)
   const [msgs, setMsgs] = useState<Msg[]>([
-    { sender: 'bot', text: "👋 Hi! I'm Trinity, your digital transformation assistant from Trinity Technology Solutions. I can help you with our IT consulting, software development, cloud solutions, data engineering services, and more. How can I assist you today?" }
+    { sender: 'bot', text: "Hi! I'm Trinity, your digital transformation assistant from Trinity Technology Solutions. I can help you with our IT consulting, software development, cloud solutions, data engineering services, and more. How can I assist you today?" }
   ])
   const [input, setInput] = useState('')
   const [isTyping, setIsTyping] = useState(false)
@@ -91,7 +91,7 @@ export default function ChatBot() {
               </svg>
             </div>
             <div className="cb-greeting-text">
-              <p>👋 Hi! I&apos;m Trinity. Need help with our IT solutions or data services?</p>
+              <p>Hi! I&apos;m Trinity. Need help with our IT solutions or data services?</p>
               <small>Click to chat with me!</small>
             </div>
             <button className="cb-dismiss" onClick={(e) => { e.stopPropagation(); setGreetingDismissed(true) }}>×</button>

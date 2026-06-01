@@ -1,5 +1,6 @@
 'use client'
 import { useEffect, useState } from 'react'
+import emailjs from '@emailjs/browser'
 
 export default function StickyBanner() {
   const [visible, setVisible] = useState(false)
@@ -71,13 +72,29 @@ export default function StickyBanner() {
       <p className="sticky-banner-desc">Get the free report on data strategies driving growth.</p>
 
       {!done ? (
-        <form onSubmit={(e) => {
+        <form onSubmit={async (e) => {
           e.preventDefault()
           const a = document.createElement('a')
-          a.href = '/trinity-whitepaper.pdf'
+          a.href = '/assets/trinity_whitepaper.pdf'
           a.download = 'Trinity-Whitepaper.pdf'
+          document.body.appendChild(a)
           a.click()
+          document.body.removeChild(a)
           setDone(true)
+          try {
+            emailjs.init(process.env.NEXT_PUBLIC_EMAILJS_PUBLIC_KEY!)
+            await emailjs.send(
+              process.env.NEXT_PUBLIC_EMAILJS_SERVICE_ID!,
+              process.env.NEXT_PUBLIC_EMAILJS_TEMPLATE_ID!,
+              {
+                to_email: 'admin@trinitytechsolutions.com',
+                user_email: email,
+                download_time: new Date().toLocaleString(),
+              }
+            )
+          } catch (err) {
+            console.error('EmailJS error:', err)
+          }
         }}>
           <input
             type="email"
@@ -96,7 +113,10 @@ export default function StickyBanner() {
           </button>
         </form>
       ) : (
-        <p className="sticky-banner-thanks">✓ Thanks! Check your inbox shortly.</p>
+        <p className="sticky-banner-thanks" style={{display:'flex',alignItems:'center',gap:'0.5rem'}}>
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none"><path d="M20 6L9 17l-5-5" stroke="#22c55e" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round"/></svg>
+          Thanks! Check your inbox shortly.
+        </p>
       )}
     </div>
   )
