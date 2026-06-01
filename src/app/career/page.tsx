@@ -98,8 +98,12 @@ export default function CareerPage() {
       .then(r => r.json())
       .then(data => {
         const list = Array.isArray(data) ? data : []
-        setJobs(list)
-        setFiltered(list)
+        const allowed = list.filter((j: Job) =>
+          /trinity technology solution/i.test(j.company) ||
+          /nambikkai/i.test(j.company)
+        )
+        setJobs(allowed)
+        setFiltered(allowed)
         setLoading(false)
       })
       .catch(() => {
