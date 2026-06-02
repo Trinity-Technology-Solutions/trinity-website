@@ -528,22 +528,23 @@
 .biz-card-overlay {
   position: absolute;
   inset: 0;
-  background: linear-gradient(to top, rgba(0, 0, 0, 0.7) 0%, rgba(0, 0, 0, 0.1) 60%, transparent 100%);
+  background: linear-gradient(to top, rgba(0, 0, 0, 0.5) 0%, rgba(0, 0, 0, 0.05) 40%, transparent 100%);
 }
 
 .biz-card-category {
   position: absolute;
   top: 0.75rem;
   left: 0.75rem;
-  padding: 0.25rem 0.75rem;
-  background: rgba(0, 0, 0, 0.55);
+  padding: 0.3rem 0.9rem;
+  background: rgba(255, 255, 255, 0.92);
   backdrop-filter: blur(8px);
-  border: 1px solid rgba(255, 255, 255, 0.15);
+  border: 1px solid rgba(255, 255, 255, 0.9);
   border-radius: 999px;
-  color: #e2e8f0;
-  font-size: 0.7rem;
-  font-weight: 600;
+  color: #0f172a;
+  font-size: 0.72rem;
+  font-weight: 700;
   letter-spacing: 0.05em;
+  z-index: 2;
 }
 
 .biz-card {

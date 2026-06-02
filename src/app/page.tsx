@@ -491,7 +491,7 @@ export default function HomePage() {
         </section>
 
         {/* Global Presence */}
-        <section className="global-section-premium">
+        <section id="global-presence" className="global-section-premium">
           <div className="global-glow global-glow-1"></div>
           <div className="global-glow global-glow-2"></div>
           <div className="global-radial"></div>

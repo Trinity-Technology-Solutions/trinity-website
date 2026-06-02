@@ -1,6 +1,7 @@
 'use client'
 import { useEffect, useState } from 'react'
 import Link from 'next/link'
+import Image from 'next/image'
 
 const ZYNCJOBS_API = process.env.NEXT_PUBLIC_ZYNCJOBS_API || ''
 const ZYNCJOBS_URL = process.env.NEXT_PUBLIC_ZYNCJOBS_URL || 'https://zyncjobs.com'
@@ -9,6 +10,7 @@ const TRINITY_EMPLOYER_ID = '0420'
 const NAMBIKKAI_COMPANY_ID = '0c2caff6-0f71-471c-ae7b-24757b955e97'
 const NAMBIKKAI_EMPLOYER_ID = '6661'
 const TRINITY_LOGO = 'https://img.logo.dev/trinitetech.com?token=pk_cY8JBeWnQR6g5m_ymQhBoQ&size=80'
+const NAMBIKKAI_LOGO = '/assets/images/Nambikkai logo.png'
 
 type Job = {
   id: string
@@ -60,11 +62,21 @@ function JobCard({ job }: { job: Job }) {
     <div className="career-job-card">
       <div className="career-job-card-top">
         <div className="career-job-company-logo">
-          <img
-            src={job.companyLogo || (job.companyId === NAMBIKKAI_COMPANY_ID ? 'https://img.logo.dev/nambikkai.in?token=pk_cY8JBeWnQR6g5m_ymQhBoQ&size=80' : TRINITY_LOGO)}
-            alt={job.company}
-            onError={(e) => { (e.target as HTMLImageElement).src = TRINITY_LOGO }}
-          />
+          {job.companyId === NAMBIKKAI_COMPANY_ID ? (
+            <Image
+              src={NAMBIKKAI_LOGO}
+              alt={job.company}
+              width={80}
+              height={80}
+              style={{ objectFit: 'contain' }}
+            />
+          ) : (
+            <img
+              src={job.companyLogo || TRINITY_LOGO}
+              alt={job.company}
+              onError={(e) => { (e.target as HTMLImageElement).src = TRINITY_LOGO }}
+            />
+          )}
         </div>
         <div className="career-job-meta">
           <span className="career-job-type">{job.jobType || 'Full-time'}</span>

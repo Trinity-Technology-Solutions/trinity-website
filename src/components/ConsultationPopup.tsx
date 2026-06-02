@@ -2,8 +2,8 @@
 import { useState } from 'react'
 import emailjs from '@emailjs/browser'
 
-const EMAILJS_SERVICE_ID = 'service_pa43dns'
-const EMAILJS_TEMPLATE_ID = 'template_sr6fu8g'
+const EMAILJS_SERVICE_ID = 'service_tzjeoxh'
+const EMAILJS_TEMPLATE_ID = 'template_5tll2mg'
 const EMAILJS_PUBLIC_KEY = 'jc8MwEV88GcpV6a7p'
 
 const services = [
