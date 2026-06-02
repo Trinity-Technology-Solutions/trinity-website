@@ -84,7 +84,7 @@ export default function ContactPage() {
             <div className="container-large">
               <div className="contact-cards-grid" style={{ display: 'grid', gridTemplateColumns: 'repeat(4,1fr)', gap: '2rem', maxWidth: '1200px', margin: '0 auto' }}>
                 {[
-                  { icon: <svg width="22" height="22" viewBox="0 0 24 24" fill="none"><path d="M21 10c0 7-9 13-9 13S3 17 3 10a9 9 0 0 1 18 0z" stroke="white" strokeWidth="2"/><circle cx="12" cy="10" r="3" stroke="white" strokeWidth="2"/></svg>, title: 'Locations', desc: 'USA, India, Oman, Netherlands - Global presence serving clients worldwide.', action: 'Get Direction', onClick: () => {} },
+                  { icon: <svg width="22" height="22" viewBox="0 0 24 24" fill="none"><path d="M21 10c0 7-9 13-9 13S3 17 3 10a9 9 0 0 1 18 0z" stroke="white" strokeWidth="2"/><circle cx="12" cy="10" r="3" stroke="white" strokeWidth="2"/></svg>, title: 'Locations', desc: 'USA, India, Oman, Netherlands - Global presence serving clients worldwide.', action: 'Get Direction', href: '/#global-presence' },
                   { icon: <svg width="22" height="22" viewBox="0 0 24 24" fill="none"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z" stroke="white" strokeWidth="2" strokeLinejoin="round"/><path d="M22 6l-10 7L2 6" stroke="white" strokeWidth="2" strokeLinecap="round"/></svg>, title: 'Email Address', desc: 'Please inform us if you are interested in data analytics and AI solutions.', action: 'sales@trinitetech.com', href: 'mailto:sales@trinitetech.com' },
                   { icon: <svg width="22" height="22" viewBox="0 0 24 24" fill="none"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07A19.5 19.5 0 0 1 4.69 12a19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 3.6 1.27h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L7.91 8.91a16 16 0 0 0 6 6l.91-.91a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0 1 21.73 16.92z" stroke="white" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/></svg>, title: 'Phone Call', desc: 'Inform us if you are interested in discussing the project or anything.', action: '+1 214-206-8558', href: 'tel:+12142068558' },
                   { icon: <svg width="22" height="22" viewBox="0 0 24 24" fill="none"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z" stroke="white" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/></svg>, title: 'Drop a Message', desc: "If you'd like to hear more about a project or like to see more of our work, drop us a line!", action: 'Send Message', href: '#contact-form' },
@@ -98,7 +98,7 @@ export default function ContactPage() {
                     {card.href ? (
                       <a href={card.href} style={{ color: '#4285f4', fontWeight: 500, textDecoration: 'none' }}>{card.action}</a>
                     ) : (
-                      <span style={{ color: '#4285f4', fontWeight: 500, cursor: 'pointer' }}>{card.action}</span>
+                      <span style={{ color: '#4285f4', fontWeight: 500 }}>{card.action}</span>
                     )}
                   </div>
                 ))}
