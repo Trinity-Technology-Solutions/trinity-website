@@ -2,6 +2,10 @@
 import { useEffect, useState } from 'react'
 import emailjs from '@emailjs/browser'
 
+const EMAILJS_SERVICE_ID = 'service_hcuu65l'
+const EMAILJS_TEMPLATE_ID = 'template_hfsm2f4'
+const EMAILJS_PUBLIC_KEY = 'jc8MwEV88GcpV6a7p'
+
 export default function StickyBanner() {
   const [visible, setVisible] = useState(false)
   const [dismissed, setDismissed] = useState(false)
@@ -74,23 +78,16 @@ export default function StickyBanner() {
       {!done ? (
         <form onSubmit={async (e) => {
           e.preventDefault()
-          const a = document.createElement('a')
-          a.href = '/assets/trinity_whitepaper.pdf'
-          a.download = 'Trinity-Whitepaper.pdf'
-          document.body.appendChild(a)
-          a.click()
-          document.body.removeChild(a)
           setDone(true)
           try {
-            emailjs.init(process.env.NEXT_PUBLIC_EMAILJS_PUBLIC_KEY!)
             await emailjs.send(
-              process.env.NEXT_PUBLIC_EMAILJS_SERVICE_ID!,
-              process.env.NEXT_PUBLIC_EMAILJS_TEMPLATE_ID!,
+              EMAILJS_SERVICE_ID,
+              EMAILJS_TEMPLATE_ID,
               {
-                to_email: 'admin@trinitytechsolutions.com',
                 user_email: email,
                 download_time: new Date().toLocaleString(),
-              }
+              },
+              EMAILJS_PUBLIC_KEY
             )
           } catch (err) {
             console.error('EmailJS error:', err)
