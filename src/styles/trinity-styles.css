@@ -1182,7 +1182,7 @@ body {
 
 /* visit-website-btn and coming-soon are shown via globals.css */
 
-/* ── Premium Services Section ── */
+/* Ã¢â€â‚¬Ã¢â€â‚¬ Premium Services Section Ã¢â€â‚¬Ã¢â€â‚¬ */
 .services-premium {
   background: #ffffff;
   padding: 90px 0 80px;
@@ -1421,9 +1421,12 @@ body {
 @media (max-width: 1024px) {
   .svc-cards-grid-4 { grid-template-columns: repeat(2, 1fr) !important; }
 }
-
 @media (max-width: 600px) {
-  .svc-cards-grid-4 { grid-template-columns: 1fr !important; }
+  .svc-cards-grid-4 { grid-template-columns: repeat(2, 1fr) !important; }
+  .svc-card-home { padding: 1.25rem 1rem 1rem; }
+  .svc-card-title { font-size: 0.9rem; }
+  .svc-card-desc { font-size: 0.78rem; }
+  .svc-card-icon { width: 32px; height: 32px; }
 }
 
 /* Services page full layout */

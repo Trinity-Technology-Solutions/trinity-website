@@ -592,14 +592,59 @@
 }
 
 @media (max-width: 768px) {
-  .career-hero-title { font-size: 2.5rem; }
-  .career-why-grid { grid-template-columns: 1fr; }
+  .career-wrap { padding: 0 1rem; }
+  .career-hero { padding: 80px 0 40px; min-height: 60vh; }
+  .career-hero-title { font-size: 2.2rem; }
+  .career-hero-desc { font-size: 1rem; }
+  .career-hero-btns { flex-direction: column; width: 100%; }
+  .career-hero-btn-primary,
+  .career-hero-btn-secondary { width: 100%; text-align: center; padding: 0.85rem 1.5rem; font-size: 0.95rem; }
+  .career-hero-stats { gap: 1.5rem; }
+  
+  .career-why-grid { grid-template-columns: 1fr; gap: 1rem; }
+  .career-why-card { padding: 1.5rem; }
+  
   .career-jobs-grid { grid-template-columns: 1fr; }
   .career-loading { grid-template-columns: 1fr; }
+  
+  .career-filters { flex-direction: column; gap: 0.75rem; }
+  .career-search-wrap { min-width: unset; width: 100%; }
+  .career-search-input { width: 100%; font-size: 0.9rem; padding: 0.7rem 1rem 0.7rem 2.5rem; }
+  .career-filter-select { width: 100%; min-width: unset; font-size: 0.9rem; padding: 0.7rem 1rem; }
+  .career-filter-clear { width: 100%; padding: 0.7rem 1rem; font-size: 0.9rem; }
+  
+  .career-pagination { gap: 0.4rem; padding: 0 0.5rem; }
+  .career-page-btn { padding: 0.55rem 0.75rem; font-size: 0.85rem; min-width: 44px; }
+  .career-page-btn:first-child,
+  .career-page-btn:last-child { padding: 0.55rem 0.9rem; }
+  
   .career-process-steps { flex-direction: column; align-items: center; gap: 2rem; }
+  .career-process-step { max-width: 100%; padding: 0; }
+  .career-process-step h3 { white-space: normal; }
   .career-process-line { display: none; }
+  
   .career-section-title { font-size: 1.8rem; }
-  .career-hero-stats { gap: 1.5rem; }
-  .career-filters { flex-direction: column; }
-  .career-search-wrap { min-width: unset; }
+  .career-section-sub { font-size: 0.95rem; }
+  
+  .career-cta-inner h2 { font-size: 1.8rem; }
+  .career-cta-inner p { font-size: 0.95rem; }
+  .career-cta-btns { flex-direction: column; width: 100%; }
+  .career-cta-btn-primary,
+  .career-cta-btn-secondary { width: 100%; text-align: center; }
+}
+
+@media (max-width: 480px) {
+  .career-hero-title { font-size: 1.75rem; }
+  .career-hero-desc { font-size: 0.9rem; }
+  .career-hero-stat-num { font-size: 1.5rem; }
+  .career-hero-stat-label { font-size: 0.75rem; }
+  
+  .career-section-title { font-size: 1.5rem; }
+  .career-section-sub { font-size: 0.9rem; }
+  
+  .career-page-btn { padding: 0.5rem 0.6rem; font-size: 0.8rem; min-width: 40px; }
+  .career-page-btn:first-child,
+  .career-page-btn:last-child { padding: 0.5rem 0.75rem; font-size: 0.8rem; }
+  
+  .career-cta-inner h2 { font-size: 1.5rem; }
 }

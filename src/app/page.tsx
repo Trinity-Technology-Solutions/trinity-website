@@ -152,7 +152,7 @@ export default function HomePage() {
   useEffect(() => {
     // AOS
     import('aos').then((AOS) => {
-      AOS.default.init({ duration: 1500, easing: 'ease-out', once: true, offset: 0, disable: 'mobile' })
+      AOS.default.init({ duration: 800, easing: 'ease-out', once: true, offset: 50 })
     })
 
     // Leaflet Map
@@ -255,13 +255,13 @@ export default function HomePage() {
                         </svg>
                       </div>
                     </a>
-                    <h1 className="text-color-white heading-style-h2" data-aos="fade-up" style={{ fontSize: '3.5rem', lineHeight: 1.2, marginBottom: '1.5rem' }}>
+                    <h1 className="text-color-white heading-style-h2 hero-h1" data-aos="fade-up">
                       Empowering Businesses<br />with Data Analytics and<br />AI Across the Globe
                     </h1>
-                    <p className="body_one" style={{ fontSize: '1.25rem', lineHeight: 1.6, marginBottom: '2rem', color: 'rgba(255,255,255,0.9)' }}>
+                    <p className="body_one hero-subtitle" style={{ lineHeight: 1.6, marginBottom: '2rem', color: 'rgba(255,255,255,0.9)' }}>
                       Harnessing the power of data analytics to transform businesses in USA, India, Oman, and Netherlands.
                     </p>
-                    <div style={{ display: 'flex', gap: '1rem', flexWrap: 'wrap', marginTop: '1.5rem' }}>
+                    <div className="hero-cta-row" style={{ marginTop: '1.5rem' }}>
                       <button onClick={() => setShowPopup(true)} className="button is-medium w-button" style={{ background: '#4d65ff', color: 'white', padding: '0.875rem 2rem', borderRadius: '8px', fontWeight: 600, border: 'none', cursor: 'pointer' }}>
                         Start Free Consultation
                       </button>

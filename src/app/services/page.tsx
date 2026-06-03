@@ -147,7 +147,7 @@ export default function ServicesPage() {
         <section className="services-section" style={{ padding: '80px 0', background: 'white' }}>
           <div className="container-large" style={{ maxWidth: '1200px', margin: '0 auto', padding: '0 2rem' }}>
             <h2 style={{ fontSize: '2rem', fontWeight: 700, color: '#22396b', marginBottom: '3rem', textAlign: 'center' }}>Explore the services we offer to support your business</h2>
-            <div style={{ display: 'grid', gridTemplateColumns: 'repeat(2,1fr)', gap: '2rem', maxWidth: '900px', margin: '0 auto', alignItems: 'stretch' }}>
+            <div className="svc-inner-grid-2" style={{ display: 'grid', gap: '2rem', maxWidth: '900px', margin: '0 auto', alignItems: 'stretch', gridTemplateColumns: 'repeat(2, 1fr)' }}>
               {services.map((s, i) => (
                 <ServiceCard key={i} s={s} />
               ))}
@@ -198,8 +198,10 @@ export default function ServicesPage() {
 
       <style>{`
         .svc-card:hover .svc-card-img-zoom { transform: scale(1.06); }
-        @media (max-width: 640px) {
-          div[style*="repeat(2,1fr)"] { grid-template-columns: 1fr !important; }
+        @media (max-width: 768px) {
+          .svc-inner-grid-2 { grid-template-columns: 1fr !important; }
+          .hero-services h1 { font-size: 2rem !important; }
+          .hero-services p { font-size: 1rem !important; }
         }
       `}</style>
 

@@ -1,0 +1,413 @@
+/* =======================================================
+   GLOBAL MOBILE RESPONSIVE — Final consolidated override
+   Loaded last — wins all specificity battles
+   ======================================================= */
+
+/* ── Base hero heading classes (desktop) ── */
+.hero-h1 {
+  font-size: 3.5rem;
+  line-height: 1.2;
+  margin-bottom: 1.5rem;
+}
+.hero-subtitle { font-size: 1.25rem; }
+.hero-cta-row  { display: flex; gap: 1rem; flex-wrap: wrap; }
+
+/* ─────────────────────────────────────────────────────
+   Service page shared grid classes
+   ───────────────────────────────────────────────────── */
+/* 2-col solution cards grid */
+.svc-inner-grid-2 {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+}
+/* 3-col solution cards grid (web dev) */
+.svc-inner-grid-3 {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+}
+/* 6-col process steps — auto-fits into fewer cols */
+.steps-grid-auto {
+  display: grid;
+  grid-template-columns: repeat(6, 1fr);
+}
+/* why-choose / benefits 2-col */
+.why-grid-auto {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+}
+/* tech stack pills */
+.tech-stack-pills {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(140px, 1fr));
+}
+
+/* ─────────────────────────────────────────────────────
+   Partners logo marquee — unbreakable scroll
+   ───────────────────────────────────────────────────── */
+.logos-scroll-container {
+  overflow: hidden !important;
+  width: 100% !important;
+  position: relative;
+}
+.logos-scroll {
+  display: flex !important;
+  align-items: center !important;
+  gap: 2rem !important;
+  animation: marquee 28s linear infinite !important;
+  width: max-content !important;
+  flex-shrink: 0 !important;
+  will-change: transform;
+}
+@keyframes marquee {
+  0%   { transform: translateX(0); }
+  100% { transform: translateX(-50%); }
+}
+
+/* ─────────────────────────────────────────────────────
+   AOS — ensure animations fire on mobile too
+   ───────────────────────────────────────────────────── */
+[data-aos] {
+  pointer-events: auto !important;
+  transition-property: opacity, transform !important;
+}
+
+/* ── ≤ 1280px ── */
+@media (max-width: 1280px) {
+  .container-large {
+    padding-left: 3rem !important;
+    padding-right: 3rem !important;
+  }
+}
+
+/* ── ≤ 1024px (tablet) ── */
+@media (max-width: 1024px) {
+  .container-large {
+    padding-left: 2rem !important;
+    padding-right: 2rem !important;
+  }
+  .padding-global {
+    padding-left: 2rem !important;
+    padding-right: 2rem !important;
+  }
+
+  /* Header hamburger */
+  .new-hamburger { display: flex !important; }
+  .new-logo      { margin-left: 0 !important; }
+  .new-nav {
+    position: fixed !important;
+    top: 65px !important;
+    left: 0 !important;
+    right: 0 !important;
+    background: #ffffff !important;
+    flex-direction: column !important;
+    padding: 1.25rem 1.5rem !important;
+    box-shadow: 0 6px 24px rgba(0,0,0,0.12) !important;
+    transform: translateY(-110%) !important;
+    opacity: 0 !important;
+    visibility: hidden !important;
+    transition: transform 0.3s ease, opacity 0.3s ease, visibility 0.3s ease !important;
+    z-index: 9999 !important;
+    gap: 0 !important;
+  }
+  .new-nav.active {
+    transform: translateY(0) !important;
+    opacity: 1 !important;
+    visibility: visible !important;
+  }
+  .new-nav a {
+    padding: 0.875rem 0 !important;
+    border-bottom: 1px solid #f3f4f6 !important;
+    width: 100% !important;
+    text-align: center !important;
+    font-size: 1rem !important;
+  }
+  .new-nav a:last-child { border-bottom: none !important; }
+
+  /* Service page grids collapse */
+  .steps-grid-auto   { grid-template-columns: repeat(3, 1fr) !important; }
+  .svc-inner-grid-3  { grid-template-columns: repeat(2, 1fr) !important; }
+}
+
+/* ── ≤ 768px (mobile) ── */
+@media (max-width: 768px) {
+
+  /* Layout */
+  .container-large {
+    padding-left: 1.25rem !important;
+    padding-right: 1.25rem !important;
+  }
+  .padding-global {
+    padding-left: 1.25rem !important;
+    padding-right: 1.25rem !important;
+  }
+  .padding-section-large,
+  .padding-section-large-xx {
+    padding-top: 3rem !important;
+    padding-bottom: 3rem !important;
+  }
+  .padding-section-medium {
+    padding-top: 2rem !important;
+    padding-bottom: 2rem !important;
+  }
+
+  /* Header */
+  .new-responsive-header { height: 65px !important; }
+  .new-header-container  { padding: 0 1rem !important; }
+  .new-logo img          { height: 48px !important; }
+  .new-nav               { top: 65px !important; }
+
+  /* Hero (home page) */
+  .section_hero {
+    min-height: 100svh !important;
+    padding: 90px 0 50px !important;
+  }
+  .hero_content { text-align: center !important; }
+  .hero-h1 {
+    font-size: 2rem !important;
+    line-height: 1.25 !important;
+    margin-bottom: 1rem !important;
+  }
+  .hero-subtitle {
+    font-size: 1rem !important;
+    line-height: 1.6 !important;
+    margin-bottom: 1.25rem !important;
+  }
+  .hero-cta-row {
+    flex-direction: column !important;
+    align-items: center !important;
+  }
+  .hero_content button,
+  .hero-cta-row button {
+    width: 100% !important;
+    max-width: 320px !important;
+  }
+
+  /* Service page hero headings (Motion h1 inline style) */
+  .section-with-curve h1,
+  .hero-fade-in h1 {
+    font-size: 2rem !important;
+    line-height: 1.2 !important;
+  }
+  /* Service page hero sub-text */
+  .section-with-curve .padding-global p,
+  .hero-fade-in .padding-global p {
+    font-size: 1rem !important;
+  }
+  /* Service page hero — also handle inline font-size via attribute */
+  h1[style*="3.5rem"] { font-size: 2rem !important; }
+  h2[style*="2.5rem"] { font-size: 1.75rem !important; }
+  h2[style*="2.8rem"] { font-size: 1.75rem !important; }
+  h2[style*="3rem"]   { font-size: 1.8rem !important; }
+
+  /* Partner pill */
+  .partner-pill {
+    font-size: 0.78rem !important;
+    padding: 0.4rem 0.75rem !important;
+  }
+
+  /* Partner logos */
+  .partners_comp .heading {
+    font-size: 0.95rem !important;
+    padding: 0 1rem !important;
+  }
+  .logos-scroll-container { padding: 0 !important; }
+  .partner-logo {
+    height: 40px !important;
+    max-width: 70px !important;
+    min-width: unset !important;
+  }
+
+  /* Home: About section */
+  .about-top-grid {
+    grid-template-columns: 1fr !important;
+    gap: 1.5rem !important;
+  }
+  .about-big-title   { font-size: 2.75rem !important; }
+  .about-points      { grid-template-columns: 1fr 1fr !important; }
+  .about-image       { height: 220px !important; }
+  .about-floating-stats {
+    position: static !important;
+    transform: none !important;
+    margin-top: 1rem !important;
+    width: 100% !important;
+    justify-content: center !important;
+  }
+  .about-stat        { padding: 0.75rem 0.875rem !important; }
+  .about-cert-inner {
+    grid-template-columns: 1fr !important;
+    gap: 1.5rem !important;
+    padding: 1.5rem !important;
+  }
+  .about-cert-badges {
+    flex-direction: row !important;
+    justify-content: center !important;
+    flex-wrap: wrap !important;
+    gap: 1.5rem !important;
+  }
+  .about-cert-heading { font-size: 1.5rem !important; }
+
+  /* Tech stack */
+  .tech-cards-grid,
+  .tech-cards-grid-second {
+    grid-template-columns: repeat(2, 1fr) !important;
+    gap: 0.875rem !important;
+  }
+  .tech-main-heading { font-size: 1.75rem !important; }
+
+  /* Home services cards */
+  .svc-cards-grid,
+  .svc-cards-grid-4 {
+    grid-template-columns: 1fr 1fr !important;
+    gap: 1rem !important;
+  }
+  .svc-main-heading { font-size: 1.8rem !important; }
+  .svc-stats-glass  { grid-template-columns: 1fr 1fr !important; }
+  .svc-stat-item:nth-child(2) { border-right: none !important; }
+  .svc-stat-item:nth-child(3),
+  .svc-stat-item:nth-child(4) { border-top: 1px solid #e2e8f0 !important; }
+
+  /* Industries */
+  .sectors-grid {
+    grid-template-columns: repeat(2, 1fr) !important;
+    gap: 0.75rem !important;
+  }
+  .sectors-main-heading { font-size: 1.75rem !important; }
+  .sector-card          { aspect-ratio: 1/1 !important; }
+
+  /* Business portfolio */
+  .biz-grid {
+    grid-template-columns: 1fr 1fr !important;
+    gap: 1rem !important;
+  }
+  .biz-main-heading { font-size: 1.75rem !important; }
+
+  /* Global presence */
+  .global-stats          { grid-template-columns: 1fr 1fr !important; }
+  .global-stat-item:nth-child(2) { border-right: none !important; }
+  .global-main-heading   { font-size: 1.75rem !important; }
+  .world-map             { height: 220px !important; }
+  .global-location-cards {
+    grid-template-columns: 1fr 1fr !important;
+    gap: 0.75rem !important;
+  }
+
+  /* Counters */
+  .counter-grid {
+    grid-template-columns: 1fr 1fr !important;
+    gap: 1.5rem !important;
+  }
+  .counter-title { font-size: 2rem !important; }
+
+  /* FAQ */
+  .faq-main-title { font-size: 1.35rem !important; }
+
+  /* About Us page */
+  .about-hero            { padding: 110px 0 55px !important; }
+  .about-hero-content h1 { font-size: 2.1rem !important; }
+  .about-story-grid {
+    grid-template-columns: 1fr !important;
+    gap: 2rem !important;
+  }
+  .about-story-image img { height: 240px !important; }
+  .about-features-grid {
+    grid-template-columns: 1fr !important;
+    gap: 1.25rem !important;
+  }
+  .about-section-header h2   { font-size: 1.65rem !important; }
+  .about-values-grid         { grid-template-columns: 1fr 1fr !important; gap: 1rem !important; }
+  .about-databricks-inner h2 { font-size: 1.65rem !important; }
+  .about-bottom-cta-inner    { padding: 2rem 1.25rem !important; }
+  .about-bottom-cta-inner h2 { font-size: 1.5rem !important; }
+
+  /* Services index page hero */
+  .hero-services h1 { font-size: 2rem !important; }
+  .hero-services p  { font-size: 1rem !important; }
+
+  /* Services index cards */
+  .svc-inner-grid-2,
+  .svc-inner-grid-3 {
+    grid-template-columns: 1fr !important;
+  }
+
+  /* Service sub-page problem/feature grids */
+  .ai-problems-grid,
+  .erp-features-grid,
+  .erp-benefits-grid,
+  .staffing-features-grid,
+  .staffing-benefits-grid,
+  .why-grid-auto {
+    grid-template-columns: 1fr !important;
+  }
+
+  /* Service sub-page process steps */
+  .steps-grid-auto { grid-template-columns: repeat(2, 1fr) !important; }
+
+  /* Web dev tech stack pills */
+  .tech-stack-pills { grid-template-columns: repeat(3, 1fr) !important; }
+
+  /* Services full page */
+  .services-full-grid  { grid-template-columns: 1fr !important; }
+  .services-page-title { font-size: 2rem !important; }
+  .services-full-title { font-size: 1.75rem !important; }
+  .services-page-hero-content { padding: 6rem 1.25rem 3.5rem !important; }
+
+  /* Footer */
+  footer > div:nth-child(2) > div {
+    grid-template-columns: 1fr 1fr !important;
+    gap: 2rem !important;
+  }
+  footer > div:nth-child(2) > div > div:first-child {
+    grid-column: 1 / -1 !important;
+  }
+  footer img { height: 48px !important; }
+}
+
+/* ── ≤ 480px (small mobile) ── */
+@media (max-width: 480px) {
+  .container-large {
+    padding-left: 1rem !important;
+    padding-right: 1rem !important;
+  }
+  .padding-global {
+    padding-left: 1rem !important;
+    padding-right: 1rem !important;
+  }
+
+  .new-responsive-header { height: 58px !important; }
+  .new-logo img          { height: 42px !important; }
+  .new-nav               { top: 58px !important; }
+
+  /* Hero */
+  .hero-h1               { font-size: 1.65rem !important; }
+  .section-with-curve h1,
+  .hero-fade-in h1        { font-size: 1.65rem !important; }
+  h1[style*="3.5rem"]    { font-size: 1.65rem !important; }
+  h2[style*="2.5rem"]    { font-size: 1.5rem !important; }
+
+  /* Home grids */
+  .svc-cards-grid,
+  .svc-cards-grid-4      { grid-template-columns: 1fr !important; }
+  .biz-grid              { grid-template-columns: 1fr !important; }
+  .about-points          { grid-template-columns: 1fr !important; }
+  .about-big-title       { font-size: 2.25rem !important; }
+  .about-hero-content h1 { font-size: 1.75rem !important; }
+  .about-values-grid     { grid-template-columns: 1fr !important; }
+  .counter-grid          { grid-template-columns: 1fr 1fr !important; }
+
+  /* Partner logos smaller */
+  .partner-logo {
+    height: 34px !important;
+    max-width: 60px !important;
+  }
+
+  /* Steps single col */
+  .steps-grid-auto       { grid-template-columns: 1fr !important; }
+
+  /* Tech stack pills */
+  .tech-stack-pills      { grid-template-columns: repeat(2, 1fr) !important; }
+
+  /* Footer single col */
+  footer > div:nth-child(2) > div {
+    grid-template-columns: 1fr !important;
+  }
+}

@@ -129,7 +129,7 @@ export default function ConsultationPopup({ onClose, theme = 'purple' }: { onClo
 
   return (
     <div className="lead-overlay active" onClick={(e) => { if (e.target === e.currentTarget) onClose() }}>
-      <div className="lead-modal" style={{ background: modalBg }}>
+      <div className="lead-modal" style={{ background: modalBg, overflowY: 'auto' }}>
         <button className="modal-close" onClick={onClose} aria-label="Close">×</button>
         <div className="modal-body">
 
@@ -175,7 +175,7 @@ export default function ConsultationPopup({ onClose, theme = 'purple' }: { onClo
                     <input type={type} required value={contact[key]} onChange={(e) => setContact({ ...contact, [key]: e.target.value })} style={I} />
                   </div>
                 ))}
-                <div className="btn-group" style={{ marginTop: '1rem' }}>
+                <div className="btn-group">
                   <button type="button" className="btn btn-secondary" onClick={() => setStep(1)}>Cancel</button>
                   <button type="submit" className="btn btn-primary" style={{ background: btnBg }}>Continue</button>
                 </div>
@@ -227,7 +227,7 @@ export default function ConsultationPopup({ onClose, theme = 'purple' }: { onClo
                     </div>
                   )
                 )}
-                <div className="btn-group" style={{ marginTop: '0.5rem', gap: '0.75rem' }}>
+                <div className="btn-group">
                   <button type="button" className="btn btn-secondary" onClick={() => setStep(2)}>Back</button>
                   <button type="submit" className="btn btn-primary" style={{ background: btnBg }} disabled={sending}>{sending ? 'Sending...' : 'Submit'}</button>
                 </div>

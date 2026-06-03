@@ -367,7 +367,7 @@ export default function ERPSolutionPage() {
                             </p>
                         </motion.div>
 
-                        <div className="erp-features-grid" style={{ display: 'grid', gridTemplateColumns: 'repeat(2, 1fr)', gap: '1.5rem', alignItems: 'stretch' }}>
+                        <div className="erp-features-grid" style={{ display: 'grid', gap: '1.5rem', alignItems: 'stretch' }}>
                             {[
                                 'Automate core business processes',
                                 'Centralize data across business functions',
@@ -427,12 +427,7 @@ export default function ERPSolutionPage() {
                             </p>
                         </motion.div>
 
-                        <div style={{
-                            display: 'grid',
-                            gridTemplateColumns: 'repeat(2, 1fr)',
-                            gap: '2rem',
-                            marginBottom: '3rem'
-                        }}>
+                        <div className="svc-inner-grid-2" style={{ display: 'grid', gap: '2rem', marginBottom: '3rem' }}>
                             {erpServices.map((solution, index) => (
                                 <SolutionCard key={index} solution={solution} index={index} />
                             ))}
@@ -486,13 +481,7 @@ export default function ERPSolutionPage() {
                             </h2>
                         </motion.div>
 
-                        <div style={{
-                            display: 'grid',
-                            gridTemplateColumns: 'repeat(6, minmax(180px, 1fr))',
-                            gap: '1.5rem',
-                            alignItems: 'stretch',
-                            gridAutoRows: '1fr'
-                        }}>
+                        <div className="steps-grid-auto" style={{ display: 'grid', gap: '1.5rem', alignItems: 'stretch' }}>
                             {implementationSteps.map((step, index) => (
                                 <StepCard key={index} step={step} index={index} />
                             ))}
@@ -519,14 +508,7 @@ export default function ERPSolutionPage() {
                                 Why Choose Us as Your ERP Provider
                             </h2>
 
-                            <div className="erp-benefits-grid" style={{
-                                display: 'grid',
-                                gridTemplateColumns: 'repeat(2, 1fr)',
-                                gap: '1rem',
-                                maxWidth: '900px',
-                                margin: '0 auto',
-                                alignItems: 'stretch'
-                            }}>
+                            <div className="erp-benefits-grid why-grid-auto" style={{ display: 'grid', gap: '1rem', maxWidth: '900px', margin: '0 auto', alignItems: 'stretch' }}>
                                 {whyChooseUs.map((reason, index) => (
                                     <motion.div
                                         key={index}

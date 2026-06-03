@@ -394,13 +394,7 @@ export default function WebDevelopmentPage() {
                 {/* Web Development Services */}
                 <section style={{ padding: '80px 0', background: 'white' }}>
                     <div className="container-large" style={{ maxWidth: '1200px', margin: '0 auto', padding: '0 2rem' }}>
-                        <div className="services-grid" style={{
-                            display: 'grid',
-                            gridTemplateColumns: 'repeat(3, 1fr)',
-                            gap: '2rem',
-                            marginBottom: '3rem',
-                            alignItems: 'stretch'
-                        }}>
+                        <div className="services-grid svc-inner-grid-3" style={{ display: 'grid', gap: '2rem', marginBottom: '3rem', alignItems: 'stretch' }}>
                             {webServices.map((service, index) => (
                                 <ServiceCard key={index} service={service} index={index} />
                             ))}
@@ -454,13 +448,7 @@ export default function WebDevelopmentPage() {
                             </h2>
                         </motion.div>
 
-                        <div style={{
-                            display: 'grid',
-                            gridTemplateColumns: 'repeat(6, minmax(180px, 1fr))',
-                            gap: '1.5rem',
-                            alignItems: 'stretch',
-                            gridAutoRows: '1fr'
-                        }}>
+                        <div className="steps-grid-auto" style={{ display: 'grid', gap: '1.5rem', alignItems: 'stretch' }}>
                             {developmentSteps.map((step, index) => (
                                 <StepCard key={index} step={step} index={index} />
                             ))}
@@ -487,11 +475,7 @@ export default function WebDevelopmentPage() {
                                 Our Technology Stack
                             </h2>
 
-                            <div style={{
-                                display: 'grid',
-                                gridTemplateColumns: 'repeat(auto-fit, minmax(150px, 1fr))',
-                                gap: '1rem'
-                            }}>
+                            <div className="tech-stack-pills" style={{ display: 'grid', gap: '1rem' }}>
                                 {techStack.map((tech, index) => (
                                     <motion.div
                                         key={index}
@@ -537,13 +521,7 @@ export default function WebDevelopmentPage() {
                                 Why Choose Trinity Technology Solutions for Website Development?
                             </h2>
 
-                            <div style={{
-                                display: 'grid',
-                                gridTemplateColumns: 'repeat(auto-fit, minmax(250px, 1fr))',
-                                gap: '1rem',
-                                maxWidth: '900px',
-                                margin: '0 auto'
-                            }}>
+                            <div className="why-grid-auto" style={{ display: 'grid', gap: '1rem', maxWidth: '900px', margin: '0 auto' }}>
                                 {whyChooseUs.map((reason, index) => (
                                     <motion.div
                                         key={index}

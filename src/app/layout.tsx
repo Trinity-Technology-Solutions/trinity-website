@@ -17,10 +17,11 @@ import '@/styles/header-styles.css'
 import '@/styles/lead-popup.css'
 import '@/styles/lead-popup-cards.css'
 import '@/styles/inter-font.css'
-import '@/styles/sticky-banner.css'
-import '@/styles/chatbot.css'
 import '@/styles/faq-redesign.css'
 import '@/styles/career.css'
+import '@/styles/responsive-global.css'
+import '@/styles/sticky-banner.css'
+import '@/styles/chatbot.css'
 
 export const metadata: Metadata = {
   title: 'Data Analytics and AI Services | Trinity Technology Solutions',

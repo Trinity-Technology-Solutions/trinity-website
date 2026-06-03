@@ -360,7 +360,7 @@ export default function AISolutionPage() {
               </p>
             </motion.div>
 
-            <div className="ai-problems-grid" style={{ display: 'grid', gridTemplateColumns: 'repeat(2, 1fr)', gap: '1.5rem', alignItems: 'stretch' }}>
+            <div className="ai-problems-grid" style={{ display: 'grid', gap: '1.5rem', alignItems: 'stretch' }}>
               {[
                 { title: 'Disconnected Data Systems', desc: 'Siloed data across departments prevents a unified view, making it impossible to act on insights quickly.' },
                 { title: 'Poor Data Quality', desc: 'Inconsistent, duplicate, or incomplete data leads to unreliable reports and flawed business decisions.' },
@@ -418,12 +418,7 @@ export default function AISolutionPage() {
               </p>
             </motion.div>
 
-            <div style={{ 
-              display: 'grid', 
-              gridTemplateColumns: 'repeat(2, 1fr)', 
-              gap: '2rem',
-              marginBottom: '3rem'
-            }}>
+            <div className="svc-inner-grid-2" style={{ display: 'grid', gap: '2rem', marginBottom: '3rem' }}>
               {aiSolutions.map((solution, index) => (
                 <SolutionCard key={index} solution={solution} index={index} />
               ))}
@@ -477,11 +472,7 @@ export default function AISolutionPage() {
               </h2>
             </motion.div>
 
-            <div style={{ 
-              display: 'grid', 
-              gridTemplateColumns: 'repeat(auto-fit, minmax(200px, 1fr))', 
-              gap: '1.5rem'
-            }}>
+            <div className="steps-grid-auto" style={{ display: 'grid', gap: '1.5rem' }}>
               {implementationSteps.map((step, index) => (
                 <StepCard key={index} step={step} index={index} />
               ))}
@@ -508,13 +499,7 @@ export default function AISolutionPage() {
                 Why Choose Our Data & AI Solutions
               </h2>
               
-              <div style={{ 
-                display: 'grid', 
-                gridTemplateColumns: 'repeat(auto-fit, minmax(250px, 1fr))', 
-                gap: '1rem',
-                maxWidth: '800px',
-                margin: '0 auto'
-              }}>
+              <div className="why-grid-auto" style={{ display: 'grid', gap: '1rem', maxWidth: '800px', margin: '0 auto' }}>
                 {whyChooseUs.map((reason, index) => (
                   <motion.div
                     key={index}
