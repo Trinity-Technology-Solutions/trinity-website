@@ -1,12 +1,16 @@
-Options -MultiViews
+Options -MultiViews -Indexes
 RewriteEngine On
 
-# Serve static files and directories directly
-RewriteCond %{REQUEST_FILENAME} -f [OR]
-RewriteCond %{REQUEST_FILENAME} -d
+# Serve static files directly
+RewriteCond %{REQUEST_FILENAME} -f
 RewriteRule ^ - [L]
 
-# Map clean URLs to .html files
+# Redirect directory trailing slash to .html (e.g. /services/ -> /services.html)
+RewriteCond %{REQUEST_FILENAME} -d
+RewriteCond %{DOCUMENT_ROOT}%{REQUEST_URI}.html -f
+RewriteRule ^(.+)/$ /$1.html [R=301,L]
+
+# Map clean URLs to .html files (e.g. /about-us -> /about-us.html)
 RewriteCond %{REQUEST_FILENAME}.html -f
 RewriteRule ^(.+?)/?$ $1.html [L]
 
