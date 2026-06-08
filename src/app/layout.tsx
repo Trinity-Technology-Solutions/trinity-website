@@ -53,8 +53,8 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
         <link rel="apple-touch-icon" sizes="180x180" href="/assets/favicon_io_trinity/apple-touch-icon.png" />
         <link rel="manifest" href="/assets/favicon_io_trinity/site.webmanifest" />
         <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
-        <script async src="https://www.googletagmanager.com/gtag/js?id=G-1F0Z7P35WV" />
-        <script dangerouslySetInnerHTML={{__html: `window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','G-1F0Z7P35WV');`}} />
+        <script async src="https://www.googletagmanager.com/gtag/js?id=G-CVRTT42PZL" />
+        <script dangerouslySetInnerHTML={{__html: `window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','G-CVRTT42PZL');`}} />
         <script type="application/ld+json" dangerouslySetInnerHTML={{__html: JSON.stringify({
           "@context": "https://schema.org",
           "@type": "Organization",
