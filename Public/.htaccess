@@ -1,18 +1,23 @@
 Options -MultiViews -Indexes
 RewriteEngine On
 
-# Serve static files directly
+# Serve existing files directly (JS, CSS, images, etc.)
 RewriteCond %{REQUEST_FILENAME} -f
 RewriteRule ^ - [L]
 
-# Redirect directory trailing slash to .html (e.g. /services/ -> /services.html)
-RewriteCond %{REQUEST_FILENAME} -d
-RewriteCond %{DOCUMENT_ROOT}%{REQUEST_URI}.html -f
-RewriteRule ^(.+)/$ /$1.html [R=301,L]
+# Homepage: trinitetech.com or trinitetech.com/
+RewriteRule ^$ /index.html [L]
 
-# Map clean URLs to .html files (e.g. /about-us -> /about-us.html)
-RewriteCond %{REQUEST_FILENAME}.html -f
-RewriteRule ^(.+?)/?$ $1.html [L]
+# Handle /services/ai-solution, /services/ai-solution/ etc. (nested pages)
+RewriteCond %{DOCUMENT_ROOT}/services/%1.html -f
+RewriteRule ^services/([^/]+)/?$ /services/$1.html [L]
 
-# Fallback to 404
-RewriteRule ^ 404.html [L]
+# Handle /services/ -> services.html (avoid 403 on directory)
+RewriteRule ^services/?$ /services.html [L]
+
+# Handle all other top-level clean URLs: /about-us, /contact, /career, /jobs
+RewriteCond %{DOCUMENT_ROOT}/$1.html -f
+RewriteRule ^([^/]+)/?$ /$1.html [L]
+
+# Fallback 404
+RewriteRule ^ /404.html [L]
