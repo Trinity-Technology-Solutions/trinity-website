@@ -574,7 +574,7 @@ export default function ERPSolutionPage() {
                                 marginBottom: '1.5rem',
                                 color: 'white'
                             }}>
-                                Let's Build Your ERP System
+                                Let&apos;s Build Your ERP System
                             </h2>
                             <p style={{
                                 fontSize: '1.2rem',

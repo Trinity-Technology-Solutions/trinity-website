@@ -30,21 +30,6 @@ const L: React.CSSProperties = {
 }
 const F: React.CSSProperties = { marginBottom: '0.6rem' }
 
-function Sel({ label, qNum, field, options, val, onChange }: {
-  label: string; qNum: number; field: string
-  options: string[]; val: string; onChange: (v: string) => void
-}) {
-  return (
-    <div style={F}>
-      <label style={L}>{qNum}. {label} <span style={{ color: '#ef4444' }}>*</span></label>
-      <select required value={val} onChange={e => onChange(e.target.value)} style={S}>
-        <option value="" disabled hidden>Select...</option>
-        {options.map(o => <option key={o}>{o}</option>)}
-      </select>
-    </div>
-  )
-}
-
 // ── Service question configs ──
 const serviceQuestions: Record<number, { title: string; subtitle: string; fields: { type: 'input' | 'select'; qNum: number; label: string; key: string; placeholder?: string; options?: string[] }[] }> = {
   0: {
@@ -163,7 +148,7 @@ export default function ConsultationPopup({ onClose, theme = 'purple' }: { onClo
               <StepDots />
               <h2 className="step-title" style={{ color: titleColor }}>Tell us about yourself</h2>
               <p className="step-subtitle" style={{ color: subtitleColor }}>We&apos;ll use this to get in touch with you</p>
-              <form onSubmit={(e) => { e.preventDefault(); selected !== null ? setStep(3) : setSubmitted(true) }}>
+              <form onSubmit={(e) => { e.preventDefault(); if (selected !== null) { setStep(3) } else { setSubmitted(true) } }}>
                 {([
                   { label: 'Full Name', key: 'name', type: 'text' },
                   { label: 'Email Address', key: 'email', type: 'email' },

@@ -1,6 +1,5 @@
 'use client'
 import { useEffect, useState, useRef } from 'react'
-import Link from 'next/link'
 import { useRouter } from 'next/navigation'
 import { motion, useInView } from 'framer-motion'
 import ConsultationPopup from '@/components/ConsultationPopup'
@@ -356,7 +355,7 @@ export default function AISolutionPage() {
                 margin: '0 auto 2.5rem', 
                 lineHeight: 1.7 
               }}>
-                Every business has access to vast data, but most can't convert it into actionable insights due to disconnected systems, poor data quality, and lack of AI adoption.
+                Every business has access to vast data, but most can&apos;t convert it into actionable insights due to disconnected systems, poor data quality, and lack of AI adoption.
               </p>
             </motion.div>
 

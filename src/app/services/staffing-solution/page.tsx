@@ -582,7 +582,7 @@ export default function StaffingSolutionPage() {
                                 opacity: 0.95,
                                 lineHeight: 1.6
                             }}>
-                                Ready to find the right talent for your organization? Schedule a free consultation and let's discuss your staffing needs and goals.
+                                Ready to find the right talent for your organization? Schedule a free consultation and let&apos;s discuss your staffing needs and goals.
                             </p>
                             <button
                                 onClick={() => router.push('/contact')}

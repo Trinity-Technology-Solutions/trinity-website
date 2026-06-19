@@ -158,7 +158,7 @@ export default function HomePage() {
     // Leaflet Map
     import('leaflet').then((L) => {
       const mapEl = document.getElementById('world-map')
-      if (!mapEl || (mapEl as any)._leaflet_id) return
+      if (!mapEl || (mapEl as HTMLElement & { _leaflet_id?: number })._leaflet_id) return
       const map = L.default.map('world-map', { scrollWheelZoom: false }).setView([20, 0], 2)
       L.default.tileLayer('https://{s}.basemaps.cartocdn.com/dark_all/{z}/{x}/{y}{r}.png', {
         attribution: '© OpenStreetMap © CARTO'
@@ -179,7 +179,7 @@ export default function HomePage() {
         { name: 'Plano', country: 'Texas, USA', coords: [33.0198, -96.6989] as [number, number], id: 'plano' },
       ]
 
-      const markers: Record<string, any> = {}
+      const markers: Record<string, L.Marker> = {}
       locations.forEach((loc) => {
         const marker = L.default.marker(loc.coords, { icon: pinIcon }).addTo(map).bindPopup(`<b>${loc.name}</b><br>${loc.country}`)
         markers[loc.id] = marker
@@ -384,23 +384,23 @@ export default function HomePage() {
                 <p className="tech-subtitle">We leverage enterprise-grade cloud, AI, and analytics technologies to build scalable modern data platforms.</p>
               </div>
               <div className="tech-cards-grid">
-                {[
+                {([
                   { img: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/azure/azure-original.svg', name: 'Azure', desc: 'Cloud Platform', glow: '#3b82f6' },
                   { img: 'https://www.databricks.com/wp-content/uploads/2021/10/db-nav-logo.svg', name: 'Databricks', desc: 'Data Analytics', glow: '#f97316' },
                   { img: '/assets/images/dbt-icon-2yxlz1fvy25mvn5scgnlw.webp', name: 'DBT', desc: 'Data Transform', glow: '#a855f7' },
                   { img: 'https://images.icon-icons.com/2699/PNG/512/fivetran_logo_icon_170149.png', name: 'Fivetran', desc: 'Data Pipeline', glow: '#06b6d4' },
-                  { img: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/nextjs/nextjs-original-wordmark.svg', name: 'Next.js', desc: 'Web Framework', glow: '#ffffff', invert: true },
+                  { img: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/nextjs/nextjs-original-wordmark.svg', name: 'Next.js', desc: 'Web Framework', glow: '#ffffff', invert: true as const },
                   { img: '/assets/images/AWS-logo.png', name: 'AWS', desc: 'Cloud Services', glow: '#eab308' },
                   { img: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQFQ68GQ7HaMDD9EHZkEcthYaVxDZstZadJ4A&s', name: 'Odoo', desc: 'ERP System', glow: '#10b981' },
                   { img: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/java/java-original.svg', name: 'Java', desc: 'Programming', glow: '#ef4444' },
                   { img: '/assets/images/Oracle-Logo-History-4-864x540.png', name: 'Oracle', desc: 'Database', glow: '#f97316' },
                   { img: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRAnZkZJkvI08aejoNEmEy2W3rDrTKYa2dUdGkvS8xy7Vzt3T5PpLu-gumocc2IZZjDZBo&usqp=CAU', name: 'SAP', desc: 'Enterprise', glow: '#06b6d4' },
-                ].map((t, i) => (
+                ] as { img: string; name: string; desc: string; glow: string; invert?: boolean }[]).map((t, i) => (
                   <div key={i} className="tech-card-premium">
                     <div className="tech-card-top-line" style={{ background: `linear-gradient(to right, ${t.glow}, transparent)` }}></div>
                     <div className="tech-card-glow" style={{ background: `radial-gradient(circle at center, ${t.glow}22, transparent 70%)` }}></div>
                     <div className="tech-card-icon-wrap">
-                      <img src={t.img} alt={t.name} style={(t as any).invert ? { filter: 'invert(1) brightness(2)', background: 'transparent' } : undefined} />
+                      <img src={t.img} alt={t.name} style={t.invert ? { filter: 'invert(1) brightness(2)', background: 'transparent' } : undefined} />
                     </div>
                     <h3>{t.name}</h3>
                     <p>{t.desc}</p>

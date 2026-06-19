@@ -1,14 +1,10 @@
 'use client'
 import { useEffect, useState } from 'react'
-import Link from 'next/link'
 import Image from 'next/image'
 
 const ZYNCJOBS_API = process.env.NEXT_PUBLIC_ZYNCJOBS_API || ''
 const ZYNCJOBS_URL = process.env.NEXT_PUBLIC_ZYNCJOBS_URL || 'https://zyncjobs.com'
-const TRINITY_COMPANY_ID = 'ce66e828-6b29-4109-8d36-59a672c198d0'
-const TRINITY_EMPLOYER_ID = '0420'
 const NAMBIKKAI_COMPANY_ID = '0c2caff6-0f71-471c-ae7b-24757b955e97'
-const NAMBIKKAI_EMPLOYER_ID = '6661'
 const TRINITY_LOGO = 'https://img.logo.dev/trinitetech.com?token=pk_cY8JBeWnQR6g5m_ymQhBoQ&size=80'
 const NAMBIKKAI_LOGO = '/assets/images/Nambikkai logo.png'
 
@@ -182,7 +178,7 @@ export default function CareerPage() {
           <div className="career-hero-bg" />
           <div className="career-wrap">
               <div className="career-hero-content">
-                <div className="career-hero-badge">WE'RE HIRING</div>
+                <div className="career-hero-badge">WE&apos;RE HIRING</div>
                 <h1 className="career-hero-title">
                   Build Your Future<br />
                   <span className="career-hero-gradient">With Trinity</span>
@@ -347,8 +343,8 @@ export default function CareerPage() {
         <section className="career-cta">
           <div className="career-wrap">
               <div className="career-cta-inner">
-                <h2>Didn't Find the Right Role?</h2>
-                <p>We're always looking for exceptional talent. Drop us your resume and we'll reach out when the perfect opportunity arises.</p>
+                <h2>Didn&apos;t Find the Right Role?</h2>
+                <p>We&apos;re always looking for exceptional talent. Drop us your resume and we&apos;ll reach out when the perfect opportunity arises.</p>
                 <div className="career-cta-btns">
                   <a href="mailto:sales@trinitetech.com" className="career-cta-btn-primary">Send Your Resume</a>
                   <a href="https://www.zyncjobs.com/job-listings" target="_blank" rel="noopener noreferrer" className="career-cta-btn-secondary">Browse All Jobs on ZyncJobs →</a>
