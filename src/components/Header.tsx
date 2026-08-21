@@ -22,7 +22,7 @@ export default function Header() {
       <div className="new-header-container">
         <div className="new-logo">
           <Link href="/" onClick={closeMenu}>
-            <img src="https://cdn.prod.website-files.com/68c8ed013c167a28e6d84332/68c8eeafa4b5417495dddb90_Trinity%20Logo%20PNG%20(3).png" alt="Trinity Technology Solutions" />
+            <img src="/assets/images/trinity-logo.webp" alt="Trinity Technology Solutions" />
           </Link>
         </div>
         <nav className={`new-nav${menuOpen ? ' active' : ''}`} id="nav-menu">

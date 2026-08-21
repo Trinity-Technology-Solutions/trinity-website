@@ -8,7 +8,7 @@ export default function Footer() {
         <div style={{display:'grid',gridTemplateColumns:'2fr 1fr 1fr 1fr',gap:'3rem',marginBottom:'3rem',alignItems:'start'}}>
           <div style={{minHeight:'120px'}}>
             <div style={{display:'flex',alignItems:'center',gap:'0.75rem',marginBottom:'2rem'}}>
-              <img src="https://cdn.prod.website-files.com/68c8ed013c167a28e6d84332/68c8eeafa4b5417495dddb90_Trinity%20Logo%20PNG%20(3).png" alt="Trinity Technology Solutions" style={{height:'60px',width:'auto'}} />
+              <img src="/assets/images/trinity-logo.webp" alt="Trinity Technology Solutions" style={{height:'60px',width:'auto'}} />
             </div>
             <p style={{color:'#888',fontSize:'1.1rem',margin:0,lineHeight:1.4,textAlign:'justify'}}>© Copyright Trinity Technology Solutions 2025. All rights reserved.</p>
           </div>
